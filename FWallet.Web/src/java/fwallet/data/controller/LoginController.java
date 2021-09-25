@@ -23,12 +23,12 @@ import javax.servlet.http.HttpSession;
 public class LoginController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String ADMIN_PAGE = "admin.jsp";
-    
+    private static final String WELCOME_PAGE = "welcome.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url=ERROR;
+        String url = ERROR;
         try {
             String userID = request.getParameter("userID");
             String uni = request.getParameter("password");
@@ -37,14 +37,15 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession();
             if (user == null) {
                 session.setAttribute("ERROR_MESSAGE", "Incorrect User ID or Password");
-            }else{
+            } else {
                 String roleID = user.getRoleID();
                 String statusID = user.getStatusID();
                 session.setAttribute("LOGIN_USER", user);
+                url = WELCOME_PAGE;
             }
         } catch (Exception e) {
             log("Error at login: " + e.toString());
-        }finally{
+        } finally {
             response.sendRedirect(url);
         }
     }
