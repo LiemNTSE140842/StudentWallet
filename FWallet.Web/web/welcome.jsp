@@ -16,6 +16,6 @@
         <% 
             UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
         %>
-        <h1>Welcome <%= user.getStudentName() %></h1>
+        <h1>Welcome <%= user.getUserID()%></h1>
     </body>
 </html>

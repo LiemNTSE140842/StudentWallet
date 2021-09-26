@@ -5,6 +5,8 @@
  */
 package fwallet.data.user;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author pphuh
@@ -16,10 +18,19 @@ public class UserDTO {
     private String email;
     private String roleID;
     private String statusID;
+    private Timestamp createDate;
 
     public UserDTO() {
     }
 
+    public UserDTO(String userID, String studentName, String roleID, String statusID) {
+        this.userID = userID;
+        this.studentName = studentName;
+        this.roleID = roleID;
+        this.statusID = statusID;
+    }
+    
+    
     public UserDTO(String userID, String universityID, String studentName, String roleID, String statusID) {
         this.userID = userID;
         this.universityID = universityID;
@@ -75,6 +86,14 @@ public class UserDTO {
 
     public void setStatusID(String statusID) {
         this.statusID = statusID;
+    }
+
+    public Timestamp getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Timestamp createDate) {
+        this.createDate = createDate;
     }
 
     @Override
