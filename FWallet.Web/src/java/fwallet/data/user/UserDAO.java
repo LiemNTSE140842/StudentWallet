@@ -99,11 +99,11 @@ public class UserDAO {
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 stm=conn.prepareStatement(sql);
                 stm.setString(1, user.getId());
-                stm.setString(2, "ni2");
+                stm.setString(2, "unregistered");
                 stm.setString(3, "unregistered");
                 stm.setInt(4, 26);
                 stm.setBoolean(5, check);
-                stm.setString(6, "district 9");
+                stm.setString(6, "unregistered");
                 stm.setString(7, user.getEmail());
                 stm.setTimestamp(8, timestamp);
                 stm.setString(9, "US");
