@@ -50,6 +50,7 @@ public class LoginGoogleHandler extends HttpServlet {
                 UserDAO dao = new UserDAO();
                 UserDTO userDAO = dao.checkLoginGmail(user.getId());
                 if(userDAO!=null){
+                    userDAO.setImage(user.getPicture());
                     session.setAttribute("LOGIN_USER", userDAO);
                     url=SUCCESS;
                 }else{

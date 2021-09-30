@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String WELCOME_PAGE = "welcome.jsp";
+    private static final String ADMIN_PAGE="admin.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -41,7 +41,7 @@ public class LoginController extends HttpServlet {
                 String roleID = user.getRoleID();
                 String statusID = user.getStatusID();
                 session.setAttribute("LOGIN_USER", user);
-                url = WELCOME_PAGE;
+                url = ADMIN_PAGE;
             }
         } catch (Exception e) {
             log("Error at login: " + e.toString());

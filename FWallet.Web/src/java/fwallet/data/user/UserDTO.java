@@ -16,9 +16,12 @@ public class UserDTO {
     private String universityID;
     private String studentName;
     private String email;
+    private String image;
     private String roleID;
     private String statusID;
     private Timestamp createDate;
+    private int age;
+    private String gender;
 
     public UserDTO() {
     }
@@ -30,13 +33,45 @@ public class UserDTO {
         this.statusID = statusID;
     }
     
-    
     public UserDTO(String userID, String universityID, String studentName, String roleID, String statusID) {
         this.userID = userID;
         this.universityID = universityID;
         this.studentName = studentName;
         this.roleID = roleID;
         this.statusID = statusID;
+    }
+
+    public UserDTO(String universityID, String studentName, String email, String statusID, int age, String gender) {
+        this.universityID = universityID;
+        this.studentName = studentName;
+        this.email = email;
+        this.statusID = statusID;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
 

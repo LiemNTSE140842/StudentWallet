@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -124,5 +126,39 @@ public class UserDAO {
             }
         }
         return check;
+    }
+    
+    public List<UserDTO> getAllUser() throws SQLException{
+        List<UserDTO> list = new ArrayList<>();
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT universityID, studentName, age, gender, email, status"
+                        +" FROM tblStudent";
+                stm = conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String uni = rs.getString("universityID");
+                    String name = rs.getString("studentName");
+                    int age = rs.getInt("age");
+                    String gender = rs.getString("gender");
+                    String email = rs.getString("email");
+                    String statusID = rs.getString("status");
+                    list.add(new UserDTO(uni, name, email, statusID, age, gender));
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
     }
 }

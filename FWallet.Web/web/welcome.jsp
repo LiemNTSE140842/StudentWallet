@@ -4,6 +4,8 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.user.UserDAO"%>
+<%@page import="java.util.List"%>
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
  <!DOCTYPE html>
@@ -54,12 +56,12 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="assets/img/james.jpg" />
+                            <img src="<%= user.getImage() %>" />
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                                 <span>
-                                    ${sessionScope.LOGIN_USER.userID}
+                                    <%= user.getUserID()%>
                                     <b class="caret"></b>
                                 </span>
                             </a>
@@ -207,44 +209,39 @@
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>UserID</th>
-                                                <th>UniversityID</th>
-                                                <th>StudentName</th>
+                                                <th>University</th>
+                                                <th>Name</th>
                                                 <th>Age</th>
                                                 <th>Gender</th>
-                                                <th>Address</th>
                                                 <th>Email</th>
-                                                <th>DateCreate</th>
                                                 <th>Status</th>
-
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>UserID</th>
-                                                <th>UniversityID</th>
-                                                <th>StudentName</th>
+                                                <th>University</th>
+                                                <th>Student</th>
                                                 <th>Age</th>
                                                 <th>Gender</th>
-                                                <th>Address</th>
                                                 <th>Email</th>
-                                                <th>DateCreate</th>
                                                 <th>Status</th>
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </tfoot>
+                                        <%
+                                            UserDAO dao = new UserDAO();
+                                            List<UserDTO> list = dao.getAllUser();
+                                            for(UserDTO listUser:list){
+                                        %>
                                         <tbody>
                                             <tr>
-                                                <td>Dai Rios</td>
-                                                <td>Personnel Lead</td>
-                                                <td>Edinburgh</td>
-                                                <td>35</td>
-                                                <td>35</td>
-                                                <td>35</td>
-                                                <td>35</td>
-                                                <td>35</td>
-                                                <td>35</td>
+                                                <td><%= listUser.getUniversityID() %></td>
+                                                <td><%= listUser.getStudentName() %></td>
+                                                <td><%= listUser.getAge() %></td>
+                                                <td><%= listUser.getGender() %></td>
+                                                <td><%= listUser.getEmail() %> </td>
+                                                <td><%= listUser.getStatusID() %></td>
                                                 <td class="text-right">
                                                     <a href="#" class="btn btn-round btn-info btn-icon btn-sm like"><i class="fas fa-heart"></i></a>
                                                     <a href="#" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
@@ -252,6 +249,9 @@
                                                 </td>
                                             </tr>
                                         </tbody>
+                                        <%
+                                            }
+                                        %>
                                     </table>
                                 </div><!-- end content-->
                             </div><!--  end card  -->
