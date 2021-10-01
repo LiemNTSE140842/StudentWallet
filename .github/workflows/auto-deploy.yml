@@ -57,6 +57,6 @@ jobs:
                                   port: ${{ secrets.PORT }}
                                   script: |
                                           cd app
-                                          cd fptblog
-                                          docker pull heaty566/mono-fpt-blog:latest 
+                                          cd phuhuy
+                                          docker pull heaty566/phu-huy-server:latest 
                                           docker-compose up -d
