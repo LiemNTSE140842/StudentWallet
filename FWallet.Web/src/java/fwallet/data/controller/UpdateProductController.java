@@ -5,11 +5,10 @@
  */
 package fwallet.data.controller;
 
-import fwallet.data.user.UserDAO;
-import fwallet.data.user.UserDTO;
+import fwallet.data.product.ProductDAO;
+import fwallet.data.product.ProductDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,36 +19,26 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author pphuh
  */
-@WebServlet(name = "CreateController", urlPatterns = {"/CreateController"})
-public class CreateController extends HttpServlet {
-    private final static String ERROR = "createUser.jsp";
+@WebServlet(name = "UpdateProductController", urlPatterns = {"/UpdateProductController"})
+public class UpdateProductController extends HttpServlet {
+
+    private static final String url = "/admin/productData.jsp";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR; 
         try {
-            String userID = request.getParameter("userID");
-            String universityID = request.getParameter("universityID");
-            String studentName = request.getParameter("studentName");
-            Integer age = Integer.parseInt(request.getParameter("age"));
-            String gender = request.getParameter("gender");
-            String address = request.getParameter("address");
-            String email = request.getParameter("email");
-            Timestamp createDate = new Timestamp(System.currentTimeMillis());
-
-            boolean genderBol = false;
-            if (gender.equals("male")) {
-                genderBol = true;
-            }
-            UserDAO dao = new UserDAO();
-            UserDTO user = new UserDTO(userID, universityID, studentName, age, genderBol, address, email, createDate, "US", "1");
-            boolean checkInsert = dao.insertNewUser(user);
-            if (checkInsert) {
-                url = "admin.jsp";
-            }
-            
+            String productName = request.getParameter("productName");
+            String description = request.getParameter("description");
+            double price = Double.parseDouble(request.getParameter("price"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            boolean statusID = Boolean.parseBoolean(request.getParameter("statusID"));
+            String productID = request.getParameter("productID");
+            ProductDTO product = new ProductDTO(productName, description, price, quantity, statusID);
+            ProductDAO dao = new ProductDAO();
+            boolean checkUpdate = dao.updateProduct(product, productID);
         } catch (Exception e) {
-            log("Error at CreateController: " + e.toString());
+            log("Error at UpdateProductController: " + e.toString());
         }finally{
             request.getRequestDispatcher(url).forward(request, response);
         }

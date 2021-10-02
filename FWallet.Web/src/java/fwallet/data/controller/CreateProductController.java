@@ -5,8 +5,8 @@
  */
 package fwallet.data.controller;
 
-import fwallet.data.user.UserDAO;
-import fwallet.data.user.UserDTO;
+import fwallet.data.product.ProductDAO;
+import fwallet.data.product.ProductDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
@@ -20,36 +20,32 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author pphuh
  */
-@WebServlet(name = "CreateController", urlPatterns = {"/CreateController"})
-public class CreateController extends HttpServlet {
-    private final static String ERROR = "createUser.jsp";
+@WebServlet(name = "CreateProductController", urlPatterns = {"/CreateProductController"})
+public class CreateProductController extends HttpServlet {
+
+    private final static String ERROR = "/admin/product/createProduct.jsp";
+    private final static String SUCCESS = "/admin/productData.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR; 
+        String url = ERROR;
         try {
-            String userID = request.getParameter("userID");
-            String universityID = request.getParameter("universityID");
-            String studentName = request.getParameter("studentName");
-            Integer age = Integer.parseInt(request.getParameter("age"));
-            String gender = request.getParameter("gender");
-            String address = request.getParameter("address");
-            String email = request.getParameter("email");
+            String productID = request.getParameter("productID");
+            String categoryID = request.getParameter("categoryID");
+            String productName = request.getParameter("productName");
+            String description = request.getParameter("description");
+            double price = Double.parseDouble(request.getParameter("price"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            String image = request.getParameter("image");
             Timestamp createDate = new Timestamp(System.currentTimeMillis());
-
-            boolean genderBol = false;
-            if (gender.equals("male")) {
-                genderBol = true;
+            ProductDTO product = new ProductDTO(productID, categoryID, productName, description, price, quantity, false, createDate, image);
+            ProductDAO dao = new ProductDAO();
+            boolean checkInsert = dao.insertNewProduct(product);
+            if(checkInsert){
+                url=SUCCESS;
             }
-            UserDAO dao = new UserDAO();
-            UserDTO user = new UserDTO(userID, universityID, studentName, age, genderBol, address, email, createDate, "US", "1");
-            boolean checkInsert = dao.insertNewUser(user);
-            if (checkInsert) {
-                url = "admin.jsp";
-            }
-            
         } catch (Exception e) {
-            log("Error at CreateController: " + e.toString());
+            log("Error at CreateProductController: " + e.toString());
         }finally{
             request.getRequestDispatcher(url).forward(request, response);
         }

@@ -4,9 +4,11 @@
     Author     : pphuh
 --%>
 
-<%@page import="fwallet.data.user.UserDAO"%>
-<%@page import="java.util.List"%>
+
 <%@page import="fwallet.data.user.UserDTO"%>
+<%@page import="fwallet.data.product.ProductDTO"%>
+<%@page import="fwallet.data.product.ProductDAO"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
  <!DOCTYPE html>
 <html lang="en">
@@ -148,10 +150,10 @@
                             <span class="navbar-toggler-bar navbar-kebab"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                            <form>
+                            <form action="<%= request.getContextPath()%>/SearchProductController" id="search">
                                 <div class="input-group no-border">
-                                    <input type="text" value="" class="form-control" placeholder="Search...">
-                                    <div class="input-group-append">
+                                    <input type="text" name="search" value="" class="form-control" placeholder="Search...">
+                                    <div class="input-group-append" onclick="returnForm()">
                                         <div class="input-group-text">
                                             <i class="now-ui-icons ui-1_zoom-bold"></i>
                                         </div>
@@ -200,7 +202,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">DataTables.net</h4>
+                                    <h4 class="card-title">PRODUCT DATA</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
@@ -209,46 +211,54 @@
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>University</th>
+                                                <th>Image</th>
                                                 <th>Name</th>
-                                                <th>Age</th>
-                                                <th>Gender</th>
-                                                <th>Email</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
                                                 <th>Status</th>
+                                                
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>University</th>
-                                                <th>Student</th>
-                                                <th>Age</th>
-                                                <th>Gender</th>
-                                                <th>Email</th>
+                                                <th>Image</th>
+                                                <th>Name</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
                                                 <th>Status</th>
+                                                
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </tfoot>
                                         <%
-                                            UserDAO dao = new UserDAO();
-                                            List<UserDTO> list = dao.getAllUser();
-                                            for(UserDTO listUser:list){
+                                            List<ProductDTO> list = (List<ProductDTO>) request.getAttribute("LIST_PRODUCT");
+                                            if (list != null) {
+                                                if (!list.isEmpty()) {
+                                                    for(ProductDTO listProduct:list){
+                                            
                                         %>
                                         <tbody>
                                             <tr>
-                                                <td><%= listUser.getUniversityID() %></td>
-                                                <td><%= listUser.getStudentName() %></td>
-                                                <td><%= listUser.getAge() %></td>
-                                                <td><%= listUser.getGender() %></td>
-                                                <td><%= listUser.getEmail() %> </td>
-                                                <td><%= listUser.getStatusID() %></td>
+                                                <td><%= listProduct.getImage()%></td>
+                                                <td><%= listProduct.getProductName()%></td>
+                                                <td><%= listProduct.getPrice()%></td>
+                                                <td><%= listProduct.getQuantity() %></td>
+                                                <td><%= listProduct.isStatusID() %> </td>
+                                                
                                                 <td class="text-right">
-                                                    <a href="#" class="btn btn-round btn-info btn-icon btn-sm like"><i class="fas fa-heart"></i></a>
-                                                    <a href="#" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
-                                                    <a href="#" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
+                                                    <a href="<%= request.getContextPath()%>/admin/product/createProduct.jsp" class="btn btn-round btn-info btn-icon btn-sm like"><i class="fas fa-heart"></i></a>
+                                                    <a href="<%= request.getContextPath()%>/admin/product/updateProduct.jsp?productID=<%= listProduct.getProductID() %>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
+                                                    <a href="RemoveProductController?productID=<%= listProduct.getProductID() %>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>
+                                        <%
+                                                    }
+                                        %>
+                                        <%
+                                                }
+                                        %>
                                         <%
                                             }
                                         %>
@@ -355,22 +365,10 @@
                                         var data = table.row($tr).data();
                                         alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
                                     });
-
-                                    // Delete a record
-                                    table.on('click', '.remove', function (e) {
-                                        $tr = $(this).closest('tr');
-                                        if ($($tr).hasClass('child')) {
-                                            $tr = $tr.prev('.parent');
-                                        }
-                                        table.row($tr).remove().draw();
-                                        e.preventDefault();
-                                    });
-
-                                    //Like record
-                                    table.on('click', '.like', function () {
-                                        alert('You clicked on Like button');
-                                    });
                                 });
+                function returnForm() {
+                    document.getElementById('search').submit();             // Function returns the product of a and b
+                }
         </script>
     </body>
 
