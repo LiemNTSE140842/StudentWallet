@@ -242,7 +242,7 @@
                                                 <td class="text-right">
                                                     <a href="<%= request.getContextPath()%>/admin/createUser.jsp" class="btn btn-round btn-info btn-icon btn-sm like"><i class="fas fa-heart"></i></a>
                                                     <a href="<%= request.getContextPath()%>/admin/updateUser.jsp?email=<%= listUser.getEmail() %>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
-                                                    <a href="#" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
+                                                    <a href="RemoveController?email=<%= listUser.getEmail() %>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
                                                     
                                                 </td>
                                             </tr>
@@ -358,16 +358,6 @@
 
                                         var data = table.row($tr).data();
                                         alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-                                    });
-
-                                    // Delete a record
-                                    table.on('click', '.remove', function (e) {
-                                        $tr = $(this).closest('tr');
-                                        if ($($tr).hasClass('child')) {
-                                            $tr = $tr.prev('.parent');
-                                        }
-                                        table.row($tr).remove().draw();
-                                        e.preventDefault();
                                     });
                                 });
                 function returnForm() {

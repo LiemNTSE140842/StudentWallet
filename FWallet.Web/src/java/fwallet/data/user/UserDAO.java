@@ -305,4 +305,34 @@ public class UserDAO {
         }
         return check;
     }
+    
+    public boolean removeUser(String email) throws SQLException{
+        boolean check = false;
+        boolean status = false;
+        try {
+            conn= DBUtil.getConnection();
+            if(conn!=null){
+                String sql ="UPDATE tblStudent"
+                        + " SET status=?"
+                        + " WHERE email=?";
+                stm=conn.prepareStatement(sql);
+                stm.setBoolean(1, status);
+                stm.setString(2, email);
+                check=stm.executeUpdate()>0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return check;
+    }
 }
