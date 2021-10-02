@@ -31,7 +31,7 @@ import org.apache.http.client.fluent.Form;
 public class LoginGoogleHandler extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "welcome.jsp";
+    private static final String SUCCESS = "admin.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

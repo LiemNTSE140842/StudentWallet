@@ -101,7 +101,7 @@ public class UserDAO {
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 stm=conn.prepareStatement(sql);
                 stm.setString(1, user.getId());
-                stm.setString(2, "unregistered");
+                stm.setString(2, "ni1");
                 stm.setString(3, "unregistered");
                 stm.setInt(4, 26);
                 stm.setBoolean(5, check);
@@ -141,7 +141,7 @@ public class UserDAO {
                     String uni = rs.getString("universityID");
                     String name = rs.getString("studentName");
                     int age = rs.getInt("age");
-                    String gender = rs.getString("gender");
+                    boolean gender = rs.getBoolean("gender");
                     String email = rs.getString("email");
                     String statusID = rs.getString("status");
                     list.add(new UserDTO(uni, name, email, statusID, age, gender));
@@ -160,5 +160,149 @@ public class UserDAO {
             }
         }
         return list;
+    }
+    
+    public List<UserDTO> getUserByEmail(String search) throws SQLException{
+        List<UserDTO> list = new ArrayList<>();
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT universityID, studentName, age, gender, email, status"
+                        + " FROM tblStudent"
+                        + " WHERE email like ?";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, "%" + search + "%");
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String uni = rs.getString("universityID");
+                    String name = rs.getString("studentName");
+                    int age = rs.getInt("age");
+                    boolean gender = rs.getBoolean("gender");
+                    String email = rs.getString("email");
+                    String statusID = rs.getString("status");
+                    list.add(new UserDTO(uni, name, email, statusID, age, gender));
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
+    
+    public UserDTO getAUserByEmail(String search) throws SQLException{
+        UserDTO user = null;
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT universityID, studentName, age, gender, address, email, status"
+                        + " FROM tblStudent"
+                        + " WHERE email like ?";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, "%" + search + "%");
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String uni = rs.getString("universityID");
+                    String name = rs.getString("studentName");
+                    int age = rs.getInt("age");
+                    boolean gender = rs.getBoolean("gender");
+                    String address = rs.getString("address");
+                    String email = rs.getString("email");
+                    String statusID = rs.getString("status");
+                    user = new UserDTO(uni, name, age, gender, address, email, statusID);
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return user;
+    }
+    
+    public boolean insertNewUser(UserDTO user) throws SQLException, ClassNotFoundException{
+        boolean check=false;
+        boolean status = true;
+        try {
+            conn=DBUtil.getConnection();
+            if(conn!=null){
+                String sql ="INSERT INTO tblStudent(userID, universityID, studentName, age, gender, address, email, dateCreate, roleID, status)"
+                        + " VALUES(?,?,?,?,?,?,?,?,?,?)";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, user.getUserID());
+                stm.setString(2, user.getUniversityID());
+                stm.setString(3, user.getStudentName());
+                stm.setInt(4, user.getAge());
+                stm.setBoolean(5, user.isGender());
+                stm.setString(6, user.getAddress());
+                stm.setString(7, user.getEmail());
+                stm.setTimestamp(8, user.getCreateDate());
+                stm.setString(9, "US");
+                stm.setBoolean(10, status);
+                check = stm.executeUpdate()>0;
+            }
+        }finally{
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return check;
+    }
+    
+    public boolean updateAUser(UserDTO user, String oldEmail) throws SQLException{
+        boolean check = false;
+        try {
+            conn= DBUtil.getConnection();
+            if(conn!=null){
+                boolean status = false;
+                if(user.getStatusID().equals("1")){
+                    status = true;
+                }
+                String sql ="UPDATE tblStudent"
+                        + " SET universityID=?, studentName=?, age=?, gender=?, address=?, email=?, status=?"
+                        + " WHERE email=?";
+                stm=conn.prepareStatement(sql);
+                stm.setString(1, user.getUniversityID());
+                stm.setString(2, user.getStudentName());
+                stm.setInt(3, user.getAge());
+                stm.setBoolean(4, user.isGender());
+                stm.setString(5, user.getAddress());
+                stm.setString(6, user.getEmail());
+                stm.setBoolean(7, status);
+                stm.setString(8, oldEmail);
+                check=stm.executeUpdate()>0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return check;
     }
 }

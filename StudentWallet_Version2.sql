@@ -1,3 +1,7 @@
+USE [master]
+GO
+CREATE DATABASE [StudentWallet]
+GO
 USE [StudentWallet]
 GO
 /****** Object:  Table [dbo].[tblCategory]    Script Date: 23/09/2021 2:50:59 PM ******/

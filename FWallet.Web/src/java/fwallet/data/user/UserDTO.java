@@ -15,14 +15,15 @@ public class UserDTO {
     private String userID;
     private String universityID;
     private String studentName;
+    private int age;
+    private boolean gender;
+    private String address;
     private String email;
-    private String image;
+    private Timestamp createDate;
     private String roleID;
     private String statusID;
-    private Timestamp createDate;
-    private int age;
-    private String gender;
-
+    private String image;
+    
     public UserDTO() {
     }
 
@@ -41,7 +42,7 @@ public class UserDTO {
         this.statusID = statusID;
     }
 
-    public UserDTO(String universityID, String studentName, String email, String statusID, int age, String gender) {
+    public UserDTO(String universityID, String studentName, String email, String statusID, int age, boolean gender) {
         this.universityID = universityID;
         this.studentName = studentName;
         this.email = email;
@@ -50,13 +51,37 @@ public class UserDTO {
         this.gender = gender;
     }
 
-    public String getGender() {
-        return gender;
+    public UserDTO(String universityID, String studentName, int age, boolean gender, String address, String email, String statusID) {
+        this.universityID = universityID;
+        this.studentName = studentName;
+        this.age = age;
+        this.gender = gender;
+        this.address = address;
+        this.email = email;
+        this.statusID = statusID;
+    }
+    
+    public UserDTO(String userID, String universityID, String studentName, int age, boolean gender, String address, String email, Timestamp createDate, String roleID, String statusID) {
+        this.userID = userID;
+        this.universityID = universityID;
+        this.studentName = studentName;
+        this.age = age;
+        this.gender = gender;
+        this.address = address;
+        this.email = email;
+        this.createDate = createDate;
+        this.roleID = roleID;
+        this.statusID = statusID;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public String getAddress() {
+        return address;
     }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
 
     public int getAge() {
         return age;
@@ -66,6 +91,15 @@ public class UserDTO {
         this.age = age;
     }
 
+    public boolean isGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
+
+    
     public String getImage() {
         return image;
     }
