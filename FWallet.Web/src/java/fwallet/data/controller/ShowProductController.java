@@ -5,9 +5,11 @@
  */
 package fwallet.data.controller;
 
-import fwallet.data.user.UserDAO;
-import fwallet.data.user.UserDTO;
+import fwallet.data.product.ProductDAO;
+import fwallet.data.product.ProductDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,42 +21,29 @@ import javax.servlet.http.HttpSession;
  *
  * @author pphuh
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "ShowProductController", urlPatterns = {"/ShowProductController"})
+public class ShowProductController extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
-    private static final String ADMIN_PAGE="admin.jsp";
-    private static final String USER_PAGE = "user.jsp";
-
+    private final static String ERROR = "error.jsp";
+    private final static String SUCCESS = "/user/showProduct.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            String userID = request.getParameter("userID");
-            String uni = request.getParameter("password");
-            UserDAO dao = new UserDAO();
-            UserDTO user = dao.checkLogin(userID, uni);
-            HttpSession session = request.getSession();
-            if (user == null) {
-                session.setAttribute("ERROR_MESSAGE", "Incorrect User ID or Password");
-            } else {
-                String roleID = user.getRoleID();
-                String statusID = user.getStatusID();
-                session.setAttribute("LOGIN_USER", user);
-                if("AD".equals(roleID)){
-                    url = ADMIN_PAGE;
-                }else if("US".equals(roleID)){
-                    url = USER_PAGE;
-                }else{
-                    session.setAttribute("ERROR_MESSAGE", "Your account is inactive");
-                }
-                
+            ProductDAO dao = new ProductDAO();
+            List<ProductDTO> list = dao.getAllProduct();
+            if(!list.isEmpty()){
+                request.setAttribute("LIST_PRODUCT", list);
+                url=SUCCESS;
+            }else{
+                HttpSession session = request.getSession();
+                session.setAttribute("ERROR_MESSAGE", "Store is being maintained");
             }
         } catch (Exception e) {
-            log("Error at login: " + e.toString());
-        } finally {
-            response.sendRedirect(url);
+            log("Error at ShowProductController: " + e.toString());
+        }finally{
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
