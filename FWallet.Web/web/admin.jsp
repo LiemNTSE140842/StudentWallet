@@ -7,7 +7,7 @@
 <%@page import="java.util.List"%>
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -30,7 +30,7 @@
     </head>
 
     <body class=" sidebar-mini ">
-        <% 
+        <%
             UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
         %>
         <div class="wrapper ">
@@ -55,7 +55,7 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="<%= user.getImage() %>" />
+                            <img src="<%= user.getImage()%>" />
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -123,7 +123,7 @@
                                             <span class="sidebar-normal"> Student </span>
                                         </a>
                                     </li>
-                              </ul>
+                                </ul>
                     </ul>
                 </div>                         
             </div>
@@ -199,12 +199,12 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">DataTables.net</h4>
+                                    <h4 class="card-title">User List</h4>
                                 </div>
                                 <div class="card-body">
-                                    <div class="toolbar">
-                                        <!--        Here you can write extra buttons/actions for the toolbar              -->
-                                    </div>
+                                    <div id="newbutton">
+                                     <button class="btn btn-primary">Primary</button
+                                     </div>    
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
@@ -230,28 +230,28 @@
                                             List<UserDTO> list = (List<UserDTO>) request.getAttribute("LIST_USER");
                                             if (list != null) {
                                                 if (!list.isEmpty()) {
-                                                    for(UserDTO listUser:list){
+                                                    for (UserDTO listUser : list) {
                                         %>
                                         <tbody>
                                             <tr>
-                                                <td><%= listUser.getUniversityID() %></td>
-                                                <td><%= listUser.getStudentName() %></td>
-                                                <td><%= listUser.getAge() %></td>
-                                                <td><%= listUser.getEmail() %> </td>
-                                                <td><%= listUser.getStatusID() %></td>
+                                                <td><%= listUser.getUniversityID()%></td>
+                                                <td><%= listUser.getStudentName()%></td>
+                                                <td><%= listUser.getAge()%></td>
+                                                <td><%= listUser.getEmail()%> </td>
+                                                <td><%= listUser.getStatusID()%></td>
                                                 <td class="text-right">
                                                     <a href="<%= request.getContextPath()%>/admin/createUser.jsp" class="btn btn-round btn-info btn-icon btn-sm like"><i class="fas fa-heart"></i></a>
-                                                    <a href="<%= request.getContextPath()%>/admin/updateUser.jsp?email=<%= listUser.getEmail() %>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
-                                                    <a href="RemoveController?email=<%= listUser.getEmail() %>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
-                                                    
+                                                    <a href="<%= request.getContextPath()%>/admin/updateUser.jsp?email=<%= listUser.getEmail()%>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
+                                                    <a href="RemoveController?email=<%= listUser.getEmail()%>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
+
                                                 </td>
                                             </tr>
                                         </tbody>
                                         <%
-                                                    }
+                                            }
                                         %>
                                         <%
-                                                }
+                                            }
                                         %>
                                         <%
                                             }
@@ -360,9 +360,9 @@
                                         alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
                                     });
                                 });
-                function returnForm() {
-                    document.getElementById('search').submit();             // Function returns the product of a and b
-                }
+                                function returnForm() {
+                                    document.getElementById('search').submit();             // Function returns the product of a and b
+                                }
         </script>
     </body>
 

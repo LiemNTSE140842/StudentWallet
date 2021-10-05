@@ -217,7 +217,7 @@
                                                 <th>Status</th>
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
-                                        </thead>
+                                        </thead> 
                                         <tfoot>
                                             <tr>
                                                 <th>University</th>
@@ -239,7 +239,7 @@
                                                 <td><%= listUser.getUniversityID() %></td>
                                                 <td><%= listUser.getStudentName() %></td>
                                                 <td><%= listUser.getAge() %></td>
-                                                <td><%= listUser.getGender() %></td>
+                                                <td><%= listUser.isGender()%></td>
                                                 <td><%= listUser.getEmail() %> </td>
                                                 <td><%= listUser.getStatusID() %></td>
                                                 <td class="text-right">

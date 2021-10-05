@@ -306,6 +306,9 @@ fieldset[disabled] .btn-primary.active {
   background-color: #18ce0f;
   color: #FFFFFF;
 }
+ .newbutton{
+    margin-right: 50%;
+}
 
 .btn-success:hover,
 .btn-success:focus,
@@ -657,7 +660,7 @@ fieldset[disabled] .btn-neutral.active {
   color: #ffbe55 !important;
 }
 
-.btn-neutral.btn-success {
+.btn-neutral.btn-labe {
   color: #18ce0f;
 }
 

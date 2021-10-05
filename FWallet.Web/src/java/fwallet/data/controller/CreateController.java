@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CreateController", urlPatterns = {"/CreateController"})
 public class CreateController extends HttpServlet {
-    private final static String ERROR = "createUser.jsp";
+    private final static String ERROR = "admin/createUser.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -42,7 +42,7 @@ public class CreateController extends HttpServlet {
                 genderBol = true;
             }
             UserDAO dao = new UserDAO();
-            UserDTO user = new UserDTO(userID, universityID, studentName, age, genderBol, address, email, createDate, "US", "1");
+            UserDTO user = new UserDTO(userID, universityID, studentName, age, genderBol, address, email, createDate, "US", "True");
             boolean checkInsert = dao.insertNewUser(user);
             if (checkInsert) {
                 url = "admin.jsp";
