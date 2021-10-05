@@ -4,6 +4,7 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,15 +48,18 @@
           </button>
         </div>
       </div>
+    <%
+        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+    %>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <div class="user">
           <div class="photo">
-            <img src="../../assets/img/james.jpg" />
+            <img src="<%= loginUser.getImage()%>" />
           </div>
           <div class="info">
             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
               <span>
-                James Amos
+                <%= loginUser.getUserID()%>
                 <b class="caret"></b>
               </span>
             </a>
@@ -130,7 +134,7 @@
                     <label class="col-sm-2 col-form-label">Age</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="number" name="age" required="true" />
+                        <input class="form-control" type="number" min="0" name="age" required="true" />
                       </div>
                     </div>
                   </div>
@@ -163,8 +167,9 @@
                   <button type="submit"class="btn btn-primary">Create user</button>
                 </div>
               </div>
-                </div>
-            </from>
+              </from>
+            </div>
+            
           </div>
 
       <!-- footer -->

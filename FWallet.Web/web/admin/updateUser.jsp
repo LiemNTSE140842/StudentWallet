@@ -31,6 +31,7 @@
 
 <body class=" sidebar-mini ">
      <%
+            UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
             String userEmail = request.getParameter("email");
             UserDAO dao = new UserDAO();
             UserDTO user = dao.getAUserByEmail(userEmail);
@@ -62,12 +63,12 @@
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <div class="user">
           <div class="photo">
-            <img src="../../assets/img/james.jpg" />
+            <img src="<%= loginUser.getImage()%>" />
           </div>
           <div class="info">
             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
               <span>
-              user
+              <%= loginUser.getUserID()%>
                 <b class="caret"></b>
               </span>
             </a>
@@ -111,7 +112,7 @@
             <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath()%>/UpdateController" method="POST">
               <div class="card ">
                 <div class="card-header ">
-                  <h4 class="card-title">Update user</h4>
+                  <h4 class="card-title">Update Student</h4>
                 </div>
                   <div class="row">
                     <label class="col-sm-2 col-form-label">UniversityID</label>
@@ -138,7 +139,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <label class="col-sm-2 col-form-label">gender</label>
+                    <label class="col-sm-2 col-form-label">Gender</label>
                     <div class="col-sm-7">
                       <div class="form-group">
                         <input class="form-control" type="text" name="gender" required="true" value="<%= user.isGender() %>"/>
@@ -165,14 +166,14 @@
                     <label class="col-sm-2 col-form-label">Status</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="email" name="status" required="true" value="<%= user.getStatusID() %>"/>
+                        <input class="form-control" type="number" min="0" name="status" required="true" value="<%= user.getStatusID() %>"/>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="card-footer text-center">
                    <input type="hidden" name="oldEmail" value="<%= userEmail %>"/>
-                  <button type="submit"class="btn btn-primary">Create user</button>
+                  <button type="submit"class="btn btn-primary">Update</button>
                 </div>
               </div>
                 </div>

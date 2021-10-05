@@ -60,7 +60,7 @@ public class LoginGoogleHandler extends HttpServlet {
                         session.setAttribute("ERROR_MESSAGE", "Account is inactive");
                         
                     }else{
-                        session.setAttribute("ERROR_MESSAGE", "Update Fail!");
+                        session.setAttribute("ERROR_MESSAGE", "Login Fail!");
                     }
                 }
             }else{
