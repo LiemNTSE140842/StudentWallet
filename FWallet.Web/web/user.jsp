@@ -13,6 +13,11 @@
     </head>
     <body>
         <h1>Hello user </h1>
-        <a href="ShowProductController">Show Product</a>
+        <div>
+            <a href="ShowProductController">Show Product</a>
+        </div>
+        <div>
+            <a href="ShowRewardController">Show Reward</a>
+        </div>
     </body>
 </html>

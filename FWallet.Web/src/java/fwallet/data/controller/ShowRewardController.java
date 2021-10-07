@@ -5,10 +5,9 @@
  */
 package fwallet.data.controller;
 
-import fwallet.data.product.ProductDAO;
-import fwallet.data.product.ProductDTO;
+import fwallet.data.reward.RewardDAO;
+import fwallet.data.reward.RewardDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,27 +20,27 @@ import javax.servlet.http.HttpSession;
  *
  * @author pphuh
  */
-@WebServlet(name = "ShowProductController", urlPatterns = {"/ShowProductController"})
-public class ShowProductController extends HttpServlet {
+@WebServlet(name = "ShowRewardController", urlPatterns = {"/ShowRewardController"})
+public class ShowRewardController extends HttpServlet {
 
     private final static String ERROR = "error.jsp";
-    private final static String SUCCESS = "/user/showProduct.jsp";
+    private final static String SUCCESS = "/user/displayReward.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            ProductDAO dao = new ProductDAO();
-            List<ProductDTO> list = dao.getAllProduct();
+            RewardDAO dao = new RewardDAO();
+            List<RewardDTO> list = dao.getAllReward();
             if(!list.isEmpty()){
-                request.setAttribute("LIST_PRODUCT", list);
+                request.setAttribute("LIST_REWARD", list);
                 url=SUCCESS;
             }else{
                 HttpSession session = request.getSession();
-                session.setAttribute("ERROR_MESSAGE", "Product is being maintained");
+                session.setAttribute("ERROR_MESSAGE", "Reward is being maintained");
             }
         } catch (Exception e) {
-            log("Error at ShowProductController: " + e.toString());
+            log("Error at ShowRewardController: " + e.toString());
         }finally{
             request.getRequestDispatcher(url).forward(request, response);
         }
