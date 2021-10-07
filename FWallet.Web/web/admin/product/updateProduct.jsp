@@ -106,7 +106,7 @@
             <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/UpdateProductController" method="POST">
               <div class="card ">
                 <div class="card-header ">
-                  <h4 class="card-title">Create Product</h4>
+                  <h4 class="card-title">Update Product</h4>
                 </div>
                 <div class="card-body ">
                   <div class="row">
@@ -149,14 +149,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <label class="col-sm-2 col-form-label">ProductID</label>
-                    <div class="col-sm-7">
-                      <div class="form-group">
-                        <input class="form-control" type="hidden" value="<%= productId %>" name="productID" value="<%= productId %>"/>
-                      </div>
-                    </div>
-                  </div>
+                   <input class="form-control" type="hidden" value="<%= productId %>" name="productID" value="<%= productId %>"/>
                 </div>
                 <div class="card-footer text-center">
                   <button type="submit"class="btn btn-primary">Create product</button>
