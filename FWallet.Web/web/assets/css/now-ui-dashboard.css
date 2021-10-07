@@ -18,6 +18,11 @@
  */
 /*     brand Colors              */
 /*      light colors         */
+
+  img{
+                width: 220px;
+                height: 220px;
+     }
 .btn,
 .navbar .navbar-nav>a.btn {
   border-width: 2px;
