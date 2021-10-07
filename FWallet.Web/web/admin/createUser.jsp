@@ -167,7 +167,7 @@
                   <button type="submit"class="btn btn-primary">Create user</button>
                 </div>
               </div>
-              </from>
+              </form>
             </div>
             
           </div>
