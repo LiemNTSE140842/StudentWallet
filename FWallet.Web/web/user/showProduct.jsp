@@ -52,11 +52,6 @@
       </div>
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
-       <%
-                List<ProductDTO> list = (List<ProductDTO>)request.getAttribute("LIST_PRODUCT");
-                if(list!=null){
-                for(ProductDTO p : list){
-            %> 
       <div class="wrapper wrapper-full-page ">
         <div class="full-page pricing-page section-image" data-image="<%= request.getContextPath()%>/assets/img/bg15.jpg">
           <div class="content">
@@ -67,31 +62,33 @@
                   <h5 class="description"> We have choice with you point you have</h5>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-lg-3 col-md-6">
+                  <div class="row">
+              <%
+                List<ProductDTO> list = (List<ProductDTO>)request.getAttribute("LIST_PRODUCT");
+                if(list!=null){
+                for(ProductDTO p : list){
+            %> 
+               <div class="col-lg-3 col-md-6">
                   <div class="card card-pricing card-plain">
-                    <h6 class="card-category"> Bravo Pack</h6>
+                    <h6 class="card-category"> Charlie Pack</h6>
                     <div class="card-body">
-                      <div class="card-icon icon-warning ">
-                        <i class="now-ui-icons media-1_button-power"><%= p.getImage() %></i>
+                      <div class="card-icon icon-success ">
+                     <img class="none" src="<%= p.getImage()%>"alt="Card image cap" height="100px" width="100px"/>
                       </div>
-                      <h3 class="card-title"> <%= p.getPrice() %></h3>
+                        <h3 class="card-title"> <%= p.getPrice()%></h3>
                       <ul>
-                        <li><%= p.getProductName() %></li>
-                        <li>For to do list</li>
+                        <li>Working materials in PSD</li>
+                        <li>1 year access to the library</li>
                       </ul>
                     </div>
-                    <form action="ChargePointController">
+                     <form action="ChargePointController">
                     <div class="card-footer">
-                    <a href="#pablo" class="btn btn-round btn-primary">Add to Cart</a>
+                      <a href="#pablo" class="btn btn-round btn-neutral btn-success">Add to Cart</a>
                     </div>
-                        </form>
+                   </form>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-                         <%
+                        <%
                     }
             %>
             <%
@@ -101,9 +98,12 @@
             <%
                 }
             %>
+                </div>
+              </div>
+            </div>
+          </div>
       <!-- End Navbar -->
-
-          </div> <!-- wizard container -->
+        </div> <!-- wizard container -->
         </div>
       </div>
       <footer class="footer">
