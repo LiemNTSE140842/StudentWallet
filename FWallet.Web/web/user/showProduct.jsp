@@ -75,7 +75,7 @@
                       <div class="card-icon icon-success ">
                      <img class="none" src="<%= p.getImage()%>"alt="Card image cap" height="100px" width="100px"/>
                       </div>
-                        <h3 class="card-title"> <%= p.getPrice()%></h3>
+                        <h3 class="card-title"> <%= p.getPrice()%> point</h3>
                       <ul>
                         <li>Working materials in PSD</li>
                         <li>1 year access to the library</li>

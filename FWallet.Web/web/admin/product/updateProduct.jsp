@@ -158,9 +158,9 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="card-footer text-center">
+                    <div class="card-footer text-center">
                   <button type="submit"class="btn btn-primary">Create product</button>
+                </div>
                 </div>
               </div>
             </form>

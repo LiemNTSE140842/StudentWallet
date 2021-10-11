@@ -26,7 +26,7 @@
   font-weight: 400;
   font-size: 0.8571em;
   border: none;
-  margin-left:1567px;
+  margin-left:1620px;
   border-radius: 0.1875rem;
   padding: 11px 2px;
   cursor: pointer;
@@ -239,9 +239,10 @@ fieldset[disabled] .navbar .navbar-nav>a.btn.active {
 .btn-primary {
   background-color: #f96332;
   color: #FFFFFF;
-  padding-right:3%;
-  padding-left: 3%;
+  padding-right:1%;
+  padding-left: 1%;
   border-radius: 20px;
+  margin-bottom: 10px;
 }
 
 .btn-primary:hover,
@@ -7340,7 +7341,7 @@ Created using IcoMoon - icomoon.io
 }
 
 .card {
-  border: 0;
+  border-color: orange;
   border-radius: 0.1875rem;
   display: inline-block;
   position: relative;
@@ -7445,7 +7446,7 @@ Created using IcoMoon - icomoon.io
 }
 
 .card .card-footer .btn {
-  margin-left: -30%;
+  margin-left: -500px;
 
 }
 
