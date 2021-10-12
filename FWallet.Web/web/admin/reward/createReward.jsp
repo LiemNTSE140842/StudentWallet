@@ -4,7 +4,7 @@
     Author     : pphuh
 --%>
 
-<%@page import="fwallet.data.channel.ChannelDTO"%>
+<%@page import="fwallet.data.user.UserDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -148,11 +148,11 @@
                             <span class="navbar-toggler-bar navbar-kebab"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                            <form action="<%= request.getContextPath()%>/SearchChannelDataController" id="search">
+                            <form>
                                 <div class="input-group no-border">
-                                    <input type="text" name="search" value="" class="form-control" placeholder="Search...">
+                                    <input type="text" value="" class="form-control" placeholder="Search...">
                                     <div class="input-group-append">
-                                        <div class="input-group-text" onclick="returnForm()">
+                                        <div class="input-group-text">
                                             <i class="now-ui-icons ui-1_zoom-bold"></i>
                                         </div>
                                     </div>
@@ -200,7 +200,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">DataTables.net</h4>
+                                    <h4 class="card-title">Reward Table</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
@@ -209,51 +209,49 @@
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Channel ID</th>
+                                                <th>University</th>
                                                 <th>Name</th>
-                                                <th>Office</th>
-                                                <th>Phone</th>
-                                                
+                                                <th>Age</th>
+                                                <th>Gender</th>
+                                                <th>Email</th>
+                                                <th>Status</th>
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
-                                        </thead>
+                                        </thead> 
                                         <tfoot>
                                             <tr>
-                                                <th>Channel ID</th>
-                                                <th>Name</th>
-                                                <th>Office</th>
-                                                <th>Phone</th>
+                                                <th>University</th>
+                                                <th>Student</th>
+                                                <th>Age</th>
+                                                <th>Gender</th>
+                                                <th>Email</th>
+                                                <th>Status</th>
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </tfoot>
-                                        <%
-                                            List<ChannelDTO> list = (List<ChannelDTO>) request.getAttribute("LIST_CHANNEL");
-                                            if (list != null) {
-                                                if (!list.isEmpty()) {
-                                                    for(ChannelDTO listChannel : list){
-                                        %>
                                         <tbody>
+                                              <%
+                                            UserDAO dao = new UserDAO();
+                                            List<UserDTO> list = dao.getAllUser();
+                                            for(UserDTO listUser:list){
+                                        %>
                                             <tr>
-                                                <td><%= listChannel.getChannelID()%></td>
-                                                <td><%= listChannel.getChannelName()%></td>
-                                                <td><%= listChannel.getChannelOffice()%></td>
-                                                <td><%= listChannel.getChannelPhone()%></td>
-                                                
+                                                <td><%= listUser.getUniversityID() %></td>
+                                                <td><%= listUser.getStudentName() %></td>
+                                                <td><%= listUser.getAge() %></td>
+                                                <td><%= listUser.isGender()%></td>
+                                                <td><%= listUser.getEmail() %> </td>
+                                                <td><%= listUser.getStatusID() %></td>
                                                 <td class="text-right">
-                                                    <a href="<%= request.getContextPath()%>/admin/channel/updateChannel.jsp?channelID=<%= listChannel.getChannelID()%>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
-                                                    <a href="RemoveChannelDataController?channelID=<%= listChannel.getChannelID() %>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
+                                  
+                                                    <a href="#" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
+                                                    <a href="#" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                        <%
-                                                    }
-                                        %>
-                                        <%
-                                                }
-                                        %>
-                                        <%
+                                             <%
                                             }
                                         %>
+                                        </tbody>
                                     </table>
                                 </div><!-- end content-->
                             </div><!--  end card  -->
@@ -358,11 +356,13 @@
                                         alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
                                     });
 
-                                    
+
+
+                                    //Like record
+                                    table.on('click', '.like', function () {
+                                        alert('You clicked on Like button');
+                                    });
                                 });
-                function returnForm() {
-                    document.getElementById('search').submit();             // Function returns the product of a and b
-                }
         </script>
     </body>
 

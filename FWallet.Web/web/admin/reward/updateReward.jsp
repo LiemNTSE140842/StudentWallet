@@ -4,9 +4,8 @@
     Author     : pphuh
 --%>
 
-
-<%@page import="fwallet.data.product.ProductDTO"%>
-<%@page import="fwallet.data.product.ProductDAO"%>
+<%@page import="fwallet.data.reward.RewardDTO"%>
+<%@page import="fwallet.data.reward.RewardDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +31,9 @@
 
 <body class=" sidebar-mini ">
       <% 
-            String productId = request.getParameter("productID");
-            ProductDAO dao = new ProductDAO();
-            ProductDTO product = dao.getAProductByID(productId);
+            String rewardId = request.getParameter("rewardID");
+            RewardDAO dao = new RewardDAO();
+            RewardDTO reward = dao.getRewardByID(rewardId);
         %>
     
   <div class="wrapper ">
@@ -104,54 +103,39 @@
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
       <!-- End Navbar -->
-            <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/UpdateProductController" method="POST">
+            <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/UpdateRewardDataController" method="POST">
               <div class="card ">
                 <div class="card-header ">
-                  <h4 class="card-title">Update Product</h4>
+                  <h4 class="card-title">Update Reward</h4>
                 </div>
                 <div class="card-body ">
                   <div class="row">
-                    <label class="col-sm-2 col-form-label">ProductName</label>
+                    <label class="col-sm-2 col-form-label">Reward Name</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="text" value="<%= product.getProductName()%>" name="productName" required="true" />
+                        <input class="form-control" type="text" value="<%= reward.getRewardName()%>" name="rewardName" required="true" />
                       </div>
                     </div>
                     </div>
+                  <div class="row">
+                    <label class="col-sm-2 col-form-label">Reward Point</label>
+                    <div class="col-sm-7">
+                      <div class="form-group">
+                        <input class="form-control" type="number" value="<%= reward.getRewardPoint()%>" min="0" name="rewardPoint" required="true" />
+                      </div>
+                    </div>
+                  </div>
                   <div class="row">
                     <label class="col-sm-2 col-form-label">Description</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="text" value="<%= product.getDescription()%>" name="description" required="true" />
+                        <input class="form-control" type="text" value="<%= reward.getDescription()%>" name="description" required="true" />
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <label class="col-sm-2 col-form-label">Price</label>
-                    <div class="col-sm-7">
-                      <div class="form-group">
-                        <input class="form-control" type="number" value="<%= product.getPrice()%>" min="0" name="price" required="true" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <label class="col-sm-2 col-form-label">Quantity</label>
-                    <div class="col-sm-7">
-                      <div class="form-group">
-                          <input class="form-control" type="number" value="<%= product.getQuantity()%>" min="0" name="quantity" required="true" />
-                      </div>
-                    </div>
-                  </div>
-                     <div class="row">
-                    <label class="col-sm-2 col-form-label">Status ID</label>
-                    <div class="col-sm-7">
-                      <div class="form-group">
-                        <input class="form-control" type="text" value="<%= product.isStatusID()%>" name="statusID" required="true" />
-                      </div>
-                    </div>
-                  </div>
+                      <input type="hidden" name="rewardID" value="<%= rewardId %>"/>
                     <div class="card-footer text-center">
-                  <button type="submit"class="btn btn-primary">Update Product</button>
+                  <button type="submit"class="btn btn-primary">Update Reward</button>
                 </div>
                 </div>
               </div>
@@ -256,3 +240,5 @@
 </body>
 
 </html>
+
+

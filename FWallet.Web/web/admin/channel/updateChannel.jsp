@@ -4,9 +4,8 @@
     Author     : pphuh
 --%>
 
-
-<%@page import="fwallet.data.product.ProductDTO"%>
-<%@page import="fwallet.data.product.ProductDAO"%>
+<%@page import="fwallet.data.channel.ChannelDTO"%>
+<%@page import="fwallet.data.channel.ChannelDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +31,9 @@
 
 <body class=" sidebar-mini ">
       <% 
-            String productId = request.getParameter("productID");
-            ProductDAO dao = new ProductDAO();
-            ProductDTO product = dao.getAProductByID(productId);
+            String channelId = request.getParameter("channelID");
+            ChannelDAO dao = new ChannelDAO();
+            ChannelDTO channel = dao.getRewardByID(channelId);
         %>
     
   <div class="wrapper ">
@@ -104,54 +103,39 @@
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
       <!-- End Navbar -->
-            <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/UpdateProductController" method="POST">
+            <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/UpdateChannelDataController" method="POST">
               <div class="card ">
                 <div class="card-header ">
-                  <h4 class="card-title">Update Product</h4>
+                  <h4 class="card-title">Update Channel</h4>
                 </div>
                 <div class="card-body ">
                   <div class="row">
-                    <label class="col-sm-2 col-form-label">ProductName</label>
+                    <label class="col-sm-2 col-form-label">Channel Name</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="text" value="<%= product.getProductName()%>" name="productName" required="true" />
+                        <input class="form-control" type="text" value="<%= channel.getChannelName()%>" name="channelName" required="true" />
                       </div>
                     </div>
                     </div>
                   <div class="row">
-                    <label class="col-sm-2 col-form-label">Description</label>
+                    <label class="col-sm-2 col-form-label">Office</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="text" value="<%= product.getDescription()%>" name="description" required="true" />
+                          <input class="form-control" type="text" value="<%= channel.getChannelOffice()%>" name="channelOffice" required="true" />
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <label class="col-sm-2 col-form-label">Price</label>
+                    <label class="col-sm-2 col-form-label">Phone</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="number" value="<%= product.getPrice()%>" min="0" name="price" required="true" />
+                        <input class="form-control" type="number" value="<%= channel.getChannelPhone()%>" min="0" name="channelPhone" required="true" />
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <label class="col-sm-2 col-form-label">Quantity</label>
-                    <div class="col-sm-7">
-                      <div class="form-group">
-                          <input class="form-control" type="number" value="<%= product.getQuantity()%>" min="0" name="quantity" required="true" />
-                      </div>
-                    </div>
-                  </div>
-                     <div class="row">
-                    <label class="col-sm-2 col-form-label">Status ID</label>
-                    <div class="col-sm-7">
-                      <div class="form-group">
-                        <input class="form-control" type="text" value="<%= product.isStatusID()%>" name="statusID" required="true" />
-                      </div>
-                    </div>
-                  </div>
+                      <input type="hidden" value="<%= channelId %>" name="channelID"/>
                     <div class="card-footer text-center">
-                  <button type="submit"class="btn btn-primary">Update Product</button>
+                  <button type="submit"class="btn btn-primary">Update Channel</button>
                 </div>
                 </div>
               </div>

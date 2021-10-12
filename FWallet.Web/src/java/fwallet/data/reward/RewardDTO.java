@@ -20,11 +20,38 @@ public class RewardDTO {
     private Timestamp rewardDate;
     private String description;
     private String rewardImage;
+    private String studentID;
+
+    public RewardDTO() {
+    }
 
     public RewardDTO(String rewardID, String rewardName, String description) {
         this.rewardID = rewardID;
         this.rewardName = rewardName;
         this.description = description;
+    }
+
+    public RewardDTO(String rewardID, String rewardName, int rewardPoint, String description) {
+        this.rewardID = rewardID;
+        this.rewardName = rewardName;
+        this.rewardPoint = rewardPoint;
+        this.description = description;
+    }
+
+    public RewardDTO(String rewardID, String rewardName, int rewardPoint, String description, String studentID) {
+        this.rewardID = rewardID;
+        this.rewardName = rewardName;
+        this.rewardPoint = rewardPoint;
+        this.description = description;
+        this.studentID = studentID;
+    }
+
+    public String getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(String studentID) {
+        this.studentID = studentID;
     }
 
     public String getRewardID() {

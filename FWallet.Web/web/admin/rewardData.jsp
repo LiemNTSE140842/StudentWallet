@@ -4,6 +4,7 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.reward.RewardDTO"%>
 <%@page import="fwallet.data.user.UserDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="fwallet.data.user.UserDTO"%>
@@ -148,10 +149,10 @@
                             <span class="navbar-toggler-bar navbar-kebab"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                            <form>
+                            <form action="<%= request.getContextPath()%>/SearchRewardDataController" id="search">
                                 <div class="input-group no-border">
-                                    <input type="text" value="" class="form-control" placeholder="Search...">
-                                    <div class="input-group-append">
+                                    <input type="text" name="search" value="" class="form-control" placeholder="Search...">
+                                    <div class="input-group-append" onclick="returnForm()">
                                         <div class="input-group-text">
                                             <i class="now-ui-icons ui-1_zoom-bold"></i>
                                         </div>
@@ -209,46 +210,48 @@
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>University</th>
+                                                <th>Reward ID</th>
                                                 <th>Name</th>
-                                                <th>Age</th>
-                                                <th>Gender</th>
-                                                <th>Email</th>
-                                                <th>Status</th>
+                                                <th>Point</th>
+                                                <th>Description</th>
+                                                
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </thead> 
                                         <tfoot>
                                             <tr>
-                                                <th>University</th>
-                                                <th>Student</th>
-                                                <th>Age</th>
-                                                <th>Gender</th>
-                                                <th>Email</th>
-                                                <th>Status</th>
+                                                <th>Reward ID</th>
+                                                <th>Name</th>
+                                                <th>Point</th>
+                                                <th>Description</th>
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                              <%
-                                            UserDAO dao = new UserDAO();
-                                            List<UserDTO> list = dao.getAllUser();
-                                            for(UserDTO listUser:list){
+                                        <%
+                                            List<RewardDTO> list = (List<RewardDTO>) request.getAttribute("LIST_REWARD");
+                                            if (list != null) {
+                                                if (!list.isEmpty()) {
+                                                    for(RewardDTO listReward : list){
+                                            
                                         %>
                                             <tr>
-                                                <td><%= listUser.getUniversityID() %></td>
-                                                <td><%= listUser.getStudentName() %></td>
-                                                <td><%= listUser.getAge() %></td>
-                                                <td><%= listUser.isGender()%></td>
-                                                <td><%= listUser.getEmail() %> </td>
-                                                <td><%= listUser.getStatusID() %></td>
+                                                <td><%= listReward.getRewardID()%></td>
+                                                <td><%= listReward.getRewardName()%></td>
+                                                <td><%= listReward.getRewardPoint()%></td>
+                                                <td><%= listReward.getDescription()%></td>
                                                 <td class="text-right">
-                                  
-                                                    <a href="#" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
-                                                    <a href="#" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
+                                                    <a href="<%= request.getContextPath()%>/admin/reward/updateReward.jsp?rewardID=<%= listReward.getRewardID() %>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
+                                                    <a href="RemoveRewardDataController?rewardID=<%= listReward.getRewardID() %>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
-                                             <%
+                                        <%
+                                                    }
+                                        %>
+                                        <%
+                                                }
+                                        %>
+                                        <%
                                             }
                                         %>
                                         </tbody>
@@ -345,32 +348,14 @@
 
                                     var table = $('#datatable').DataTable();
 
-                                    // Edit record
-                                    table.on('click', '.edit', function () {
-                                        $tr = $(this).closest('tr');
-                                        if ($($tr).hasClass('child')) {
-                                            $tr = $tr.prev('.parent');
-                                        }
+                                    
+                                    
 
-                                        var data = table.row($tr).data();
-                                        alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-                                    });
-
-                                    // Delete a record
-                                    table.on('click', '.remove', function (e) {
-                                        $tr = $(this).closest('tr');
-                                        if ($($tr).hasClass('child')) {
-                                            $tr = $tr.prev('.parent');
-                                        }
-                                        table.row($tr).remove().draw();
-                                        e.preventDefault();
-                                    });
-
-                                    //Like record
-                                    table.on('click', '.like', function () {
-                                        alert('You clicked on Like button');
-                                    });
+                                   
                                 });
+                function returnForm() {
+                    document.getElementById('search').submit();             // Function returns the product of a and b
+                }
         </script>
     </body>
 
