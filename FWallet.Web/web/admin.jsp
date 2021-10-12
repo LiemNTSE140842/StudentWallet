@@ -122,6 +122,12 @@
                                             <span class="sidebar-normal"> Student </span>
                                         </a>
                                     </li>
+                                     <li>
+                                     <a href="<%= request.getContextPath()%>/login.html">
+                                            <span class="sidebar-mini-icon">L</span>
+                                            <span class="sidebar-normal"> Logout </span>
+                                        </a>
+                                           </li>
                                 </ul>
                     </ul>
                 </div>                         
@@ -345,18 +351,18 @@
 
                                     });
 
-                                    var table = $('#datatable').DataTable();
-
-                                    // Edit record
-                                    table.on('click', '.edit', function () {
-                                        $tr = $(this).closest('tr');
-                                        if ($($tr).hasClass('child')) {
-                                            $tr = $tr.prev('.parent');
-                                        }
-
-                                        var data = table.row($tr).data();
-                                        alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-                                    });
+//                                    var table = $('#datatable').DataTable();
+//
+//                                    // Edit record
+//                                    table.on('click', '.edit', function () {
+//                                        $tr = $(this).closest('tr');
+//                                        if ($($tr).hasClass('child')) {
+//                                            $tr = $tr.prev('.parent');
+//                                        }
+//
+//                                        var data = table.row($tr).data();
+//                                        alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+//                                    });
                                 });
                                 function returnForm() {
                                     document.getElementById('search').submit();             // Function returns the product of a and b

@@ -123,6 +123,12 @@
                                             <span class="sidebar-normal"> Student </span>
                                         </a>
                                     </li>
+                                     <li>
+                                     <a href="<%= request.getContextPath()%>/login.html">
+                                            <span class="sidebar-mini-icon">L</span>
+                                            <span class="sidebar-normal"> Logout </span>
+                                        </a>
+                                           </li>
                               </ul>
                     </ul>
                 </div>                         
@@ -237,9 +243,9 @@
                                                 <td><%= listUser.getUniversityID()%></td>
                                                 <td><%= listUser.getStatusID()%></td>
                                                 <td class="text-right">
-                                                    <a href="<%= request.getContextPath()%>/admin/createUser.jsp" class="btn btn-round btn-info btn-icon btn-sm like"><i class="fas fa-heart"></i></a>
-                                                    <a href="#" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
-                                                    <a href="#" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
+                                                   
+                                                    <a href="#" <i class="far fa-calendar-alt"></i></a>
+                                                    <a href="#" <i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -343,33 +349,33 @@
 
                                     });
 
-                                    var table = $('#datatable').DataTable();
+//                                    var table = $('#datatable').DataTable();
 
                                     // Edit record
-                                    table.on('click', '.edit', function () {
-                                        $tr = $(this).closest('tr');
-                                        if ($($tr).hasClass('child')) {
-                                            $tr = $tr.prev('.parent');
-                                        }
+//                                    table.on('click', '.edit', function () {
+//                                        $tr = $(this).closest('tr');
+//                                        if ($($tr).hasClass('child')) {
+//                                            $tr = $tr.prev('.parent');
+//                                        }
 
-                                        var data = table.row($tr).data();
-                                        alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-                                    });
+//                                        var data = table.row($tr).data();
+//                                        alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+//                                    });
 
                                     // Delete a record
-                                    table.on('click', '.remove', function (e) {
-                                        $tr = $(this).closest('tr');
-                                        if ($($tr).hasClass('child')) {
-                                            $tr = $tr.prev('.parent');
-                                        }
-                                        table.row($tr).remove().draw();
-                                        e.preventDefault();
-                                    });
+//                                    table.on('click', '.remove', function (e) {
+//                                        $tr = $(this).closest('tr');
+//                                        if ($($tr).hasClass('child')) {
+//                                            $tr = $tr.prev('.parent');
+//                                        }
+//                                        table.row($tr).remove().draw();
+//                                        e.preventDefault();
+//                                    });
 
                                     //Like record
-                                    table.on('click', '.like', function () {
-                                        alert('You clicked on Like button');
-                                    });
+//                                    table.on('click', '.like', function () {
+//                                        alert('You clicked on Like button');
+//                                    });
                                 });
                 function returnForm() {
                     document.getElementById('search').submit();             // Function returns the product of a and b

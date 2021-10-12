@@ -70,15 +70,15 @@
             %> 
                <div class="col-lg-3 col-md-6">
                   <div class="card card-pricing card-plain">
-                    <h6 class="card-category"> Charlie Pack</h6>
+                    <h6 class="card-category"> The Snacks</h6>
                     <div class="card-body">
                       <div class="card-icon icon-success ">
                      <img class="none" src="<%= p.getImage()%>"alt="Card image cap" height="100px" width="100px"/>
                       </div>
                         <h3 class="card-title"> <%= p.getPrice()%> point</h3>
                       <ul>
-                        <li>Working materials in PSD</li>
-                        <li>1 year access to the library</li>
+                        <li>For to fun day and with my friends </li>
+                        <li> Very good quality and basic states </li>
                       </ul>
                     </div>
                      <form action="ChargePointController">
