@@ -234,10 +234,9 @@
                                                     for (UserDTO listUser : list) {
                                         %>
                                           <tr>
-                                         
-                                                <td><%= listUser.getUniversityID()%></td>
                                                 <td><%= listUser.getStudentName()%></td>
                                                 <td><%= listUser.getEmail()%> </td>
+                                                <td><%= listUser.getUniversityID()%></td>
                                                 <td><%= listUser.getStatusID()%></td>
                                                 <td class="text-right">
                                                     <a href="<%= request.getContextPath()%>/admin/updateUser.jsp?email=<%= listUser.getEmail()%>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="fas fa-user-edit"></i></a>
