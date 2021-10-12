@@ -199,7 +199,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">DataTables.net</h4>
+                                    <h4 class="card-title">StudentData</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">

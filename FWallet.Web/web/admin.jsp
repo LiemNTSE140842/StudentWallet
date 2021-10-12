@@ -237,13 +237,11 @@
                                          
                                                 <td><%= listUser.getUniversityID()%></td>
                                                 <td><%= listUser.getStudentName()%></td>
-                                                <td><%= listUser.getAge()%></td>
                                                 <td><%= listUser.getEmail()%> </td>
                                                 <td><%= listUser.getStatusID()%></td>
                                                 <td class="text-right">
                                                     <a href="<%= request.getContextPath()%>/admin/updateUser.jsp?email=<%= listUser.getEmail()%>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="fas fa-user-edit"></i></a>
                                                     <a href="RemoveController?email=<%= listUser.getEmail()%>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
-
                                                 </td>
                                                 
                                             </tr>
@@ -255,30 +253,7 @@
                                         %>
                                         <%
                                             }
-                                        %>
-                        <tr>
-                      <td>Liger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td class="text-right">
-                        <a href="#" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="fas fa-user-edit"></i></a>
-                        <a href="#" class="btn btn-round btn-danger btn-icon btn-sm "><i class="fas fa-times"></i></a>
-                      </td>
-                    </tr>
-                      <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td class="text-right">
-                        
-                        <a href="#" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="fas fa-user-edit"></i></a>
-                        <a href="#" class="btn btn-round btn-danger btn-icon btn-sm"><i class="fas fa-times"></i></a>
-                      </td>
-                    </tr>
-                                        
-                                        
+                                        %>                       
                   </tbody>
                 </table>
               </div><!-- end content-->
