@@ -55,7 +55,7 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="<%= user.getImage() %>" />
+                            <img src="<%= user.getImage() %>"height="150px" width="150px"/>
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -174,9 +174,9 @@
                                         </p>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <a class="dropdown-item" href="#">All</a>
+                                        <a class="dropdown-item" href="#">Deleted</a>
+                                        <a class="dropdown-item" href="#">Activated</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -199,7 +199,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">DataTables.net</h4>
+                                    <h4 class="card-title">StudentData</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
@@ -208,21 +208,19 @@
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>University</th>
-                                                <th>Name</th>
-                                                <th>Age</th>
-                                                <th>Email</th>
-                                                <th>Status</th>
+                                               <th>Name</th>
+                                               <th>Email</th>
+                                               <th>University</th>
+                                               <th>Status</th>
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>University</th>
-                                                <th>Student</th>
-                                                <th>Age</th>
-                                                <th>Email</th>
-                                                <th>Status</th>
+                                                 <th>Name</th>
+                                                 <th>Email</th>
+                                                 <th>University</th>
+                                                 <th>Status</th>
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </tfoot>
@@ -234,11 +232,10 @@
                                         %>
                                         <tbody>
                                             <tr>
-                                                <td><%= listUser.getUniversityID() %></td>
-                                                <td><%= listUser.getStudentName() %></td>
-                                                <td><%= listUser.getAge() %></td>
-                                                <td><%= listUser.getEmail() %> </td>
-                                                <td><%= listUser.getStatusID() %></td>
+                                                <td><%= listUser.getStudentName()%></td>
+                                                <td><%= listUser.getEmail()%> </td>
+                                                <td><%= listUser.getUniversityID()%></td>
+                                                <td><%= listUser.getStatusID()%></td>
                                                 <td class="text-right">
                                                     <a href="<%= request.getContextPath()%>/admin/createUser.jsp" class="btn btn-round btn-info btn-icon btn-sm like"><i class="fas fa-heart"></i></a>
                                                     <a href="#" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>

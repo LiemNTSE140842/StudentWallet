@@ -175,9 +175,9 @@
                                         </p>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <a class="dropdown-item" href="#">All</a>
+                                        <a class="dropdown-item" href="#">Deleted</a>
+                                        <a class="dropdown-item" href="#">Activated</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -200,7 +200,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">DataTables.net</h4>
+                                    <h4 class="card-title">Reward Table</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
@@ -229,12 +229,12 @@
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </tfoot>
-                                        <%
+                                        <tbody>
+                                              <%
                                             UserDAO dao = new UserDAO();
                                             List<UserDTO> list = dao.getAllUser();
                                             for(UserDTO listUser:list){
                                         %>
-                                        <tbody>
                                             <tr>
                                                 <td><%= listUser.getUniversityID() %></td>
                                                 <td><%= listUser.getStudentName() %></td>
@@ -243,15 +243,15 @@
                                                 <td><%= listUser.getEmail() %> </td>
                                                 <td><%= listUser.getStatusID() %></td>
                                                 <td class="text-right">
-                                                    <a href="#" class="btn btn-round btn-info btn-icon btn-sm like"><i class="fas fa-heart"></i></a>
+                                  
                                                     <a href="#" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
                                                     <a href="#" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                        <%
+                                             <%
                                             }
                                         %>
+                                        </tbody>
                                     </table>
                                 </div><!-- end content-->
                             </div><!--  end card  -->

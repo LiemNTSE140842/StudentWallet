@@ -31,6 +31,12 @@
 </head>
 
 <body class=" sidebar-mini ">
+      <% 
+            String productId = request.getParameter("productID");
+            ProductDAO dao = new ProductDAO();
+            ProductDTO product = dao.getAProductByID(productId);
+        %>
+    
   <div class="wrapper ">
     <div class="sidebar" data-color="orange">
       <!--
@@ -98,11 +104,6 @@
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
       <!-- End Navbar -->
-       <% 
-            String productId = request.getParameter("productID");
-            ProductDAO dao = new ProductDAO();
-            ProductDTO product = dao.getAProductByID(productId);
-        %>
             <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/UpdateProductController" method="POST">
               <div class="card ">
                 <div class="card-header ">
@@ -149,10 +150,9 @@
                       </div>
                     </div>
                   </div>
-                   <input class="form-control" type="hidden" value="<%= productId %>" name="productID" value="<%= productId %>"/>
+                    <div class="card-footer text-center">
+                  <button type="submit"class="btn btn-primary">Update Product</button>
                 </div>
-                <div class="card-footer text-center">
-                  <button type="submit"class="btn btn-primary">Create product</button>
                 </div>
               </div>
             </form>

@@ -17,22 +17,18 @@
 
  */
 /*     brand Colors              */
-/*      light colors         */
+/*      light colors         */ 
 
-  img{
-                width: 220px;
-                height: 220px;
-     }
+
 .btn,
 .navbar .navbar-nav>a.btn {
   border-width: 2px;
   font-weight: 400;
   font-size: 0.8571em;
-  line-height: 1.35em;
   border: none;
-  margin: 10px 1px;
+  margin-left:1620px;
   border-radius: 0.1875rem;
-  padding: 11px 22px;
+  padding: 11px 2px;
   cursor: pointer;
   background-color: #888;
   color: #FFFFFF;
@@ -243,6 +239,10 @@ fieldset[disabled] .navbar .navbar-nav>a.btn.active {
 .btn-primary {
   background-color: #f96332;
   color: #FFFFFF;
+  padding-right:1%;
+  padding-left: 1%;
+  border-radius: 20px;
+  margin-bottom: 10px;
 }
 
 .btn-primary:hover,
@@ -310,9 +310,6 @@ fieldset[disabled] .btn-primary.active {
 .btn-success {
   background-color: #18ce0f;
   color: #FFFFFF;
-}
- .newbutton{
-    margin-right: 50%;
 }
 
 .btn-success:hover,
@@ -665,7 +662,7 @@ fieldset[disabled] .btn-neutral.active {
   color: #ffbe55 !important;
 }
 
-.btn-neutral.btn-labe {
+.btn-neutral.btn-success {
   color: #18ce0f;
 }
 
@@ -7344,7 +7341,7 @@ Created using IcoMoon - icomoon.io
 }
 
 .card {
-  border: 0;
+  border-color: orange;
   border-radius: 0.1875rem;
   display: inline-block;
   position: relative;
@@ -7439,7 +7436,7 @@ Created using IcoMoon - icomoon.io
 
 .card .card-footer {
   background-color: transparent;
-  border: 0;
+  border: 5px;
 }
 
 .card .card-footer .stats i {
@@ -7449,7 +7446,8 @@ Created using IcoMoon - icomoon.io
 }
 
 .card .card-footer .btn {
-  margin: 0;
+  margin-left: 0px;
+
 }
 
 .card-chart .card-header .card-title {
@@ -10135,7 +10133,8 @@ select.selectpicker {
 .form-inline .bootstrap-select,
 .form-horizontal .bootstrap-select,
 .form-group .bootstrap-select {
-  margin-bottom: 0;
+  margin-top: 50%;
+  padding-top: 50%;
 }
 
 .form-group-lg .bootstrap-select.form-control,
@@ -12173,7 +12172,7 @@ fieldset[disabled] .fc-button.active,
 .fc-button.btn-primary[disabled]:hover,
 .fc-button.btn-primary[disabled]:focus,
 .fc-button.btn-primary[disabled].focus,
-.fc-button.btn-primary[disabled]:active,
+.fc-toolbar.btn-primary[disabled]:active,
 .fc-button.btn-primary[disabled].active,
 fieldset[disabled] .fc-button.btn-primary,
 fieldset[disabled] .fc-button.btn-primary:hover,
@@ -12392,6 +12391,7 @@ fieldset[disabled] .fc-button-primary:hover.active {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .fc-toolbar.fc-header-toolbar {

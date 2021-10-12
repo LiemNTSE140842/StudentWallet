@@ -170,10 +170,10 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="card-footer text-center">
+                       <div class="card-footer text-center">
                    <input type="hidden" name="oldEmail" value="<%= userEmail %>"/>
                   <button type="submit"class="btn btn-primary">Update</button>
+                </div>
                 </div>
               </div>
                 </div>

@@ -58,7 +58,7 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="<%= user.getImage() %>" />
+                            <img src="<%= user.getImage() %>" height="150px" width="150px;"/>
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -177,9 +177,9 @@
                                         </p>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
+                                       <a class="dropdown-item" href="#">All</a>
+                                        <a class="dropdown-item" href="#">Deleted</a>
+                                        <a class="dropdown-item" href="#">Activated</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -206,7 +206,9 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
-                                        <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                         <form action="<%= request.getContextPath()%>/admin/product/createProduct.jsp">
+                                    <button class="btn btn-primary">Add Product</button>
+                    </form>          
                                     </div>
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
@@ -231,29 +233,28 @@
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </tfoot>
-                                        <%
+                                        <tbody>
+                                             <%
                                             List<ProductDTO> list = (List<ProductDTO>) request.getAttribute("LIST_PRODUCT");
                                             if (list != null) {
                                                 if (!list.isEmpty()) {
                                                     for(ProductDTO listProduct:list){
                                             
                                         %>
-                                        <tbody>
                                             <tr>
-                                                <td><%= listProduct.getImage()%></td>
+                                                <td><img src="<%=listProduct.getImage()%>" alt="hinhanh" height="150px" width="150px"/>
+                                                </td>
                                                 <td><%= listProduct.getProductName()%></td>
                                                 <td><%= listProduct.getPrice()%></td>
                                                 <td><%= listProduct.getQuantity() %></td>
                                                 <td><%= listProduct.isStatusID() %> </td>
                                                 
                                                 <td class="text-right">
-                                                    <a href="<%= request.getContextPath()%>/admin/product/createProduct.jsp" class="btn btn-round btn-info btn-icon btn-sm like"><i class="fas fa-heart"></i></a>
-                                                    <a href="<%= request.getContextPath()%>/admin/product/updateProduct.jsp?productID=<%= listProduct.getProductID() %>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
+                                                    <a href="<%= request.getContextPath()%>/admin/product/updateProduct.jsp?productID=<%= listProduct.getProductID() %>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="fas fa-tools"></i></a>
                                                     <a href="RemoveProductController?productID=<%= listProduct.getProductID() %>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                        <%
+                                              <%
                                                     }
                                         %>
                                         <%
@@ -262,6 +263,8 @@
                                         <%
                                             }
                                         %>
+                                        </tbody>
+                                     
                                     </table>
                                 </div><!-- end content-->
                             </div><!--  end card  -->
