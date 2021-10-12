@@ -122,6 +122,12 @@
                                             <span class="sidebar-normal"> Student </span>
                                         </a>
                                     </li>
+                                     <li>
+                                     <a href="<%= request.getContextPath()%>/login.html">
+                                            <span class="sidebar-mini-icon">L</span>
+                                            <span class="sidebar-normal"> Logout </span>
+                                        </a>
+                                           </li>
                                 </ul>
                     </ul>
                 </div>                         
