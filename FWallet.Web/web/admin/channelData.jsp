@@ -125,8 +125,8 @@
                                     </li>
                                      <li>
                                      <a href="<%= request.getContextPath()%>/login.html">
-                                            <span class="sidebar-mini-icon">L</span>
-                                            <span class="sidebar-normal"> Logout </span>
+                                            <span class="sidebar-mini-icon">AP</span>
+                                            <span class="sidebar-normal">Add Point</span>
                                         </a>
                                            </li>
                               </ul>
@@ -164,17 +164,9 @@
                                 </div>
                             </form>
                             <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#pablo">
-                                        <i class="now-ui-icons media-2_sound-wave"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Stats</span>
-                                        </p>
-                                    </a>
-                                </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="now-ui-icons location_world"></i>
+                                        Status<i class="now-ui-icons location_world"></i>
                                         <p>
                                             <span class="d-lg-none d-md-block">Some Actions</span>
                                         </p>
@@ -186,8 +178,8 @@
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#pablo">
-                                        <i class="now-ui-icons users_single-02"></i>
+                                        <a class="nav-link" href="<%= request.getContextPath()%>/login.html">
+                                         Logout<i class="now-ui-icons media-1_button-power"></i>
                                         <p>
                                             <span class="d-lg-none d-md-block">Account</span>
                                         </p>
@@ -205,7 +197,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">DataTables.net</h4>
+                                    <h4 class="card-title">ChannelData</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">

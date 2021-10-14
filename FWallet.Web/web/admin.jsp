@@ -123,9 +123,9 @@
                                         </a>
                                     </li>
                                      <li>
-                                     <a href="<%= request.getContextPath()%>/login.html">
-                                            <span class="sidebar-mini-icon">L</span>
-                                            <span class="sidebar-normal"> Logout </span>
+                                    <a href="<%= request.getContextPath()%>/login.html">
+                                            <span class="sidebar-mini-icon">AP</span>
+                                            <span class="sidebar-normal">Add Point</span>
                                         </a>
                                            </li>
                                 </ul>
@@ -163,32 +163,24 @@
                                 </div>
                             </form>
                             <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#pablo">
-                                        <i class="now-ui-icons media-2_sound-wave"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Stats</span>
-                                        </p>
-                                    </a>
-                                </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Status
                                         <i class="now-ui-icons location_world"></i>
                                         <p>
                                             <span class="d-lg-none d-md-block">Some Actions</span>
                                         </p>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
+                                         <a class="dropdown-item" href="#">All</a>
+                                        <a class="dropdown-item" href="#">Deleted</a>
+                                        <a class="dropdown-item" href="#">Activated</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#pablo">
-                                        <i class="now-ui-icons users_single-02"></i>
+                                    <a class="nav-link" href="<%= request.getContextPath()%>/login.html">
+                                        Logout<i class="now-ui-icons media-1_button-power"></i>
                                         <p>
-                                            <span class="d-lg-none d-md-block">Account</span>
+                                            <span class="d-lg-none d-md-block"></span>
                                         </p>
                                     </a>
                                 </li>

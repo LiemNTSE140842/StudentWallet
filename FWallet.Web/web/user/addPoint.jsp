@@ -86,9 +86,9 @@
                     </div>
                     <ul class="nav">
                         <li>
-                            <a href="<%= request.getContextPath()%>/user/addPoint.jsp">
+                            <a href="<%= request.getContextPath()%>/user/showProduct.jsp">
                                 <i class="now-ui-icons design_app"></i>
-                                <p>Add Point</p>
+                                <p>Show Product</p>
                             </a>
                         </li>
                     </ul>
@@ -96,52 +96,85 @@
             </div>
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
-      <div class="wrapper wrapper-full-page ">
-        <div class="full-page pricing-page section-image" data-image="<%= request.getContextPath()%>/assets/img/bg15.jpg">
-          <div class="content">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6 ml-auto mr-auto text-center">
-                  <h2 class="title">Pick the hot product for Summer </h2>
-                  <h5 class="description"> We have choice with you point you have</h5>
+<div class="card  card-tasks">
+              <div class="card-header ">
+                <h5 class="card-category">Do list get more point</h5>
+                <h4 class="card-title">Tasks</h4>
+              </div>
+              <div class="card-body ">
+                <div class="table-full-width table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox" checked>
+                              <span class="form-check-sign"></span>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-left">Làm practical trên 8 điểm !"</td>
+                         <td class="text-left">150Point</td>
+                        <td class="td-actions text-right">
+                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                            <i class="now-ui-icons media-1_button-play"></i>
+                          </button>
+                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox">
+                              <span class="form-check-sign"></span>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-left">Làm xong assginemt SWP391?</td>
+                         <td class="text-left">150Point</td>
+                        <td class="td-actions text-right">
+                             
+                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                            <i class="now-ui-icons media-1_button-play"></i>
+                          </button>
+                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox" checked>
+                              <span class="form-check-sign"></span>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-left">Làm xong FE cho trang web Student Wallet.
+                          <td class="text-left">150Point</td>
+                        </td>
+                        <td class="td-actions text-right">
+                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                            <i class="now-ui-icons media-1_button-play"></i>
+                          </button>
+                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
-                  <div class="row">
-              <%
-                List<ProductDTO> list = (List<ProductDTO>)request.getAttribute("LIST_PRODUCT");
-                if(list!=null){
-                for(ProductDTO p : list){
-            %> 
-               <div class="col-lg-3 col-md-6">
-                  <div class="card card-pricing card-plain">
-                    <h6 class="card-category"> The Snacks</h6>
-                    <div class="card-body">
-                      <div class="card-icon icon-success ">
-                     <img class="none" src="<%= p.getImage()%>"alt="Card image cap" height="100px" width="100px"/>
-                      </div>
-                        <h3 class="card-title"> <%= p.getPrice()%> point</h3>
-                      <ul>
-                        <li>For to fun day and with my friends </li>
-                        <li> Very good quality and basic states </li>
-                      </ul>
-                    </div>
-                     <form action="ChargePointController">
-                    <div class="card-footer">
-                      <a href="#pablo" class="btn btn-round btn-neutral btn-success">Add to Cart</a>
-                    </div>
-                   </form>
-                  </div>
-                </div>
-                        <%
-                    }
-            %>
-            <%
-                }else{
-            %>                        
-                <h1>No Product</h1>
-            <%
-                }
-            %>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
                 </div>
               </div>
             </div>
