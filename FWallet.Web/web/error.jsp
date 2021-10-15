@@ -151,7 +151,7 @@
                     <h1>Oops!</h1>
                     <h2><%= session.getAttribute("ERROR_MESSAGE") %></h2>
                 </div>
-                <a href="login.html">Go TO Home Page</a>
+                <a href="login.html">Go To Home Page</a>
             </div>
         </div>
 

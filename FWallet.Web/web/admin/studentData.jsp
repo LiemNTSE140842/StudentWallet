@@ -187,10 +187,11 @@
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<%= request.getContextPath()%>/login.html">
-                                         Logout<i class="now-ui-icons media-1_button-power"></i>
+                                    <a class="nav-link" href="LogOutController">
+                                        <i class="now-ui-icons media-1_button-power"></i>
                                         <p>
-                                            <span class="d-lg-none d-md-block">Account</span>
+                                            <span class="d-lg-none d-md-block"></span>
+                                            Log Out
                                         </p>
                                     </a>
                                 </li>
