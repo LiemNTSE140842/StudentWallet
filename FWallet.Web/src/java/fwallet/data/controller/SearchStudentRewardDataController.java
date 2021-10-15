@@ -5,9 +5,10 @@
  */
 package fwallet.data.controller;
 
-import fwallet.data.user.UserDAO;
-import fwallet.data.user.UserDTO;
+import fwallet.data.studentreward.StudentRewardDAO;
+import fwallet.data.studentreward.StudentRewardDTO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,42 +20,34 @@ import javax.servlet.http.HttpSession;
  *
  * @author pphuh
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "SearchStudentRewardDataController", urlPatterns = {"/SearchStudentRewardDataController"})
+public class SearchStudentRewardDataController extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
-    private static final String ADMIN_PAGE="admin.jsp";
-    private static final String USER_PAGE = "ShowProductController";
-
+    
+    private final static String NEXT_PAGE = "/admin/addPoint.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
+        String url = NEXT_PAGE;
+        HttpSession session = request.getSession();
         try {
-            String userID = request.getParameter("userID");
-            String uni = request.getParameter("password");
-            UserDAO dao = new UserDAO();
-            UserDTO user = dao.checkLogin(userID, uni);
-            HttpSession session = request.getSession();
-            if (user == null) {
-                session.setAttribute("ERROR_MESSAGE", "Incorrect User ID or Password");
-            } else {
-                String roleID = user.getRoleID();
-                String statusID = user.getStatusID();
-                session.setAttribute("LOGIN_USER", user);
-                if("AD".equals(roleID)){
-                    url = ADMIN_PAGE;
-                }else if("US".equals(roleID)){
-                    url = USER_PAGE;
-                }else{
-                    session.setAttribute("ERROR_MESSAGE", "Your account is inactive");
+            String searchFrom = request.getParameter("searchFrom");
+            String search = request.getParameter("search");
+            String cmbStatus = request.getParameter("cmbStatus");
+            StudentRewardDAO studentRewardDao = new StudentRewardDAO();
+            List<StudentRewardDTO> studentRewardList;
+            if("All".equals(cmbStatus)){
+                studentRewardList = studentRewardDao.getStudentRewardByEmail(search);
+                if(!studentRewardList.isEmpty()){
+                    request.setAttribute("LIST_STUDENT_REWARD", studentRewardList);
                 }
+            }else{
                 
             }
         } catch (Exception e) {
-            log("Error at login: " + e.toString());
-        } finally {
-            response.sendRedirect(url);
+            log("Error at SearchStudentRewardDataController: " + e.toString());
+        }finally{
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

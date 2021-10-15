@@ -5,56 +5,44 @@
  */
 package fwallet.data.controller;
 
-import fwallet.data.user.UserDAO;
-import fwallet.data.user.UserDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author pphuh
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "AddPointController", urlPatterns = {"/AddPointController"})
+public class AddPointController extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
-    private static final String ADMIN_PAGE="admin.jsp";
-    private static final String USER_PAGE = "ShowProductController";
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-        try {
-            String userID = request.getParameter("userID");
-            String uni = request.getParameter("password");
-            UserDAO dao = new UserDAO();
-            UserDTO user = dao.checkLogin(userID, uni);
-            HttpSession session = request.getSession();
-            if (user == null) {
-                session.setAttribute("ERROR_MESSAGE", "Incorrect User ID or Password");
-            } else {
-                String roleID = user.getRoleID();
-                String statusID = user.getStatusID();
-                session.setAttribute("LOGIN_USER", user);
-                if("AD".equals(roleID)){
-                    url = ADMIN_PAGE;
-                }else if("US".equals(roleID)){
-                    url = USER_PAGE;
-                }else{
-                    session.setAttribute("ERROR_MESSAGE", "Your account is inactive");
-                }
-                
-            }
-        } catch (Exception e) {
-            log("Error at login: " + e.toString());
-        } finally {
-            response.sendRedirect(url);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AddPointController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AddPointController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
