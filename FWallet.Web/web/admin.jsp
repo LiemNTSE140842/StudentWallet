@@ -54,7 +54,7 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="<%= user.getImage()%>" />
+                            <img src="http://prnt.sc/1wcql06" />
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">

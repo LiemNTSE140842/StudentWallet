@@ -212,7 +212,7 @@
                                 <div class="card-body">
                                     <div class="toolbar">
                                          <form action="<%= request.getContextPath()%>/admin/product/createProduct.jsp">
-                                    <button class="btn btn-primary">Add Product</button>
+                                    <button class="btn btn-primary">Create Product</button>
                     </form>          
                                     </div>
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
