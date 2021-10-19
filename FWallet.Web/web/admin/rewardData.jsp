@@ -212,7 +212,9 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
-                                        <!--        Here you can write extra buttons/actions for the toolbar              -->
+                             <form action="<%= request.getContextPath()%>/admin/product/createReward.jsp">
+                                    <button class="btn btn-primary">Create Reward</button>
+                    </form>
                                     </div>
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
