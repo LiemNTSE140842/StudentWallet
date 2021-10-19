@@ -8,7 +8,6 @@ package fwallet.data.controller;
 import fwallet.data.product.ProductDAO;
 import fwallet.data.product.ProductDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

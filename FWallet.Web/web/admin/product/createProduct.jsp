@@ -4,6 +4,9 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.category.CategoryDTO"%>
+<%@page import="fwallet.data.category.CategoryDAO"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,6 +112,10 @@
                       </div>
                     </div>
                   </div>
+                    <%
+                        CategoryDAO cateDao = new CategoryDAO();
+                        List<CategoryDTO> category = cateDao.getAllCategory();
+                    %>
                   <div class="row">
                     <label class="col-sm-2 col-form-label">CategoryID</label>
                     <div class="col-sm-7">
