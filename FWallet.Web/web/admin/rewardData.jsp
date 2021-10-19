@@ -175,7 +175,7 @@
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       Status <i class="now-ui-icons location_world"></i>
+                                        Filter <i class="fas fa-filter"></i>
                                         <p>
                                             <span class="d-lg-none d-md-block">Some Actions</span>
                                         </p>
