@@ -30,8 +30,20 @@ public class SearchController extends HttpServlet {
         
         try {
             String search = request.getParameter("search");
+            String filterStatus = request.getParameter("filterStatus");
             UserDAO dao = new UserDAO();
-            List<UserDTO> list = dao.getUserByEmail(search);
+            List<UserDTO> list =null;
+            switch(filterStatus){
+                case "All":
+                    list = dao.getUserByEmail(search);
+                    break;
+                case "Deleted":
+                    list = dao.getDeletedUserByEmail(search);
+                    break;
+                case "Activated":
+                    list = dao.getActivatedUserByEmail(search);
+                    break;
+            }
             if (!list.isEmpty()) {
                 request.setAttribute("LIST_USER", list);
                 url = SUCCESS;

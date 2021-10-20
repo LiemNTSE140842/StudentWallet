@@ -198,6 +198,78 @@ public class UserDAO {
         return list;
     }
     
+    public List<UserDTO> getDeletedUserByEmail(String search) throws SQLException{
+        List<UserDTO> list = new ArrayList<>();
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT universityID, studentName, age, gender, email, status"
+                        + " FROM tblStudent"
+                        + " WHERE status= 0 AND email like ?";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, "%" + search + "%");
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String uni = rs.getString("universityID");
+                    String name = rs.getString("studentName");
+                    int age = rs.getInt("age");
+                    boolean gender = rs.getBoolean("gender");
+                    String email = rs.getString("email");
+                    String statusID = rs.getString("status");
+                    list.add(new UserDTO(uni, name, email, statusID, age, gender));
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
+    
+    public List<UserDTO> getActivatedUserByEmail(String search) throws SQLException{
+        List<UserDTO> list = new ArrayList<>();
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT universityID, studentName, age, gender, email, status"
+                        + " FROM tblStudent"
+                        + " WHERE status= 1 AND email like ?";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, "%" + search + "%");
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String uni = rs.getString("universityID");
+                    String name = rs.getString("studentName");
+                    int age = rs.getInt("age");
+                    boolean gender = rs.getBoolean("gender");
+                    String email = rs.getString("email");
+                    String statusID = rs.getString("status");
+                    list.add(new UserDTO(uni, name, email, statusID, age, gender));
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
+    
     public UserDTO getAUserByEmail(String search) throws SQLException{
         UserDTO user = null;
         try {

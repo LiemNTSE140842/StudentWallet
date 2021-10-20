@@ -172,11 +172,11 @@
                                             <span class="d-lg-none d-md-block">Some Actions</span>
                                         </p>
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">All</a>
-                                        <a class="dropdown-item" href="#">Deleted</a>
-                                        <a class="dropdown-item" href="#">Activated</a>
-                                    </div>
+                                    <select class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" name="filterStatus">
+                                        <option class="dropdown-item" value="All" selected>All</option>
+                                        <option class="dropdown-item" value="Deleted">Deleted</option>
+                                        <option class="dropdown-item" value="Activated">Activated</option>
+                                    </select>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="LogOutController">

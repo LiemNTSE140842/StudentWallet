@@ -123,16 +123,11 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <% 
-                                            String cmb = request.getParameter("cmbStatus");
-                                                if (cmb == null) {
-                                                    cmb = "Choose a university";
-                                                }
                                             UniversityDAO universityDAO = new UniversityDAO();
                                             List<UniversityDTO> universityList = universityDAO.getAllUniversity();
                                             
                                         %>
                                         <select name="universityName" class="form-control" id="exampleFormControlSelect1" required="true">
-                                            <option value="<%= cmb %>" selected hidden></option>
                                             <%
                                                 if(universityList!=null){
                                                 for(UniversityDTO university : universityList){
