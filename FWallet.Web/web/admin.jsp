@@ -164,8 +164,8 @@
                             </form>
                             <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Status
-                                        <i class="now-ui-icons location_world"></i>
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Filter <i class="fas fa-filter"></i>
                                         <p>
                                             <span class="d-lg-none d-md-block">Some Actions</span>
                                         </p>
@@ -202,7 +202,7 @@
               <div class="card-body">
                 <div class="toolbar">
                     <form action="<%= request.getContextPath()%>/admin/createUser.jsp">
-                    <button class="btn btn-primary">Add Student</button>
+                    <button class="btn btn-primary">Create Student</button>
                     </form>
                 </div>
                 <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">

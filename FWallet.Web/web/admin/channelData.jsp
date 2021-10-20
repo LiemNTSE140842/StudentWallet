@@ -157,8 +157,8 @@
                             <form action="<%= request.getContextPath()%>/SearchChannelDataController" id="search">
                                 <div class="input-group no-border">
                                     <input type="text" name="search" value="" class="form-control" placeholder="Search...">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text" onclick="returnForm()">
+                                    <div class="input-group-append" onclick="returnForm()">
+                                        <div class="input-group-text">
                                             <i class="now-ui-icons ui-1_zoom-bold"></i>
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@
                             <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Status<i class="now-ui-icons location_world"></i>
+                                        Filter <i class="fas fa-filter"></i>
                                         <p>
                                             <span class="d-lg-none d-md-block">Some Actions</span>
                                         </p>

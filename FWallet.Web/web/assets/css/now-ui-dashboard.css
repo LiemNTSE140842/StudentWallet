@@ -19,14 +19,16 @@
 /*     brand Colors              */
 /*      light colors         */ 
 
-
+select .liem{
+    background-color: blue ;
+}
 .btn,
 .navbar .navbar-nav>a.btn {
   border-width: 2px;
   font-weight: 400;
   font-size: 0.8571em;
   border: none;
-  margin-left:1620px;
+  margin-left:92%;
   border-radius: 0.1875rem;
   padding: 11px 2px;
   cursor: pointer;
