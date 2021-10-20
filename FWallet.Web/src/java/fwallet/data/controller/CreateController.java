@@ -29,10 +29,13 @@ public class CreateController extends HttpServlet {
         String url = ERROR; 
         try {
             String userID = request.getParameter("userID");
-            String universityID = request.getParameter("universityID");
+            String universityString = request.getParameter("universityName");
+            String tmp[] = universityString.split("=");
+            String universityname = tmp[0];
+            String universityID = tmp[1];
             String studentName = request.getParameter("studentName");
             Integer age = Integer.parseInt(request.getParameter("age"));
-            String gender = request.getParameter("gender");
+            String gender = request.getParameter("inlineRadioOptions");
             String address = request.getParameter("address");
             String email = request.getParameter("email");
             Timestamp createDate = new Timestamp(System.currentTimeMillis());

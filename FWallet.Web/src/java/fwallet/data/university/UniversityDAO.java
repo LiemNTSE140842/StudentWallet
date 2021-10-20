@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fwallet.data.category;
+package fwallet.data.university;
 
 import fwallet.data.util.DBUtil;
 import java.sql.Connection;
@@ -17,24 +17,27 @@ import java.util.List;
  *
  * @author pphuh
  */
-public class CategoryDAO {
+public class UniversityDAO {
     Connection conn=null;
     PreparedStatement stm =null;
     ResultSet rs =null;
     
-    public List<CategoryDTO> getAllCategory() throws SQLException{
-        List<CategoryDTO> list = new ArrayList<CategoryDTO>();
+    public List<UniversityDTO> getAllUniversity() throws SQLException{
+        List<UniversityDTO> list = new ArrayList<>();
         try {
             conn = DBUtil.getConnection();
             if(conn!=null){
-                String sql = "SELECT categoryID, categoryName"
-                        + " FROM tblCategory";
+                String sql = "SELECT universityID, universityName, address, phoneNumber, email"
+                        +" FROM tblUniversity";
                 stm = conn.prepareStatement(sql);
                 rs=stm.executeQuery();
                 while(rs.next()){
-                    String categoryID = rs.getString("categoryID");
-                    String categoryName = rs.getString("categoryName");
-                    list.add(new CategoryDTO(categoryID, categoryName));
+                    String universityID = rs.getString("universityID");
+                    String universityName = rs.getString("universityName");
+                    String address = rs.getString("address");
+                    String phoneNumber = rs.getString("phoneNumber");
+                    String email = rs.getString("email");
+                    list.add(new UniversityDTO(universityID, universityName, address, phoneNumber, email));
                 }
             }
         } catch (Exception e) {
@@ -49,8 +52,6 @@ public class CategoryDAO {
                 conn.close();
             }
         }
-        //System.out.println(list.toString());
         return list;
     }
-    
 }

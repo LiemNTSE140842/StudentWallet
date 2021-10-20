@@ -116,8 +116,9 @@
                                 <label class="col-sm-2 col-form-label">CategoryID</label>
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <select class="form-control" id="exampleFormControlSelect1" required="true">
-                                            <option>value1</option>
+                                        <select name="CategoryID" class="form-control" id="exampleFormControlSelect1" required="true">
+                                            <option value="" selected hidden></option>
+                                            <option value="">value1</option>
                                             <option>value2</option>
                                         </select>
                                     </div>

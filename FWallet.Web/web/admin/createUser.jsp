@@ -4,6 +4,9 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.university.UniversityDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="fwallet.data.university.UniversityDAO"%>
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -107,7 +110,7 @@
                         </div>
                         <div class="card-body ">
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">UserID</label>
+                                <label class="col-sm-2 col-form-label">User ID</label>
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="userID" required="true" />
@@ -115,15 +118,36 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">UniversityID</label>
+                                <label class="col-sm-2 col-form-label">University</label>
+                                
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="universityID" required="true" />
+                                        <% 
+                                            String cmb = request.getParameter("cmbStatus");
+                                                if (cmb == null) {
+                                                    cmb = "Choose a university";
+                                                }
+                                            UniversityDAO universityDAO = new UniversityDAO();
+                                            List<UniversityDTO> universityList = universityDAO.getAllUniversity();
+                                            
+                                        %>
+                                        <select name="universityName" class="form-control" id="exampleFormControlSelect1" required="true">
+                                            <option value="<%= cmb %>" selected hidden></option>
+                                            <%
+                                                if(universityList!=null){
+                                                for(UniversityDTO university : universityList){
+                                            %>
+                                            <option value="<%= university.getUniversityName() %>=<%= university.getUniversityID() %>"><%= university.getUniversityName() %></option>
+                                            <%
+                                                    }
+                                                 }
+                                            %>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">StudentName</label>
+                                <label class="col-sm-2 col-form-label">Student Name</label>
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="studentName" required="true" />
@@ -143,13 +167,10 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">Male
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="male">Male
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">Female
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">Uncheck
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="female">Female
                                         </div>
                                     </div>
                                 </div>

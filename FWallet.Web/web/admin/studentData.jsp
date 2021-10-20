@@ -199,12 +199,12 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">StudentData</h4>
+                                    <h4 class="card-title">Student Data</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
-                               <form action="<%= request.getContextPath()%>/admin/product/createProduct.jsp">
-                                    <button class="btn btn-primary">Create Student</button>
+                               <form action="<%= request.getContextPath()%>/admin/product/createUser.jsp">
+                                    <button class="btn btn-primary">Create</button>
                     </form>   
                                     </div>
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">

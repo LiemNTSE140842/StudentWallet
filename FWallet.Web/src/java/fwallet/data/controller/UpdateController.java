@@ -29,10 +29,13 @@ public class UpdateController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            String universityID = request.getParameter("universityID");
+            String universityString = request.getParameter("universityName");
+            String tmp[] = universityString.split("=");
+            String universityname = tmp[0];
+            String universityID = tmp[1];
             String studentName = request.getParameter("studentName");
             int age = Integer.parseInt(request.getParameter("age"));
-            String gender = request.getParameter("gender");
+            String gender = request.getParameter("inlineRadioOptions");
             String address = request.getParameter("address");
             String email = request.getParameter("email");
             String status = request.getParameter("status");
