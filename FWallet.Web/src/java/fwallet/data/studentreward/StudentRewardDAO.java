@@ -93,22 +93,25 @@ public class StudentRewardDAO {
     }
     
     public List<StudentRewardDTO> getStudentRewardStudentIdAndStatus(UserDTO user) throws SQLException{
-        List<StudentRewardDTO> list = new ArrayList<>();
+        List<StudentRewardDTO> studentList = new ArrayList<>();
         try {
             conn = DBUtil.getConnection();
             if(conn!=null){
-                String sql = "SELECT tblStudentReward.studentRewardID, tblStudentReward.studentID, tblStudentReward.rewardID, tblReward.rewardPoint"
+                String sql = "SELECT tblStudentReward.studentRewardID, tblStudentReward.studentID, tblStudentReward.rewardID, studentRewardStatus ,tblReward.rewardPoint, rewardName, [description]"
                         + " FROM tblStudentReward INNER JOIN tblReward ON tblStudentReward.rewardID = tblReward.rewardID"
                         + " WHERE tblStudentReward.studentID=? AND studentRewardStatus= 1";
                 stm = conn.prepareStatement(sql);
-                stm.setString(1, user.getUserID());
+                stm.setString(1,user.getUserID());
                 rs=stm.executeQuery();
                 while(rs.next()){
-                    String studentRewardID = rs.getString("studentRewardID");
+                    String studentRewardID = rs.getNString("studentRewardID").trim();
                     String studentID = rs.getString("studentID");
                     String rewardID = rs.getString("rewardID");
+                    boolean studentRewardStatus = rs.getBoolean("studentRewardStatus");
                     int rewardPoint = rs.getInt("rewardPoint");
-                    list.add(new StudentRewardDTO(studentRewardID, studentID, rewardID, rewardPoint));
+                    String rewardName = rs.getString("rewardName");
+                    String description = rs.getString("description");
+                    studentList.add(new StudentRewardDTO(studentRewardID, studentID, rewardID, studentRewardStatus, rewardPoint, description, rewardName));
                 }
             }
         } catch (Exception e) {
@@ -123,6 +126,6 @@ public class StudentRewardDAO {
                 conn.close();
             }
         }
-        return list;
+        return studentList;
     }
 }

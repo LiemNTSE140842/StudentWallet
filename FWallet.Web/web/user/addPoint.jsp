@@ -105,8 +105,15 @@
                     <div class="card-body ">
                         <div class="table-full-width table-responsive">
                             <table class="table">
-                                <th>Description</th>
-                                <th>Point</th>
+                                <thead>
+                                    <tr>
+                                        <th>Reward Name</th>
+                                        <th>Point</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                
                                 <tbody>
                                     
                                     <%
@@ -115,9 +122,10 @@
                                             for(StudentRewardDTO list : studentList){
                                     %>
                                     <tr>
-                                        <td class="text-left">Làm practical trên 8 điểm"</td>
+                                        <td class="text-left"><%= list.getRewardName() %></td>
                                         <td class="text-left"><%= list.getRewardPoint() %></td>
-                                        <td class="td-actions text-right">
+                                        <td class="text-left"><%= list.getDescription() %></td>
+                                        <td class="td-actions">
                                             <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
                                                 <i class="now-ui-icons media-1_button-play"></i>
                                             </button>

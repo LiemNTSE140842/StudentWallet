@@ -20,6 +20,8 @@ public class StudentRewardDTO {
     private Short usedDate;
     private String email;
     private int rewardPoint;
+    private String description;
+    private String rewardName;
     
     public StudentRewardDTO() {
     }
@@ -29,6 +31,16 @@ public class StudentRewardDTO {
         this.studentID = studentID;
         this.rewardID = rewardID;
         this.rewardPoint = rewardPoint;
+    }
+
+    public StudentRewardDTO(String studentRewardID, String studentID, String rewardID, boolean studentRewardStatus, int rewardPoint, String description, String rewardName) {
+        this.studentRewardID = studentRewardID;
+        this.studentID = studentID;
+        this.rewardID = rewardID;
+        this.studentRewardStatus = studentRewardStatus;
+        this.rewardPoint = rewardPoint;
+        this.description = description;
+        this.rewardName = rewardName;
     }
     
     public StudentRewardDTO(String studentRewardID, String studentID, String rewardID, boolean studentRewardStatus) {
@@ -52,6 +64,22 @@ public class StudentRewardDTO {
         this.rewardID = rewardID;
         this.studentRewardStatus = studentRewardStatus;
         this.createDate = createDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getRewardName() {
+        return rewardName;
+    }
+
+    public void setRewardName(String rewardName) {
+        this.rewardName = rewardName;
     }
 
     public int getRewardPoint() {

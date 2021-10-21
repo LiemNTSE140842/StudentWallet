@@ -86,7 +86,7 @@
                     </div>
                     <ul class="nav">
                         <li>
-                            <a href="<%= request.getContextPath()%>/user/addPoint.jsp">
+                            <a href="ShowUserRewardController">
                                 <i class="now-ui-icons design_app"></i>
                                 <p>Reward List</p>
                             </a>
