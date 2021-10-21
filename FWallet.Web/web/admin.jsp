@@ -152,9 +152,32 @@
                             <span class="navbar-toggler-bar navbar-kebab"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                            <form action="SearchController" id="search">
+                            <form action="<%=request.getContextPath()%>/SearchController" id="search" method="POST">
+
+
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            <select name="filterStatus" aria-labelledby="navbarDropdownMenuLink">
+                                                <option  value="All" selected>All</option>
+                                                <option  value="Deleted">Deleted</option>
+                                                <option  value="Activated">Activated</option>
+                                            </select>
+                                        </a>
+
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="LogOutController">
+                                            <i class="now-ui-icons media-1_button-power"></i>
+                                            <p>
+                                                <span class="d-lg-none d-md-block"></span>
+                                                Log Out
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
                                 <div class="input-group no-border">
-                                    <input type="text" name="search" value="" class="form-control" placeholder="Search...">
+                                    <input type="text" name="search" value="" class="form-control" placeholder="Search By Email">
                                     <div class="input-group-append" onclick="returnForm()">
                                         <div class="input-group-text">
                                             <i class="now-ui-icons ui-1_zoom-bold"></i>
@@ -162,30 +185,6 @@
                                     </div>
                                 </div>
                             </form>
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Filter <i class="fas fa-filter"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
-                                        </p>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">All</a>
-                                        <a class="dropdown-item" href="#">Deleted</a>
-                                        <a class="dropdown-item" href="#">Activated</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="LogOutController">
-                                        <i class="now-ui-icons media-1_button-power"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block"></span>
-                                            Log Out
-                                        </p>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </nav>

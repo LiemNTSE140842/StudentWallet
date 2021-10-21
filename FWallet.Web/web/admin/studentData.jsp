@@ -7,7 +7,7 @@
 <%@page import="java.util.List"%>
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -30,7 +30,7 @@
     </head>
 
     <body class=" sidebar-mini ">
-        <% 
+        <%
             UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
         %>
         <div class="wrapper ">
@@ -55,7 +55,7 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="<%= user.getImage() %>"height="150px" width="150px"/>
+                            <img src="<%= user.getImage()%>"height="150px" width="150px"/>
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -123,19 +123,19 @@
                                             <span class="sidebar-normal"> Student </span>
                                         </a>
                                     </li>
-                                     <li>
-                                    <a href="#">
+                                    <li>
+                                        <a href="#">
                                             <span class="sidebar-mini-icon">AP</span>
                                             <span class="sidebar-normal">Add Point</span>
                                         </a>
-                                           </li>
-                              </ul>
+                                    </li>
+                                </ul>
                     </ul>
                 </div>                         
             </div>
             <div class="main-panel" id="main-panel">
                 <!-- Navbar -->
-               <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+                <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
                             <div class="navbar-toggle">
@@ -154,8 +154,31 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
                             <form action="<%=request.getContextPath()%>/SearchController" id="search" method="POST">
+
+
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            <select name="filterStatus" aria-labelledby="navbarDropdownMenuLink">
+                                                <option  value="All" selected>All</option>
+                                                <option  value="Deleted">Deleted</option>
+                                                <option  value="Activated">Activated</option>
+                                            </select>
+                                        </a>
+
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="LogOutController">
+                                            <i class="now-ui-icons media-1_button-power"></i>
+                                            <p>
+                                                <span class="d-lg-none d-md-block"></span>
+                                                Log Out
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
                                 <div class="input-group no-border">
-                                    <input type="text" name="search" value="" class="form-control" placeholder="Search...">
+                                    <input type="text" name="search" value="" class="form-control" placeholder="Search By Email">
                                     <div class="input-group-append" onclick="returnForm()">
                                         <div class="input-group-text">
                                             <i class="now-ui-icons ui-1_zoom-bold"></i>
@@ -163,30 +186,6 @@
                                     </div>
                                 </div>
                             </form>
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Filter <i class="fas fa-filter"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
-                                        </p>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <option class="dropdown-item" value="#">All</option>
-                                        <option class="dropdown-item" value="#">Deleted</option>
-                                        <option class="dropdown-item" valu="#">Activated</option>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="LogOutController">
-                                        <i class="now-ui-icons media-1_button-power"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block"></span>
-                                            Log Out
-                                        </p>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </nav>
@@ -202,26 +201,26 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
-                               <form action="<%= request.getContextPath()%>/admin/product/createUser.jsp">
-                                    <button class="btn btn-primary">Create</button>
-                    </form>   
+                                        <form action="<%= request.getContextPath()%>/admin/createUser.jsp">
+                                            <button class="btn btn-primary">Create</button>
+                                        </form>   
                                     </div>
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                               <th>Name</th>
-                                               <th>Email</th>
-                                               <th>University</th>
-                                               <th>Status</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>University</th>
+                                                <th>Status</th>
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                 <th>Name</th>
-                                                 <th>Email</th>
-                                                 <th>University</th>
-                                                 <th>Status</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>University</th>
+                                                <th>Status</th>
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </tfoot>
@@ -229,7 +228,7 @@
                                             List<UserDTO> list = (List<UserDTO>) request.getAttribute("LIST_USER");
                                             if (list != null) {
                                                 if (!list.isEmpty()) {
-                                                    for(UserDTO listUser:list){
+                                                    for (UserDTO listUser : list) {
                                         %>
                                         <tbody>
                                             <tr>
@@ -238,17 +237,17 @@
                                                 <td><%= listUser.getUniversityID()%></td>
                                                 <td><%= listUser.getStatusID()%></td>
                                                 <td class="text-right">
-                                                   
+
                                                     <a href="#" <i class="far fa-calendar-alt"></i></a>
                                                     <a href="#" <i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>
                                         <%
-                                                    }
+                                            }
                                         %>
                                         <%
-                                                }
+                                            }
                                         %>
                                         <%
                                             }
@@ -372,9 +371,9 @@
 //                                        alert('You clicked on Like button');
 //                                    });
                                 });
-                function returnForm() {
-                    document.getElementById('search').submit();             // Function returns the product of a and b
-                }
+                                function returnForm() {
+                                    document.getElementById('search').submit();             // Function returns the product of a and b
+                                }
         </script>
     </body>
 
