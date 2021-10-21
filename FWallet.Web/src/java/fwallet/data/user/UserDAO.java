@@ -307,6 +307,36 @@ public class UserDAO {
         return user;
     }
     
+    public String getUserIDByEmail(String email) throws SQLException{
+        String userID = null;
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT userID"
+                        + " FROM tblStudent"
+                        + " WHERE email =?";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, email);
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    userID = rs.getString("userID");
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return userID;
+    }
+    
     public boolean insertNewUser(UserDTO user) throws SQLException, ClassNotFoundException{
         boolean check = false;
         boolean status = true;

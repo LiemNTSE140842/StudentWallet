@@ -8,6 +8,7 @@ package fwallet.data.controller;
 import fwallet.data.studentreward.StudentRewardDAO;
 import fwallet.data.studentreward.StudentRewardDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,31 +21,18 @@ import javax.servlet.http.HttpSession;
  *
  * @author pphuh
  */
-@WebServlet(name = "SearchStudentRewardDataController", urlPatterns = {"/SearchStudentRewardDataController"})
-public class SearchStudentRewardDataController extends HttpServlet {
+@WebServlet(name = "ShowStudentRewardController", urlPatterns = {"/ShowStudentRewardController"})
+public class ShowStudentRewardController extends HttpServlet {
 
     private final static String ERROR = "error.jsp";
     private final static String SUCCESS = "/admin/addPoint.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = SUCCESS;
+        String url = ERROR;
         try {
-            String search = request.getParameter("search");
-            String filterStatus = request.getParameter("filterStatus");
             StudentRewardDAO studentRewardDao = new StudentRewardDAO();
-            List<StudentRewardDTO> studentRewardList = null;
-            switch(filterStatus){
-                case "All":
-                    studentRewardList = studentRewardDao.getStudentRewardJoinStudentJoinReward();
-                    break;
-                case "Deleted":
-                    studentRewardList = studentRewardDao.getDeletedStudentRewardJoinStudentJoinReward(search);
-                    break;
-                case "Activated":
-                    studentRewardList = studentRewardDao.getActivatedStudentRewardJoinStudentJoinReward(search);
-                    break;
-            }
+            List<StudentRewardDTO> studentRewardList = studentRewardDao.getStudentRewardJoinStudentJoinReward();
             if(!studentRewardList.isEmpty()){
                 request.setAttribute("STUDENT_REWARD_LIST", studentRewardList);
                 url=SUCCESS;
@@ -53,7 +41,7 @@ public class SearchStudentRewardDataController extends HttpServlet {
                 session.setAttribute("ERROR_MESSAGE", "Student Reward is being maintained");
             }
         } catch (Exception e) {
-            log("Error at SearchStudentRewardDataController: " + e.toString());
+            log("Error at ShowProductController: " + e.toString());
         }finally{
             request.getRequestDispatcher(url).forward(request, response);
         }

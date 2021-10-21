@@ -124,7 +124,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<%= request.getContextPath()%>/admin/addPoint.jsp">
                                             <span class="sidebar-mini-icon">AP</span>
                                             <span class="sidebar-normal">Add Point</span>
                                         </a>

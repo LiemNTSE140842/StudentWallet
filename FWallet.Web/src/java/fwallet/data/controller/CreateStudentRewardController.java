@@ -7,53 +7,47 @@ package fwallet.data.controller;
 
 import fwallet.data.studentreward.StudentRewardDAO;
 import fwallet.data.studentreward.StudentRewardDTO;
+import fwallet.data.user.UserDAO;
+import fwallet.data.user.UserDTO;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
+import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author pphuh
  */
-@WebServlet(name = "SearchStudentRewardDataController", urlPatterns = {"/SearchStudentRewardDataController"})
-public class SearchStudentRewardDataController extends HttpServlet {
-
-    private final static String ERROR = "error.jsp";
-    private final static String SUCCESS = "/admin/addPoint.jsp";
+@WebServlet(name = "CreateStudentRewardController", urlPatterns = {"/CreateStudentRewardController"})
+public class CreateStudentRewardController extends HttpServlet {
+    private final static String SUCCESS = "admin/addPoint.jsp";
+    private final static String ERROR = "admin/studentReward/createStudentReward.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = SUCCESS;
+        String url = ERROR; 
         try {
-            String search = request.getParameter("search");
-            String filterStatus = request.getParameter("filterStatus");
+            String studentRewardID = request.getParameter("studentRewardID");
+            String studentEmail = request.getParameter("studentEmail");
+            String rewardString = request.getParameter("rewardName");
+            String tmp[] = rewardString.split("=");
+            String rewardName = tmp[0];
+            String rewardID = tmp[1];
+            UserDAO userDao = new UserDAO();
+            String userID = userDao.getUserIDByEmail(studentEmail);
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            StudentRewardDTO studentReward = new StudentRewardDTO(studentRewardID, userID, rewardID, true, timestamp);
             StudentRewardDAO studentRewardDao = new StudentRewardDAO();
-            List<StudentRewardDTO> studentRewardList = null;
-            switch(filterStatus){
-                case "All":
-                    studentRewardList = studentRewardDao.getStudentRewardJoinStudentJoinReward();
-                    break;
-                case "Deleted":
-                    studentRewardList = studentRewardDao.getDeletedStudentRewardJoinStudentJoinReward(search);
-                    break;
-                case "Activated":
-                    studentRewardList = studentRewardDao.getActivatedStudentRewardJoinStudentJoinReward(search);
-                    break;
-            }
-            if(!studentRewardList.isEmpty()){
-                request.setAttribute("STUDENT_REWARD_LIST", studentRewardList);
+            boolean checkInsert = studentRewardDao.insertNewStudentReward(studentReward);
+            if(checkInsert){
                 url=SUCCESS;
-            }else{
-                HttpSession session = request.getSession();
-                session.setAttribute("ERROR_MESSAGE", "Student Reward is being maintained");
             }
         } catch (Exception e) {
-            log("Error at SearchStudentRewardDataController: " + e.toString());
+            log("Error at CreateStudentRewardController: " + e.toString());
         }finally{
             request.getRequestDispatcher(url).forward(request, response);
         }

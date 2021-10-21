@@ -42,6 +42,15 @@ public class StudentRewardDTO {
         this.description = description;
         this.rewardName = rewardName;
     }
+
+    public StudentRewardDTO(String studentRewardID, String studentID, String rewardID, boolean studentRewardStatus, String email, String rewardName) {
+        this.studentRewardID = studentRewardID;
+        this.studentID = studentID;
+        this.rewardID = rewardID;
+        this.studentRewardStatus = studentRewardStatus;
+        this.email = email;
+        this.rewardName = rewardName;
+    }
     
     public StudentRewardDTO(String studentRewardID, String studentID, String rewardID, boolean studentRewardStatus) {
         this.studentRewardID = studentRewardID;
