@@ -308,7 +308,7 @@ public class UserDAO {
     }
     
     public boolean insertNewUser(UserDTO user) throws SQLException, ClassNotFoundException{
-        boolean check=false;
+        boolean check = false;
         boolean status = true;
         try {
             conn=DBUtil.getConnection();

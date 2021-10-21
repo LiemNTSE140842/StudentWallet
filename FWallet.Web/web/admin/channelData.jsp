@@ -8,7 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -31,7 +31,7 @@
     </head>
 
     <body class=" sidebar-mini ">
-        <% 
+        <%
             UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
         %>
         <div class="wrapper ">
@@ -56,7 +56,7 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="<%= user.getImage() %>" />
+                            <img src="<%= user.getImage()%>" />
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -124,13 +124,13 @@
                                             <span class="sidebar-normal"> Student </span>
                                         </a>
                                     </li>
-                                     <li>
-                                     <a href="<%= request.getContextPath()%>/login.html">
+                                    <li>
+                                        <a href="<%= request.getContextPath()%>/login.html">
                                             <span class="sidebar-mini-icon">AP</span>
                                             <span class="sidebar-normal">Add Point</span>
                                         </a>
-                                           </li>
-                              </ul>
+                                    </li>
+                                </ul>
                     </ul>
                 </div>                         
             </div>
@@ -179,7 +179,7 @@
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                        <a class="nav-link" href="LogOutController">
+                                    <a class="nav-link" href="LogOutController">
                                         <i class="now-ui-icons media-1_button-power"></i>
                                         <p>
                                             <span class="d-lg-none d-md-block"></span>
@@ -203,9 +203,9 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
-                          <form action="<%= request.getContextPath()%>/admin/product/createReward.jsp">
-                                    <button class="btn btn-primary">Create Chanel</button>
-                    </form>      
+                                        <form action="<%= request.getContextPath()%>/admin/product/createReward.jsp">
+                                            <button class="btn btn-primary">Create Chanel</button>
+                                        </form>      
                                     </div>
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
@@ -214,7 +214,7 @@
                                                 <th>Name</th>
                                                 <th>Office</th>
                                                 <th>Phone</th>
-                                                
+
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </thead>
@@ -227,34 +227,36 @@
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </tfoot>
-                                        <%
-                                            List<ChannelDTO> list = (List<ChannelDTO>) request.getAttribute("LIST_CHANNEL");
-                                            if (list != null) {
-                                                if (!list.isEmpty()) {
-                                                    for(ChannelDTO listChannel : list){
-                                        %>
+
                                         <tbody>
+                                            <%
+                                                List<ChannelDTO> list = (List<ChannelDTO>) request.getAttribute("LIST_CHANNEL");
+                                                if (list != null) {
+                                                    if (!list.isEmpty()) {
+                                                        for (ChannelDTO listChannel : list) {
+                                            %>
                                             <tr>
                                                 <td><%= listChannel.getChannelID()%></td>
                                                 <td><%= listChannel.getChannelName()%></td>
                                                 <td><%= listChannel.getChannelOffice()%></td>
                                                 <td><%= listChannel.getChannelPhone()%></td>
-                                                
+
                                                 <td class="text-right">
                                                     <a href="<%= request.getContextPath()%>/admin/channel/updateChannel.jsp?channelID=<%= listChannel.getChannelID()%>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
-                                                    <a href="RemoveChannelDataController?channelID=<%= listChannel.getChannelID() %>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
+                                                    <a href="RemoveChannelDataController?channelID=<%= listChannel.getChannelID()%>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                        <%
-                                                    }
-                                        %>
-                                        <%
+                                            <%
                                                 }
-                                        %>
-                                        <%
-                                            }
-                                        %>
+                                            %>
+                                            <%
+                                                }
+                                            %>
+                                            <%
+                                                }
+                                            %>
+                                        </tbody>
+
                                     </table>
                                 </div><!-- end content-->
                             </div><!--  end card  -->
@@ -359,11 +361,11 @@
                                         alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
                                     });
 
-                                    
+
                                 });
-                function returnForm() {
-                    document.getElementById('search').submit();             // Function returns the product of a and b
-                }
+                                function returnForm() {
+                                    document.getElementById('search').submit();             // Function returns the product of a and b
+                                }
         </script>
     </body>
 
