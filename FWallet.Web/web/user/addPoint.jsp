@@ -115,29 +115,33 @@
                                 </thead>
 
                                 <tbody>
+                                        <%
+                                            List<StudentRewardDTO> studentList = (List<StudentRewardDTO>) request.getAttribute("Student_Reward_List");
+                                            if (studentList != null) {
+                                                for (StudentRewardDTO list : studentList) {
+                                        %>
 
-                                    <%
-                                        List<StudentRewardDTO> studentList = (List<StudentRewardDTO>) request.getAttribute("Student_Reward_List");
-                                        if (studentList != null) {
-                                            for (StudentRewardDTO list : studentList) {
-                                    %>
                                     <tr>
-                                <form action="AddPointController" method="POST">
-                                    <td class="text-left"><%= list.getRewardName()%></td>
-                                    <td name="productPoint" value="<%= list.getRewardPoint()%>" class="text-left"><%= list.getRewardPoint()%></td>
-                                    <td class="text-left"><%= list.getDescription()%></td>
-                                    <td>
-                                        <input type="hidden" name="studentRewardID" value="<%= list.getStudentRewardID()%>" />
-                                        <button type="button" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral">
-                                            <i class="now-ui-icons media-1_button-play"></i>
-                                        </button>
-                                    </td>
-                                </form>
-                                </tr>
-                                <%
-                                        }
-                                    }
-                                %>
+                                        
+                                        <td class="text-left"><%= list.getRewardName()%></td>
+                                        <td class="text-left"><%= list.getRewardPoint()%></td>
+                                        <td class="text-left"><%= list.getDescription()%></td>
+                                        <td>
+                                            <form action="AddPointController" method="POST">
+                                                <input type="hidden" name="productPoint" value="<%= list.getRewardPoint()%>" />
+                                                <input type="hidden" name="studentRewardID" value="<%= list.getStudentRewardID()%>" />
+                                                <button type="submit" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral">
+                                                    Use
+                                                </button>
+                                            </form>
+                                        </td>
+                                       
+                                    </tr>
+                                        <%
+                                                        }
+                                                    }
+                                        %>
+                                        
                                 </tbody>
                             </table>
                         </div>
@@ -152,37 +156,36 @@
             </div>
             <!-- End Navbar -->
         </div> <!-- wizard container -->
+
+        <footer class="footer">
+            <div class=" container-fluid ">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="https://www.creative-tim.com">
+                                Creative Tim
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://presentation.creative-tim.com">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright" id="copyright">
+                    &copy; <script>
+                        document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+                    </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                </div>
+            </div>
+        </footer>
     </div>
-</div>
-<footer class="footer">
-    <div class=" container-fluid ">
-        <nav>
-            <ul>
-                <li>
-                    <a href="https://www.creative-tim.com">
-                        Creative Tim
-                    </a>
-                </li>
-                <li>
-                    <a href="http://presentation.creative-tim.com">
-                        About Us
-                    </a>
-                </li>
-                <li>
-                    <a href="http://blog.creative-tim.com">
-                        Blog
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="copyright" id="copyright">
-            &copy; <script>
-                document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
-        </div>
-    </div>
-</footer>
-</div>
 </div>
 <!--   Core JS Files   -->
 <script src="<%= request.getContextPath()%>/assets/js/core/jquery.min.js"></script>

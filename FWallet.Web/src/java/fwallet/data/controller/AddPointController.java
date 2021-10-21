@@ -33,7 +33,8 @@ public class AddPointController extends HttpServlet {
         String url=ERROR;
         try {
             String studentRewardID = request.getParameter("studentRewardID");
-            int productPoint = Integer.parseInt(request.getParameter("productPoint"));
+            String pointString = request.getParameter("productPoint");
+            int productPoint = Integer.parseInt(pointString);
             HttpSession session = request.getSession();
             UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
             WalletDAO walletDao = new WalletDAO();

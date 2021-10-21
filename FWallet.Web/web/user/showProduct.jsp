@@ -92,7 +92,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<%= request.getContextPath()%>/user/addPoint.jsp">
+                            <a href="<%= request.getContextPath()%>/user/addPointRaw.jsp">
                                 <i class="now-ui-icons design_app"></i>
                                 <p>Add Point</p>
                             </a>
