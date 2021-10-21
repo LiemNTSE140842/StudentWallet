@@ -5,6 +5,7 @@
  */
 package fwallet.data.studentreward;
 
+import fwallet.data.user.UserDTO;
 import fwallet.data.util.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -74,6 +75,40 @@ public class StudentRewardDAO {
                     String email = rs.getString("email");
                     String rewardName = rs.getString("rewardName");
                     list.add(new StudentRewardDTO(studentRewardID, studentID, rewardID, studentRewardStatus, email));
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
+    
+    public List<StudentRewardDTO> getStudentRewardStudentIdAndStatus(UserDTO user) throws SQLException{
+        List<StudentRewardDTO> list = new ArrayList<>();
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT tblStudentReward.studentRewardID, tblStudentReward.studentID, tblStudentReward.rewardID, tblReward.rewardPoint"
+                        + " FROM tblStudentReward INNER JOIN tblReward ON tblStudentReward.rewardID = tblReward.rewardID"
+                        + " WHERE tblStudentReward.studentID=? AND studentRewardStatus= 1";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, user.getUserID());
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String studentRewardID = rs.getString("studentRewardID");
+                    String studentID = rs.getString("studentID");
+                    String rewardID = rs.getString("rewardID");
+                    int rewardPoint = rs.getInt("rewardPoint");
+                    list.add(new StudentRewardDTO(studentRewardID, studentID, rewardID, rewardPoint));
                 }
             }
         } catch (Exception e) {

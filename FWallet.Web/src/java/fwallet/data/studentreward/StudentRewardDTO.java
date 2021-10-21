@@ -19,8 +19,16 @@ public class StudentRewardDTO {
     private Timestamp createDate;
     private Short usedDate;
     private String email;
+    private int rewardPoint;
     
     public StudentRewardDTO() {
+    }
+
+    public StudentRewardDTO(String studentRewardID, String studentID, String rewardID, int rewardPoint) {
+        this.studentRewardID = studentRewardID;
+        this.studentID = studentID;
+        this.rewardID = rewardID;
+        this.rewardPoint = rewardPoint;
     }
     
     public StudentRewardDTO(String studentRewardID, String studentID, String rewardID, boolean studentRewardStatus) {
@@ -44,6 +52,14 @@ public class StudentRewardDTO {
         this.rewardID = rewardID;
         this.studentRewardStatus = studentRewardStatus;
         this.createDate = createDate;
+    }
+
+    public int getRewardPoint() {
+        return rewardPoint;
+    }
+
+    public void setRewardPoint(int rewardPoint) {
+        this.rewardPoint = rewardPoint;
     }
 
     public String getEmail() {

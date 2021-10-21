@@ -163,31 +163,32 @@
                                         </div>
                                     </div>
                                 </div>
+                            
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Filter <i class="fas fa-filter"></i>
+                                            <p>
+                                                <span class="d-lg-none d-md-block">Some Actions</span>
+                                            </p>
+                                        </a>
+                                        <select class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" name="filterStatus">
+                                            <option value="All" selected>All</option>
+                                            <option value="Deleted">Deleted</option>
+                                            <option value="Activated">Activated</option>
+                                        </select>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="LogOutController">
+                                            <i class="now-ui-icons media-1_button-power"></i>
+                                            <p>
+                                                <span class="d-lg-none d-md-block"></span>
+                                                Log Out
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </form>
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Filter <i class="fas fa-filter"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
-                                        </p>
-                                    </a>
-                                    <select class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" name="filterStatus">
-                                        <option class="dropdown-item" value="All" selected>All</option>
-                                        <option class="dropdown-item" value="Deleted">Deleted</option>
-                                        <option class="dropdown-item" value="Activated">Activated</option>
-                                    </select>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="LogOutController">
-                                        <i class="now-ui-icons media-1_button-power"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block"></span>
-                                            Log Out
-                                        </p>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </nav>

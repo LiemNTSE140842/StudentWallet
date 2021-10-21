@@ -52,6 +52,17 @@ public class ProductDTO {
         this.image = image;
     }
 
+    public ProductDTO(String productID, String categoryID, String productName, String description, double price, int quantity, boolean statusID, String image) {
+        this.productID = productID;
+        this.categoryID = categoryID;
+        this.productName = productName;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.statusID = statusID;
+        this.image = image;
+    }
+
     public ProductDTO(String productID, String categoryID, String productName, String description, double price, int quantity, boolean statusID, Timestamp createDate, String image) {
         this.productID = productID;
         this.categoryID = categoryID;
