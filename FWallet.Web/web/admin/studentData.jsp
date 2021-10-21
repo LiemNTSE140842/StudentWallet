@@ -135,7 +135,7 @@
             </div>
             <div class="main-panel" id="main-panel">
                 <!-- Navbar -->
-                <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+               <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
                             <div class="navbar-toggle">
@@ -155,40 +155,38 @@
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
                             <form action="<%=request.getContextPath()%>/SearchController" id="search" method="POST">
                                 <div class="input-group no-border">
-                                    
                                     <input type="text" name="search" value="" class="form-control" placeholder="Search...">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text" onclick="returnForm()">
+                                    <div class="input-group-append" onclick="returnForm()">
+                                        <div class="input-group-text">
                                             <i class="now-ui-icons ui-1_zoom-bold"></i>
                                         </div>
                                     </div>
                                 </div>
-                            
-                                <ul class="navbar-nav">
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Filter <i class="fas fa-filter"></i>
-                                            <p>
-                                                <span class="d-lg-none d-md-block">Some Actions</span>
-                                            </p>
-                                        </a>
-                                        <select class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" name="filterStatus">
-                                            <option value="All" selected>All</option>
-                                            <option value="Deleted">Deleted</option>
-                                            <option value="Activated">Activated</option>
-                                        </select>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="LogOutController">
-                                            <i class="now-ui-icons media-1_button-power"></i>
-                                            <p>
-                                                <span class="d-lg-none d-md-block"></span>
-                                                Log Out
-                                            </p>
-                                        </a>
-                                    </li>
-                                </ul>
                             </form>
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Filter <i class="fas fa-filter"></i>
+                                        <p>
+                                            <span class="d-lg-none d-md-block">Some Actions</span>
+                                        </p>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                        <option class="dropdown-item" value="#">All</option>
+                                        <option class="dropdown-item" value="#">Deleted</option>
+                                        <option class="dropdown-item" valu="#">Activated</option>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="LogOutController">
+                                        <i class="now-ui-icons media-1_button-power"></i>
+                                        <p>
+                                            <span class="d-lg-none d-md-block"></span>
+                                            Log Out
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </nav>
