@@ -5,6 +5,10 @@
  */
 package fwallet.data.controller;
 
+import fwallet.data.studentreward.StudentRewardDAO;
+import fwallet.data.user.UserDTO;
+import fwallet.data.wallet.WalletDAO;
+import fwallet.data.wallet.WalletDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -20,29 +25,34 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "AddPointController", urlPatterns = {"/AddPointController"})
 public class AddPointController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private final static String SUCCESS = "ShowUserRewardController";
+    private final static String ERROR = "error.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddPointController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddPointController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String url=ERROR;
+        try {
+            String studentRewardID = request.getParameter("studentRewardID");
+            int productPoint = Integer.parseInt(request.getParameter("productPoint"));
+            HttpSession session = request.getSession();
+            UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+            WalletDAO walletDao = new WalletDAO();
+            WalletDTO wallet = walletDao.getUserWallet(user);
+            if(wallet!=null){
+                int remainPoint = wallet.getWalletPoint() + productPoint;
+                wallet.setWalletPoint(remainPoint);
+                walletDao.updateWallet(user, remainPoint);
+                StudentRewardDAO studentRewardDao = new StudentRewardDAO();
+                boolean checkUpdateStatus = studentRewardDao.updateStudentWalletStatus(studentRewardID);
+                url=SUCCESS;
+            }else{
+                url=ERROR;
+            }
+            
+        } catch (Exception e) {
+            log("Error at AddPointController: " + e.toString());
+        }finally{
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

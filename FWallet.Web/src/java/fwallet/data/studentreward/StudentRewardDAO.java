@@ -60,9 +60,9 @@ public class StudentRewardDAO {
             conn = DBUtil.getConnection();
             if(conn!=null){
                 String sql = "SELECT studentRewardID, StudentReward.studentID, StudentReward.rewardID, studentRewardStatus, email, tblReward.rewardName"
-                        +" FROM StudentReward"
-                        +" INNER JOIN tblStudent ON StudentReward.studentID = tblStudent.userID"
-                        +" INNER JOIN tblReward ON StudentReward.rewardID = tblReward.rewardID"
+                        +" FROM tblStudentReward"
+                        +" INNER JOIN tblStudent ON tblStudentReward.studentID = tblStudent.userID"
+                        +" INNER JOIN tblReward ON tblStudentReward.rewardID = tblReward.rewardID"
                         + " WHERE email like ?";
                 stm = conn.prepareStatement(sql);
                 stm.setString(1, "%" + search + "%");
@@ -127,5 +127,34 @@ public class StudentRewardDAO {
             }
         }
         return studentList;
+    }
+    
+    public boolean updateStudentWalletStatus(String studentRewardID) throws SQLException{
+        boolean check = false;
+        try {
+            conn= DBUtil.getConnection();
+            if(conn!=null){
+                String sql ="UPDATE tblStudentReward"
+                        + " SET studentRewardStatus=?"
+                        + " WHERE studentRewardID=?";
+                stm=conn.prepareStatement(sql);
+                stm.setBoolean(1, check);
+                stm.setString(2, studentRewardID);
+                check=stm.executeUpdate()>0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return check;
     }
 }
