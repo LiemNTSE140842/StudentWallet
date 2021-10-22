@@ -1,11 +1,11 @@
 <%-- 
-    Document   : welcome
-    Created on : Sep 25, 2021, 3:14:46 PM
-    Author     : pphuh
+    Document   : createChanel
+    Created on : Oct 22, 2021, 8:02:25 AM
+    Author     : ThanhLiemPro
 --%>
 
-<<%@page import="fwallet.data.reward.RewardDTO"%>
-<%@page import="fwallet.data.reward.RewardDAO"%>
+<%@page import="fwallet.data.channel.ChannelDTO"%>
+<%@page import="fwallet.data.channel.ChannelDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,7 @@
   <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Now UI Dashboard PRO by Creative Tim
+    Create Channel
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -30,7 +30,6 @@
 </head>
 
 <body class=" sidebar-mini ">
-    
   <div class="wrapper ">
     <div class="sidebar" data-color="orange">
       <!--
@@ -98,21 +97,13 @@
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
       <!-- End Navbar -->
-            <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/UpdateRewardDataController" method="POST">
+            <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/CreateChanelDataController" method="POST">
               <div class="card ">
                 <div class="card-header ">
-                  <h4 class="card-title">Create Reward</h4>
+                  <h4 class="card-title">Create Channel</h4>
                 </div>
                 <div class="card-body ">
-                 <div class="row">
-                    <label class="col-sm-2 col-form-label">Reward ID</label>
-                    <div class="col-sm-7">
-                      <div class="form-group">
-                        <input class="form-control" type="text" name="rewardID" required="true" />
-                      </div>
-                    </div>
-                  </div>
-                    <div class="row">
+                     <div class="row">
                     <label class="col-sm-2 col-form-label">Channel ID</label>
                     <div class="col-sm-7">
                       <div class="form-group">
@@ -121,47 +112,31 @@
                     </div>
                     </div>
                   <div class="row">
-                    <label class="col-sm-2 col-form-label">Reward Name</label>
+                    <label class="col-sm-2 col-form-label">Channel Name</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="text"  name="rewardName" required="true" />
+                        <input class="form-control" type="text" name="channelName" required="true" />
                       </div>
                     </div>
                     </div>
                   <div class="row">
-                    <label class="col-sm-2 col-form-label">Reward Point</label>
+                    <label class="col-sm-2 col-form-label">Office</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="number" min="0" name="rewardPoint" required="true" />
+                          <input class="form-control" type="text" name="channelOffice" required="true" />
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <label class="col-sm-2 col-form-label">Description</label>
+                    <label class="col-sm-2 col-form-label">Phone</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="text"  name="description" required="true" />
-                      </div>
-                    </div>
-                  </div>
-                      <div class="row">
-                    <label class="col-sm-2 col-form-label">Student ID</label>
-                    <div class="col-sm-7">
-                      <div class="form-group">
-                        <input class="form-control" type="text"  name="studentID" required="true" />
-                      </div>
-                    </div>
-                  </div>
-                      <div class="row">
-                    <label class="col-sm-2 col-form-label">Reward Type</label>
-                    <div class="col-sm-7">
-                      <div class="form-group">
-                        <input class="form-control" type="text"  name="rewardType" required="true" />
+                        <input class="form-control" type="number" name="channelPhone" required="true" />
                       </div>
                     </div>
                   </div>
                     <div class="card-footer text-center">
-                  <button type="submit"class="btn btn-primary">Create Reward</button>
+                  <button type="submit"class="btn btn-primary">Create Channel</button>
                 </div>
                 </div>
               </div>

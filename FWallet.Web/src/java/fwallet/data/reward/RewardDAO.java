@@ -121,6 +121,39 @@ public class RewardDAO {
         }
         return reward;
     }
+    public boolean insertNewReward(RewardDTO reward) throws SQLException{
+        boolean check = true;
+        try{
+            conn=DBUtil.getConnection();
+            if(conn!=null){
+               String sql="INSERT INTO tblReward(rewardID, channelID , rewardName, rewardPoint, rewardDate, description, studentID, rewardTypeID) "
+                       + "VALUES(?,?,?,?,?,?,?,?)"; 
+               stm=conn.prepareStatement(sql);
+               stm.setString(1, reward.getRewardID());
+               stm.setString(2, reward.getChannelID());
+               stm.setString(3, reward.getRewardName());
+               stm.setInt(4, reward.getRewardPoint());
+               stm.setTimestamp(5, reward.getRewardDate());
+               stm.setString(6, reward.getDescription());
+               stm.setString(7, reward.getStudentID());
+               stm.setString(8, reward.getRewardTypeID());
+               check = stm.executeUpdate()>0;
+            }
+        }catch(ClassNotFoundException|SQLException e){
+            System.out.println(e);
+        }finally{
+             if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return check;
+    }
     public boolean updateReward(RewardDTO reward) throws SQLException{
         boolean check = false;
         try {

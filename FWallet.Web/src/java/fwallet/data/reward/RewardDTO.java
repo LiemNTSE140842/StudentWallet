@@ -46,6 +46,19 @@ public class RewardDTO {
         this.studentID = studentID;
     }
 
+    public RewardDTO(String rewardID, String channelID, String rewardTypeID, String rewardName, int rewardPoint, Timestamp rewardDate, String description, String rewardImage, String studentID) {
+        this.rewardID = rewardID;
+        this.channelID = channelID;
+        this.rewardTypeID = rewardTypeID;
+        this.rewardName = rewardName;
+        this.rewardPoint = rewardPoint;
+        this.rewardDate = rewardDate;
+        this.description = description;
+        this.rewardImage = rewardImage;
+        this.studentID = studentID;
+    }
+    
+
     public String getStudentID() {
         return studentID;
     }

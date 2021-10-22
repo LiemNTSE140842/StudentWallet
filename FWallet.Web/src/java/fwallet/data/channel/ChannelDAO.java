@@ -121,6 +121,37 @@ public class ChannelDAO {
         }
         return check;
     }
+    public boolean insertNewChanel(ChannelDTO chanel) throws SQLException{
+        boolean check = false;
+        try {
+            conn=DBUtil.getConnection();
+            if(conn!=null){
+                String sql ="INSERT INTO tblChannel(channeID,channelName,channelOffice,channelPhone,channelStartDate)" 
+                +"VALUES(?,?,?,?,?)";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, chanel.getChannelID());
+                stm.setString(2, chanel.getChannelName());
+                stm.setString(3, chanel.getChannelOffice());
+                stm.setString(4, chanel.getChannelPhone());
+                stm.setTimestamp(5, chanel.getChannelStartDate());
+                check = stm.executeUpdate()>0;
+            }
+        }catch(SQLException|ClassNotFoundException e){
+            System.out.println(e);
+        }finally{
+             if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+         }
+}
+        return check;
+}
+
     
     public boolean removeChannel(String ID) throws SQLException{
         boolean check = false;
