@@ -203,7 +203,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
-                                        <form action="<%= request.getContextPath()%>/admin/product/createReward.jsp">
+                                        <form action="<%= request.getContextPath()%>/admin/reward/createReward.jsp">
                                             <button class="btn btn-primary">Create Chanel</button>
                                         </form>      
                                     </div>

@@ -5,10 +5,10 @@
  */
 package fwallet.data.controller;
 
-import fwallet.data.channel.ChannelDAO;
-import fwallet.data.channel.ChannelDTO;
+import fwallet.data.reward.RewardDAO;
+import fwallet.data.reward.RewardDTO;
 import java.io.IOException;
-import java.util.List;
+import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,32 +17,39 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author pphuh
+ * @author ThanhLiemPro
  */
-@WebServlet(name = "SearchChannelDataController", urlPatterns = {"/SearchChannelDataController"})
-public class SearchChannelDataController extends HttpServlet {
+@WebServlet(name = "CreateRewardDataController", urlPatterns = {"/CreateRewardDataController"})
+public class CreateRewardDataController extends HttpServlet {
 
-    public static final String ERROR = "error.jsp";
-    public static final String SUCCESS = "/admin/channelData.jsp";
+   private final static String ERROR = "/admin/reward/createReward.jsp";
+   private final static String SUCCESS = "/admin/rewardData.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url=ERROR;
+      String url =ERROR;
         try {
-            String search = request.getParameter("search");
-            ChannelDAO dao = new ChannelDAO();
-            List<ChannelDTO> list = dao.getChannelByName(search);
-            if(!list.isEmpty()){
-                request.setAttribute("LIST_CHANNEL", list);
-                url=SUCCESS;
-            }else{
+            String rewardID = request.getParameter("rewardID");
+            String chanelID = request.getParameter("channelID");
+            String rewardName = request.getParameter("rewardName");
+            Timestamp rewardDate = new Timestamp(System.currentTimeMillis());
+            int rewardPoint = Integer.parseInt(request.getParameter("rewardPoint"));
+            String description = request.getParameter("description");
+            String studentID = request.getParameter("studentID");
+            String rewardType = request.getParameter("rewardType");
+            RewardDTO dto = new RewardDTO(rewardID, chanelID, rewardType, rewardName, rewardPoint, rewardDate, description, rewardName, studentID);
+            RewardDAO dao = new RewardDAO();
+            boolean insertReward = dao.insertNewReward(dto);
+            if(insertReward){
                 url=SUCCESS;
             }
         } catch (Exception e) {
-            log("Error at RemoveRewardDataController: " + e.toString());
+             log("Error at CreateRewarDataController: " + e.toString());
         }finally{
-            request.getRequestDispatcher(url).forward(request, response);
+              request.getRequestDispatcher(url).forward(request, response);
         }
+          
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

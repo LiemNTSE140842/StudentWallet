@@ -101,6 +101,20 @@
                 </div>
             </div>
             <div class="main-panel" id="main-panel">
+                <div class="card-body ">
+                <div class="statistics statistics-horizontal">
+                  <div class="info info-horizontal">
+                    <div class="row">
+                      <div class="col-5">
+                      </div>
+                      <div class="col-7 text-right">
+                        <h3 class="info-title">1058</h3>
+                        <h3 class="stats-title">Point</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
                 <!-- Navbar -->
                 <div class="wrapper wrapper-full-page ">
                     <div class="full-page pricing-page section-image" data-image="<%= request.getContextPath()%>/assets/img/bg15.jpg">

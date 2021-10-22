@@ -8,7 +8,8 @@ package fwallet.data.controller;
 import fwallet.data.channel.ChannelDAO;
 import fwallet.data.channel.ChannelDTO;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
+import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,32 +18,36 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author pphuh
+ * @author ThanhLiemPro
  */
-@WebServlet(name = "SearchChannelDataController", urlPatterns = {"/SearchChannelDataController"})
-public class SearchChannelDataController extends HttpServlet {
+@WebServlet(name = "CreateChanelDataController", urlPatterns = {"/CreateChanelDataController"})
+public class CreateChanelDataController extends HttpServlet {
 
-    public static final String ERROR = "error.jsp";
-    public static final String SUCCESS = "/admin/channelData.jsp";
+    private final static String ERROR = "/admin/channel/createChannel.jsp";
+    private final static String SUCCESS = "/admin/channelData.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url=ERROR;
+      String url = ERROR;
         try {
-            String search = request.getParameter("search");
+            String channelID = request.getParameter("channelID");
+            String channelName = request.getParameter("channelName");
+            String channelOffice = request.getParameter("channelOffice");
+            String channelPhone = request.getParameter("channelPhone");
+            Timestamp channelCreateDate = new Timestamp(System.currentTimeMillis());
+            ChannelDTO channel = new ChannelDTO(channelID, channelName, channelOffice, channelPhone, channelCreateDate);
             ChannelDAO dao = new ChannelDAO();
-            List<ChannelDTO> list = dao.getChannelByName(search);
-            if(!list.isEmpty()){
-                request.setAttribute("LIST_CHANNEL", list);
+            boolean checkInsertChannel = dao.insertNewChanel(channel);
+            if(checkInsertChannel){
                 url=SUCCESS;
-            }else{
-                url=SUCCESS;
-            }
+            } 
         } catch (Exception e) {
-            log("Error at RemoveRewardDataController: " + e.toString());
-        }finally{
-            request.getRequestDispatcher(url).forward(request, response);
+             log("Error at CreateChanellController: " + e.toString());
+        }finally
+        {
+             request.getRequestDispatcher(url).forward(request, response);
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
