@@ -4,6 +4,8 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.wallet.WalletDAO"%>
+<%@page import="fwallet.data.wallet.WalletDTO"%>
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page import="fwallet.data.product.ProductDTO"%>
 <%@page import="java.util.List"%>
@@ -92,9 +94,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<%= request.getContextPath()%>/user/addPointRaw.jsp">
-                                <i class="now-ui-icons design_app"></i>
-                                <p>Add Point</p>
+                            <a href="LogOutController">
+                                <i class="now-ui-icons media-1_button-power"></i>
+                                <p>Log out</p>
                             </a>
                         </li>
                     </ul>
@@ -105,11 +107,15 @@
                 <div class="statistics statistics-horizontal">
                   <div class="info info-horizontal">
                     <div class="row">
-                      <div class="col-5">
+                      <div class="col-5 text-left">
+                        <h3 class="info-title">Hello <%= user.getStudentName() %>!</h3>
                       </div>
+                        <%
+                            WalletDAO walletDao = new WalletDAO();
+                            WalletDTO wallet = walletDao.getUserWalletByID(user.getUserID());
+                        %>
                       <div class="col-7 text-right">
-                        <h3 class="info-title">1058</h3>
-                        <h3 class="stats-title">Point</h3>
+                        <h3 class="info-title">Total: <%= wallet.getWalletPoint()%> Point</h3>
                       </div>
                     </div>
                   </div>

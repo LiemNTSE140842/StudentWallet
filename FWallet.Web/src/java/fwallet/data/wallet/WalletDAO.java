@@ -58,6 +58,43 @@ public class WalletDAO {
         return wallet;
     }
     
+    public WalletDTO getUserWalletByID(String userId) throws SQLException{
+        WalletDTO wallet = null;
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT walletID, userID, walletName, balance, walletPoint, walletStatus, rewardID"
+                        + " FROM tblWallet"
+                        + " WHERE userID = ?";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, userId);
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String walletID = rs.getString("walletID");
+                    String userID = rs.getString("userID");
+                    String walletName = rs.getString("walletName");
+                    float balance = rs.getFloat("balance");
+                    int walletPoint = rs.getInt("walletPoint");
+                    boolean walletStatus = rs.getBoolean("walletStatus");
+                    String rewardID = rs.getString("rewardID");
+                    wallet = new WalletDTO(walletID, userID, walletName, balance, walletPoint, walletStatus, rewardID);
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return wallet;
+    }
+    
     public boolean updateWallet(UserDTO user, int minusPoint) throws SQLException{
         boolean check = false;
         try {

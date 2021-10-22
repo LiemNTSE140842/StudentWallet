@@ -202,11 +202,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-7">
-                                <div class="form-group">
-                                    <input class="form-control" type="number" min="0" name="status" required="true" value="<%= user.getStatusID()%>"/>
-                                </div>
-                            </div>
                         </div>
                         <div class="card-footer text-center">
                             <input type="hidden" name="oldEmail" value="<%= userEmail%>"/>
