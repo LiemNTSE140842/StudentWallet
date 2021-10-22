@@ -198,7 +198,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Student Data</h4>
+                                    <h4 class="card-title">Student Reward Data</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
@@ -239,8 +239,7 @@
                                                 <td><%= studentReward.getRewardName()%></td>
                                                 <td><%= studentReward.isStudentRewardStatus()? "holding" : "used" %></td>
                                                 <td>
-                                                    <a href="<%= request.getContextPath()%>/admin/studentReward/createStudentReward.jsp?email=" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="fas fa-user-edit"></i></a>
-                                                    <a href="RemoveController?email=<%= studentReward.getEmail()%>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
+                                                    <a href="RemoveStudentRewardController?studentRewardID=<%= studentReward.getStudentRewardID()%>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
                                             <%

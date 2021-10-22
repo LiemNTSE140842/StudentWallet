@@ -300,4 +300,33 @@ public class StudentRewardDAO {
         }
         return check;
     }
+    
+    public boolean removeStudentReward(String studentRewardID) throws SQLException{
+        boolean check = false;
+        try {
+            conn= DBUtil.getConnection();
+            if(conn!=null){
+                String sql ="UPDATE tblStudentReward"
+                        + " SET studentRewardStatus=?"
+                        + " WHERE studentRewardID=?";
+                stm=conn.prepareStatement(sql);
+                stm.setBoolean(1, check);
+                stm.setNString(2, studentRewardID);
+                check=stm.executeUpdate()>0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return check;
+    }
 }
