@@ -31,7 +31,6 @@
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href="<%= request.getContextPath()%>/assets/demo/demo.css" rel="stylesheet" />
     </head>
-
     <body class=" sidebar-mini ">
         <%
             UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
@@ -154,6 +153,7 @@
                                             </div>
                                                 <form action="GetProductController" method="POST">
                                                     <div class="card-footer">
+                                                        <input type="hidden" name="productID" value="<%= p.getProductID() %>"/>
                                                         <input type="hidden" name="productPoint" value="<%= p.getPrice() %>"/>
                                                         <button class="btn btn-round btn-neutral btn-success">Get Ya</button>
                                                     </div>

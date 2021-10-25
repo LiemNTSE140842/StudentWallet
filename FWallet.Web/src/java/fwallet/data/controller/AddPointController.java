@@ -6,11 +6,16 @@
 package fwallet.data.controller;
 
 import fwallet.data.studentreward.StudentRewardDAO;
+import fwallet.data.transaction.TransactionDAO;
+import fwallet.data.transaction.TransactionDTO;
 import fwallet.data.user.UserDTO;
 import fwallet.data.wallet.WalletDAO;
 import fwallet.data.wallet.WalletDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,8 +46,13 @@ public class AddPointController extends HttpServlet {
             WalletDTO wallet = walletDao.getUserWallet(user);
             if(wallet!=null){
                 int remainPoint = wallet.getWalletPoint() + productPoint;
+                TransactionDAO transactionDao = new TransactionDAO();
+                String formattedDateTime = getTransactionID();
+                Timestamp timeTemp = getTimeTemp();
+                TransactionDTO transaction = new TransactionDTO(formattedDateTime, studentRewardID, wallet.getWalletID(), productPoint, timeTemp);
                 wallet.setWalletPoint(remainPoint);
                 walletDao.updateWallet(user, remainPoint);
+                transactionDao.insertAddPointTransaction(transaction);
                 StudentRewardDAO studentRewardDao = new StudentRewardDAO();
                 boolean checkUpdateStatus = studentRewardDao.updateStudentWalletStatus(studentRewardID);
                 url=SUCCESS;
@@ -55,6 +65,17 @@ public class AddPointController extends HttpServlet {
         }finally{
             request.getRequestDispatcher(url).forward(request, response);
         }
+    }
+    String getTransactionID(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        String formattedDateTime = currentDateTime.format(dtf);
+        return formattedDateTime;
+    }
+    Timestamp getTimeTemp(){
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        Timestamp timeTemp = Timestamp.valueOf(currentDateTime);
+        return timeTemp;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

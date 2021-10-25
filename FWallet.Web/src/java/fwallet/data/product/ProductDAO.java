@@ -83,6 +83,9 @@ public class ProductDAO {
                 conn.close();
             }
         }
+//        for(ProductDTO model : list) {
+//            System.out.println(model.getProductID());
+//        }
         return list;
     }
     
