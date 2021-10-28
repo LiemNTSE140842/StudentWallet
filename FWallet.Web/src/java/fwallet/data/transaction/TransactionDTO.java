@@ -31,6 +31,15 @@ public class TransactionDTO {
         this.orderDate = orderDate;
     }
 
+    public TransactionDTO(String transactionID, String studentRewardID, String walletID, String orderID, int minusPoint, Timestamp orderDate) {
+        this.transactionID = transactionID;
+        this.studentRewardID = studentRewardID;
+        this.walletID = walletID;
+        this.orderID = orderID;
+        this.minusPoint = minusPoint;
+        this.orderDate = orderDate;
+    }
+
     public String getTransactionID() {
         return transactionID;
     }

@@ -7,6 +7,8 @@ package fwallet.data.controller;
 
 import fwallet.data.order.OrderDAO;
 import fwallet.data.order.OrderDTO;
+import fwallet.data.transaction.TransactionDAO;
+import fwallet.data.transaction.TransactionDTO;
 import fwallet.data.user.UserDTO;
 import fwallet.data.wallet.WalletDAO;
 import fwallet.data.wallet.WalletDTO;
@@ -43,7 +45,7 @@ public class GetProductController extends HttpServlet {
             WalletDTO wallet = walletDao.getUserWallet(user);
             int remainPoint = (int) (wallet.getWalletPoint() - productPoint);
             if(remainPoint>=0){
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
                 LocalDateTime currentDateTime = LocalDateTime.now();
                 Timestamp timeTemp = Timestamp.valueOf(currentDateTime);
                 String formattedDateTime = currentDateTime.format(dtf);
@@ -51,7 +53,10 @@ public class GetProductController extends HttpServlet {
                 OrderDTO order = new OrderDTO(formattedDateTime, user.getUserID(), productID, remainPoint, timeTemp, "pending");
                 wallet.setWalletPoint(remainPoint);
                 walletDao.updateWallet(user, remainPoint);
-                //orderDao.insertOrder(order);
+                orderDao.insertOrder(order);
+                TransactionDAO transactionDao = new TransactionDAO();
+                TransactionDTO transaction = new TransactionDTO(formattedDateTime, "", wallet.getWalletID(), formattedDateTime, (int)productPoint, timeTemp);
+                transactionDao.insertMinusTransaction(transaction);
                 url=SUCCESS;
             }else{
                 url=ERROR;

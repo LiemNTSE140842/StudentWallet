@@ -56,7 +56,7 @@ public class ProductDAO {
         try {
             conn = DBUtil.getConnection();
             if(conn!=null){
-                String sql = "SELECT productID, categoryID, productName, price, quantity, statusID, image"
+                String sql = "SELECT productID, categoryID, productName, description, price, quantity, statusID, image"
                         +" FROM tblProduct";
                 stm = conn.prepareStatement(sql);
                 rs=stm.executeQuery();
@@ -64,11 +64,12 @@ public class ProductDAO {
                     String productID = rs.getString("productID");
                     String categoryID = rs.getString("categoryID");
                     String productName = rs.getString("productName");
+                    String description = rs.getString("description");
                     double price = rs.getDouble("price");
                     int quantity = rs.getInt("quantity");
                     boolean statusID = rs.getBoolean("statusID");
                     String image = rs.getString("image");
-                    list.add(new ProductDTO(productID, categoryID, productName, price, quantity, statusID, image));
+                    list.add(new ProductDTO(productID, categoryID, productName, description, price, quantity, statusID, image));
                 }
             }
         } catch (Exception e) {
@@ -83,9 +84,10 @@ public class ProductDAO {
                 conn.close();
             }
         }
-//        for(ProductDTO model : list) {
-//            System.out.println(model.getProductID());
-//        }
+        for(ProductDTO model : list) {
+            System.out.println(model.getProductID());
+            System.out.println(model.getProductName());
+        }
         return list;
     }
     
