@@ -1,14 +1,9 @@
 <%-- 
-    Document   : showProduct
-    Created on : Oct 3, 2021, 11:11:24 AM
-    Author     : pphuh
+    Document   : transaction
+    Created on : Nov 1, 2021, 2:05:52 PM
+    Author     : ThanhLiemPro
 --%>
 
-<%@page import="fwallet.data.wallet.WalletDAO"%>
-<%@page import="fwallet.data.wallet.WalletDTO"%>
-<%@page import="fwallet.data.user.UserDTO"%>
-<%@page import="fwallet.data.product.ProductDTO"%>
-<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +14,7 @@
         <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Show Product
+            Transaction Page
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -31,10 +26,8 @@
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href="<%= request.getContextPath()%>/assets/demo/demo.css" rel="stylesheet" />
     </head>
+
     <body class=" sidebar-mini ">
-        <%
-            UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
-        %>
         <div class="wrapper ">
             <div class="sidebar" data-color="orange">
                 <!--
@@ -45,7 +38,7 @@
                         FPT
                     </a>
                     <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        Student
+                        USER
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -57,113 +50,163 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="<%= user.getImage()%>" />
+                            <img src="" />
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                                 <span>
-                                    <%= user.getUserID()%>
+                                   
                                     <b class="caret"></b>
                                 </span>
                             </a>
                             <div class="clearfix"></div>
+                            <div class="collapse" id="collapseExample">
+                                <ul class="nav">
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <ul class="nav">
                         <li>
-                            <a href="ShowUserRewardController">
+                            <a href="../../examples/dashboard.html">
                                 <i class="now-ui-icons design_app"></i>
-                                <p>Reward List</p>
+                                <p>Dashboard</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="LogOutController">
-                                <i class="now-ui-icons media-1_button-power"></i>
-                                <p>Log out</p>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
-                                    
             <div class="main-panel" id="main-panel">
-                <div class="card-body ">
-                <div class="statistics statistics-horizontal">
-                  <div class="info info-horizontal">
-                    <div class="row">
-                      <div class="col-5 text-left">
-                        <h3 class="info-title">Hello <%= user.getStudentName() %>!</h3>
-                      </div>
-                        <%
-                            WalletDAO walletDao = new WalletDAO();
-                            WalletDTO wallet = walletDao.getUserWalletByID(user.getUserID());
-                        %>
-                      <div class="col-7 text-right">
-                        <h3 class="info-title">Total: <%= wallet.getWalletPoint()%> Point</h3>
-                      </div>
-                    </div>
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            <form>
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search...">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <i class="now-ui-icons ui-1_zoom-bold"></i>
                   </div>
                 </div>
               </div>
-                <!-- Navbar -->
-                <div class="wrapper wrapper-full-page ">
-                    <div class="full-page pricing-page section-image" data-image="<%= request.getContextPath()%>/assets/img/bg15.jpg">
-                        <div class="content">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-6 ml-auto mr-auto text-center">
-                                        <h2 class="title">Pick the hot product for Summer </h2>
-                                        <h5 class="description"> We have choice with you point you have</h5>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <%
-                                        List<ProductDTO> list = (List<ProductDTO>) request.getAttribute("LIST_PRODUCT");
-                                        if (list != null) {
-                                            for (ProductDTO p : list) {
-                                    %> 
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card card-pricing card-plain">
-                                            <h6 class="card-category"> The Snacks</h6>
-                                            <div class="card-body">
-                                                <div class="card-icon icon-success ">
-                                                    <img class="none" src="<%= p.getImage()%>"alt="Card image cap" height="100px" width="100px"/>
-                                                </div>
-                                                <h3 class="card-title"> <%= p.getPrice()%> point</h3>
-                                                <ul>
-                                                    <li>For to fun day and with my friends </li>
-                                                    <li> Very good quality and basic states </li>
-                                                </ul>
-                                            </div>
-                                                <form action="GetProductController" method="POST">
-                                                    <div class="card-footer">
-                                                        <input type="hidden" name="productID" value="<%= p.getProductID() %>"/>
-                                                        <input type="hidden" name="productPoint" value="<%= p.getPrice() %>"/>
-                                                        <button class="btn btn-round btn-neutral btn-success">Get</button>
-                                                    </div>
-                                                </form>
-                                        </div>
-                                    </div>
-                                    <%
-                                        }
-                                    %>
-                                    <%
-                                    } else {
-                                    %>                        
-                                    <h1>No Product</h1>
-                                    <%
-                                        }
-                                    %>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Navbar -->
-                </div> <!-- wizard container -->
-            </div>
+            </form>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#pablo">
+                  <i class="now-ui-icons users_single-02"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Account</span>
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="panel-header panel-header-sm">
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title"> Transaction Table</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class="text-primary">
+                      <th class="text-center">
+                        STT
+                      </th>
+                      <th>
+                        Student Name
+                      </th>
+                      <th>
+                        Description
+                      </th>
+                      <th class="text-center">
+                        Date Transaction
+                      </th>
+                      <th class="text-right">
+                        Point
+                      </th>
+                      <th class="text-right">
+                        Actions
+                      </th>
+                    </thead>
+                    <tbody>
+                      <tr class="table-danger">
+                        <td class="text-center">
+                          1
+                        </td>
+                        <td>
+                          liem
+                        </td>
+                        <td>
+                          da lam gi
+                        </td>
+                        <td class="text-center">
+                          20/11/2021
+                        </td>
+                        <td class="text-right">
+                           99 point
+                        </td>
+                        <td class="text-right">
+      
+                          </button>
+                          <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
+                            <i class="now-ui-icons ui-2_settings-90"></i>
+                          </button>
+            
+                        </td>
+                      </tr>
+                      <tr class="table-success">
+                        <td class="text-center">
+                          2
+                        </td>
+                        <td>
+                          John Doe
+                        </td>
+                        <td>
+                          Design
+                        </td>
+                        <td class="text-center">
+                          2012
+                        </td>
+                        <td class="text-right">
+                          € 89,241
+                        </td>
+                        <td class="text-right">
+                         
+                          <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
+                            <i class="now-ui-icons ui-2_settings-90"></i>
+                          </button>
+     
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>   
+        <!-- footer -->
         <footer class="footer">
             <div class=" container-fluid ">
                 <nav>
@@ -197,7 +240,7 @@
 <!--   Core JS Files   -->
 <script src="<%= request.getContextPath()%>/assets/js/core/jquery.min.js"></script>
 <script src="<%= request.getContextPath()%>/assets/js/core/popper.min.js"></script>
-<script src="<%= request.getContextPath()%>/js/core/bootstrap.min.js"></script>
+<script src="<%= request.getContextPath()%>/assets/js/core/bootstrap.min.js"></script>
 <script src="<%= request.getContextPath()%>/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <script src="<%= request.getContextPath()%>/assets/js/plugins/moment.min.js"></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
@@ -207,7 +250,7 @@
 <!-- Forms Validations Plugin -->
 <script src="<%= request.getContextPath()%>/assets/js/plugins/jquery.validate.min.js"></script>
 <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-<script src="<%= request.getContextPath()%>/js/plugins/jquery.bootstrap-wizard.js"></script>
+<script src="<%= request.getContextPath()%>/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
 <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
 <script src="<%= request.getContextPath()%>/assets/js/plugins/bootstrap-selectpicker.js"></script>
 <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
@@ -233,16 +276,8 @@
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="<%= request.getContextPath()%>/assets/js/now-ui-dashboard.min.js?v=1.6.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
 <script src="<%= request.getContextPath()%>/assets/demo/demo.js"></script>
-<script>
-                        $(document).ready(function () {
-                            // Initialise the wizard
-                            demo.initNowUiWizard();
-                            setTimeout(function () {
-                                $('.card.card-wizard').addClass('active');
-                            }, 600);
-                        });
-                       
-</script>
 </body>
 
 </html>
+
+

@@ -36,11 +36,11 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-          FCoin
+        <a href="#" class="simple-text logo-mini">
+          FWallet
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          FPT university
+        <a href="#" class="simple-text logo-normal">
+          Studentt FPT 
         </a>
         <div class="navbar-minimize">
           <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -63,24 +63,6 @@
             <div class="clearfix"></div>
             <div class="collapse" id="collapseExample">
               <ul class="nav">
-                <li>
-                  <a href="#">
-                    <span class="sidebar-mini-icon">MP</span>
-                    <span class="sidebar-normal">My Profile</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="sidebar-mini-icon">EP</span>
-                    <span class="sidebar-normal">Edit Profile</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="sidebar-mini-icon">S</span>
-                    <span class="sidebar-normal">Settings</span>
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
@@ -97,12 +79,14 @@
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
       <!-- End Navbar -->
-            <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/CreateChanelDataController" method="POST">
+      <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/CreateChanelDataController" method="POST">
               <div class="card ">
                 <div class="card-header ">
                   <h4 class="card-title">Create Channel</h4>
                 </div>
+                  <h3 fill="red">${requestScope.MASSAGE}</h3>
                 <div class="card-body ">
+       
                      <div class="row">
                     <label class="col-sm-2 col-form-label">Channel ID</label>
                     <div class="col-sm-7">
@@ -112,10 +96,11 @@
                     </div>
                     </div>
                   <div class="row">
+                      <a href="../studentData.jsp"></a>
                     <label class="col-sm-2 col-form-label">Channel Name</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="text" name="channelName" required="true" />
+                        <input class="form-control" type="text" name="channelName" value="${param.channelName}" required="true" />
                       </div>
                     </div>
                     </div>
@@ -123,7 +108,7 @@
                     <label class="col-sm-2 col-form-label">Office</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                          <input class="form-control" type="text" name="channelOffice" required="true" />
+                          <input class="form-control" type="text" name="channelOffice" value="${param.channelOffice}" required="true" />
                       </div>
                     </div>
                   </div>
@@ -131,12 +116,12 @@
                     <label class="col-sm-2 col-form-label">Phone</label>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <input class="form-control" type="number" name="channelPhone" required="true" />
+                        <input class="form-control" type="phone" name="channelPhone" required="true" value="${param.channelPhone}"/>
                       </div>
                     </div>
                   </div>
                     <div class="card-footer text-center">
-                  <button type="submit"class="btn btn-primary">Create Channel</button>
+                <button class="btn btn-primary btn-fill" onclick="demo.showSwal('success-message')">Try me!</button>
                 </div>
                 </div>
               </div>

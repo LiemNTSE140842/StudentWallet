@@ -8,8 +8,8 @@ package fwallet.data.controller;
 import fwallet.data.channel.ChannelDAO;
 import fwallet.data.channel.ChannelDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,10 +25,11 @@ public class CreateChanelDataController extends HttpServlet {
 
     private final static String ERROR = "/admin/channel/createChannel.jsp";
     private final static String SUCCESS = "/admin/channelData.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-      String url = ERROR;
+        String url = ERROR;
         try {
             String channelID = request.getParameter("channelID");
             String channelName = request.getParameter("channelName");
@@ -38,16 +39,24 @@ public class CreateChanelDataController extends HttpServlet {
             ChannelDTO channel = new ChannelDTO(channelID, channelName, channelOffice, channelPhone, channelCreateDate);
             ChannelDAO dao = new ChannelDAO();
             boolean checkInsertChannel = dao.insertNewChanel(channel);
-            if(checkInsertChannel){
-                url=SUCCESS;
-            } 
+            List<String> listChannelID = dao.getChannelID();
+            for (String channelid : listChannelID) {
+                if (channelID.equals(channelid)) {
+                    request.setAttribute("MASSAGE", "ChannelID is adready, please try again!");
+                   
+                }else if(!channelID.matches("^cn(\\d{1}|\\d{2}|\\d{3}|\\d{4}|\\d{5})$")){
+                    request.setAttribute("MASSAGE", "Please forr");
+                } else if(checkInsertChannel) {
+                    url = SUCCESS;
+                }
+            }
+
         } catch (Exception e) {
-             log("Error at CreateChanellController: " + e.toString());
-        }finally
-        {
-             request.getRequestDispatcher(url).forward(request, response);
+            log("Error at CreateChanellController: " + e.toString());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

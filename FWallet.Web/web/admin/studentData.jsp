@@ -16,7 +16,7 @@
         <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Dashboard
+            Student Page
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -39,11 +39,11 @@
                   Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
                 -->
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                        Fcoin
+                    <a href="#" class="simple-text logo-mini">
+                        FWallet
                     </a>
-                    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        StudentFPT
+                    <a href="#" class="simple-text logo-normal">
+                       Student FPT
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -65,31 +65,10 @@
                                 </span>
                             </a>
                             <div class="clearfix"></div>
-                            <div class="collapse" id="collapseExample">
-                                <ul class="nav">
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">MP</span>
-                                            <span class="sidebar-normal">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">EP</span>
-                                            <span class="sidebar-normal">Edit Profile</span>
-                                        </a>
-                                    </li>    
-                                </ul>
-                            </div>
+                            
                         </div>
                     </div>
                     <ul class="nav">
-                        <li>
-                            <a href="../../examples/dashboard.html">
-                                <i class="now-ui-icons design_app"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
                         <li>
                             <a data-toggle="collapse" href="#pagesExamples">
                                 <i class="now-ui-icons design_image"></i>
@@ -237,7 +216,6 @@
                                                 <td><%= listUser.getUniversityID()%></td>
                                                 <td><%= listUser.getStatusID()%></td>
                                                 <td class="text-right">
-
                                                     <a href="#" <i class="far fa-calendar-alt"></i></a>
                                                     <a href="#" <i class="fas fa-times"></i></a>
                                                 </td>

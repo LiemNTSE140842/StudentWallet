@@ -180,4 +180,66 @@ public class ChannelDAO {
         }
         return check;
     }
+    public List<ChannelDTO> getAllChannelID() throws SQLException{
+      
+        ArrayList <ChannelDTO> channellist = new ArrayList<>();
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT channeID, channelName "
+                        +" FROM tblChannel ";
+                        
+                stm = conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String channelID = rs.getString("channeID");
+                    String channelName=rs.getString("channelName");
+                    channellist.add(new ChannelDTO(channelID,channelName));
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return channellist;
+    }
+    
+    public List<String> getChannelID() throws SQLException{
+        ArrayList <String> channellist = new ArrayList<>();
+        
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT channeID"
+                        +" FROM tblChannel";
+                stm = conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String channelID = rs.getString("channeID");
+                    channellist.add(channelID);
+                }
 }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return channellist;
+    }
+}
+

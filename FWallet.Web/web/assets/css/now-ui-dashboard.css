@@ -856,6 +856,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .btn-outline-white {
+  margin-left: 4%;
   color: #FFFFFF;
   border-color: #FFFFFF;
 }

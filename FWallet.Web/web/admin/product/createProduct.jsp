@@ -105,21 +105,34 @@
                         </div>
                         <div class="card-body ">
                             <div class="row">
-                                <label class="col-sm-2 col-form-label"> ProductID</label>
+                                <label class="col-sm-2 col-form-label"> Product ID</label>
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="productID" required="true" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <label class="col-sm-2 col-form-label">CategoryID</label>
+                             <div class="row">
+                                <label class="col-sm-2 col-form-label">Category ID</label>
+
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <select name="CategoryID" class="form-control" id="exampleFormControlSelect1" required="true">
-                                            <option value="" selected hidden></option>
-                                            <option value="">value1</option>
-                                            <option>value2</option>
+                                        <%
+                                            CategoryDAO categoryldao = new CategoryDAO();
+                                            List<CategoryDTO> categorylist = categoryldao.getAllCategory();
+
+                                        %>
+                                        <select name="categoryID" class="form-control" id="exampleFormControlSelect1" required="true">
+                                            <%                                                if (categorylist != null) {
+                                                    for (CategoryDTO category : categorylist) {
+                                            %>
+                                            <option value="<%=category.getCategoryID()%>"><%=category.getCategoryID()%></option>
+
+                                            <%
+                                                    }
+                                                }
+                                            %>
+
                                         </select>
                                     </div>
                                 </div>
