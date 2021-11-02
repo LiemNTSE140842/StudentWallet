@@ -4,6 +4,7 @@
     Author     : ThanhLiemPro
 --%>
 
+<%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +28,10 @@
         <link href="<%= request.getContextPath()%>/assets/demo/demo.css" rel="stylesheet" />
     </head>
 
-    <body class=" sidebar-mini ">
+     <body class=" sidebar-mini ">
+        <%
+            UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+        %>
         <div class="wrapper ">
             <div class="sidebar" data-color="orange">
                 <!--
@@ -38,7 +42,7 @@
                         FPT
                     </a>
                     <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        USER
+                        Student
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -50,27 +54,23 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="" />
+                            <img src="<%= user.getImage()%>" />
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                                 <span>
-                                   
+                                    <%= user.getUserID()%>
                                     <b class="caret"></b>
                                 </span>
                             </a>
                             <div class="clearfix"></div>
-                            <div class="collapse" id="collapseExample">
-                                <ul class="nav">
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <ul class="nav">
                         <li>
                             <a href="../../examples/dashboard.html">
                                 <i class="now-ui-icons design_app"></i>
-                                <p>Dashboard</p>
+                                <p>Student Wallet</p>
                             </a>
                         </li>
                 </div>
