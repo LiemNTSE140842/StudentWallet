@@ -41,6 +41,15 @@ public class TransactionDTO implements Serializable{
         this.orderDate = orderDate;
     }
 
+    public TransactionDTO(String transactionID, String studentRewardID, String walletID, int minusPoint, int plusPoint, Timestamp orderDate) {
+        this.transactionID = transactionID;
+        this.studentRewardID = studentRewardID;
+        this.walletID = walletID;
+        this.minusPoint = minusPoint;
+        this.plusPoint = plusPoint;
+        this.orderDate = orderDate;
+    }
+    
     public String getTransactionID() {
         return transactionID;
     }

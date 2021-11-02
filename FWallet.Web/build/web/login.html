@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Login Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/login.css">
+        <script src="js/login.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mx-auto">
+                    <div id="first">
+                        <div class="myform form ">
+                            <div class="logo mb-3">
+                                <div class="col-md-12 text-center">
+                                    <h1>Login</h1>
+                                </div>
+                            </div>
+                            <form action="MainController" method="post" name="login" id="form">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">User ID</label>
+                                    <input type="text" name="userID"  class="form-control" id="userID" aria-describedby="emailHelp" placeholder="Enter ID">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Password</label>
+                                    <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
+                                </div>
+<!--                                <div class="d-flex justify-content-center">
+                                    <div class="g-recaptcha" data-sitekey="6LdTtpgbAAAAAEtl2sxmNRtXkxH12bYkJPhBKJcR"></div>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <div id="error"></div>
+                                </div>-->
+                                <br>
+                                <div class="col-md-12 text-center ">
+                                    <button type="submit" name="action" value="Login" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <div class="login-or">
+                                        <hr class="hr-or">
+                                        <span class="span-or">or</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <p class="text-center">
+                                        <a href="https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.email&redirect_uri=http://localhost:8080/FWallet.Web/LoginGoogleHandler&response_type=code
+                                           &client_id=637739298553-tit63lnq47hilnh13160shj25oqnijnc.apps.googleusercontent.com&approval_prompt=force" 
+                                           class="google btn mybtn"><i class="fa fa-google-plus">
+                                            </i> Sign up using Google
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <p class="text-center">Don't have account? <a href="#" id="signup">Sign up here</a></p>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div id="second">
+                        <div class="myform form ">
+                            <div class="logo mb-3">
+                                <div class="col-md-12 text-center">
+                                    <h1 >Sign up</h1>
+                                </div>
+                            </div>
+                            <form action="#" name="registration">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">First Name</label>
+                                    <input type="text"  name="firstname" class="form-control" id="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Last Name</label>
+                                    <input type="text"  name="lastname" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Enter Lastname">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Password</label>
+                                    <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                                </div>
+                                <div class="col-md-12 text-center mb-3">
+                                    <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Get Started For Free</button>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <div class="form-group">
+                                        <p class="text-center"><a href="#" id="signin">Already have an account?</a></p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+        <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+<!--        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script>
+            window.onload = function () {
+                let isValid = false;
+                const form = document.getElementById("form");
+                const error = document.getElementById("error");
+
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    const response = grecaptcha.getResponse();
+                    if (response) {
+                        form.submit();
+                    } else {
+                        error.innerHTML = "Please check your reCAPTCHA";
+                    }
+                });
+            }
+        </script>-->
+    </body>
+</html>
