@@ -4,6 +4,7 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.user.UserDTO"%>
 <%@page import="fwallet.data.reward.RewardDTO"%>
 <%@page import="fwallet.data.reward.RewardDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -55,52 +56,32 @@
           </button>
         </div>
       </div>
- 
-      <div class="sidebar-wrapper" id="sidebar-wrapper">
-        <div class="user">
-          <div class="photo">
-          </div>
-          <div class="info">
-            <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-              <span>
-                <b class="caret"></b>
-              </span>
-            </a>
-            <div class="clearfix"></div>
-            <div class="collapse" id="collapseExample">
-              <ul class="nav">
-                <li>
-                  <a href="#">
-                    <span class="sidebar-mini-icon">MP</span>
-                    <span class="sidebar-normal">My Profile</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="sidebar-mini-icon">EP</span>
-                    <span class="sidebar-normal">Edit Profile</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="sidebar-mini-icon">S</span>
-                    <span class="sidebar-normal">Settings</span>
-                  </a>
-                </li>
-              </ul>
+       <%
+                    UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+                %>
+                <div class="sidebar-wrapper" id="sidebar-wrapper">
+                    <div class="user">
+                        <div class="photo">
+                            <img src="<%= loginUser.getImage()%>" />
+                        </div>
+                        <div class="info">
+                            <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                                <span>
+                                    <%= loginUser.getUserID()%>
+                                    <b class="caret"></b>
+                                </span>
+                            </a>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseExample">
+                                <ul class="nav">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="nav">
+                </div>
             </div>
-          </div>
-        </div>
-        <ul class="nav">
-          <li>
-            <a href="../../examples/dashboard.html">
-              <i class="now-ui-icons design_app"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-            </div>
-            </div>
-    <div class="main-panel" id="main-panel">
+            <div class="main-panel" id="main-panel">
       <!-- Navbar -->
       <!-- End Navbar -->
             <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/UpdateRewardDataController" method="POST">
@@ -168,7 +149,7 @@
           <div class="copyright" id="copyright">
             &copy; <script>
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                    </script>, Designed by <a href="https://www.facebook.com/siliem3k" target="_blank">LiemTroller</a>. Coded by <a href="https://www.facebook.com/pphuhuy" target="_blank">PhuHuy</a>.         
           </div>
         </div>
       </footer>

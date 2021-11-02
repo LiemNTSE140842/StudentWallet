@@ -4,6 +4,7 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.user.UserDTO"%>
 <%@page import="fwallet.data.rewardtype.RewardTypeDTO"%>
 <%@page import="fwallet.data.rewardtype.RewardTypeDAO"%>
 <%@page import="fwallet.data.channel.ChannelDTO"%>
@@ -22,7 +23,7 @@
         <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Now UI Dashboard PRO by Creative Tim
+            Create Reward Page
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -57,28 +58,29 @@
                     </div>
                 </div>
 
+                <%
+                    UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+                %>
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
+                            <img src="<%= loginUser.getImage()%>" />
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                                 <span>
+                                    <%= loginUser.getUserID()%>
                                     <b class="caret"></b>
                                 </span>
                             </a>
                             <div class="clearfix"></div>
                             <div class="collapse" id="collapseExample">
+                                <ul class="nav">
+                                </ul>
                             </div>
                         </div>
                     </div>
                     <ul class="nav">
-                        <li>
-                            <a href="../../examples/dashboard.html">
-                                <i class="now-ui-icons design_app"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
                 </div>
             </div>
             <div class="main-panel" id="main-panel">
@@ -113,7 +115,7 @@
                                             <%                                                if (channelList != null) {
                                                     for (ChannelDTO channel : channelList) {
                                             %>
-                                            <option value="<%= channel.getChannelID() %>=<%=channel.getChannelName() %>"><%= channel.getChannelName()%></option>
+                                            <option value="<%= channel.getChannelID()%>"><%= channel.getChannelName()%></option>
 
                                             <%
                                                     }
@@ -170,7 +172,7 @@
                                             <%                                                if (rewardtypeList != null) {
                                                     for (RewardTypeDTO rewardtype : rewardtypeList) {
                                             %>
-                                            <option value="<%= rewardtype.getRewardTypeID() %>=<%=rewardtype.getRewardTypeName() %>"><%=rewardtype.getRewardTypeName()%></option>
+                                            <option value="<%= rewardtype.getRewardTypeID()%>"><%=rewardtype.getRewardTypeName()%></option>
 
 
                                             <%
@@ -198,7 +200,7 @@
                     <ul>
                         <li>
                             <a href="https://www.creative-tim.com">
-                                Creative Tim
+                                 Github
                             </a>
                         </li>
                         <li>
@@ -216,7 +218,7 @@
                 <div class="copyright" id="copyright">
                     &copy; <script>
                         document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                    </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                    </script>, Designed by <a href="https://www.facebook.com/siliem3k" target="_blank">LiemTroller</a>. Coded by <a href="https://www.facebook.com/pphuhuy" target="_blank">PhuHuy</a>.                
                 </div>
             </div>
         </footer>

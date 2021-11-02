@@ -18,7 +18,7 @@
         <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Update Student Form
+            Update Student Page
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -50,10 +50,9 @@
                 -->
                 <div class="logo">
                     <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                        FCoin
-                    </a>
+                        FPT
                     <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        FPT University
+                        Admin
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -76,36 +75,12 @@
                             </a>
                             <div class="clearfix"></div>
                             <div class="collapse" id="collapseExample">
-                                <ul class="nav">
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">MP</span>
-                                            <span class="sidebar-normal">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">EP</span>
-                                            <span class="sidebar-normal">Edit Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">S</span>
-                                            <span class="sidebar-normal">Settings</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                              
                             </div>
                         </div>
                     </div>
                     <ul class="nav">
-                        <li>
-                            <a href="../../examples/dashboard.html">
-                                <i class="now-ui-icons design_app"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
+                      
                 </div>
             </div>
             <div class="main-panel" id="main-panel">

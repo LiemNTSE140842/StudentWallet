@@ -4,6 +4,7 @@
     Author     : ThanhLiemPro
 --%>
 
+<%@page import="fwallet.data.user.UserDTO"%>
 <%@page import="fwallet.data.channel.ChannelDTO"%>
 <%@page import="fwallet.data.channel.ChannelDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,7 +17,7 @@
   <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Create Channel
+    Create Channel Page
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -37,10 +38,10 @@
     -->
       <div class="logo">
         <a href="#" class="simple-text logo-mini">
-          FWallet
+          FPT
         </a>
         <a href="#" class="simple-text logo-normal">
-          Studentt FPT 
+          Admin 
         </a>
         <div class="navbar-minimize">
           <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -50,33 +51,32 @@
         </div>
       </div>
  
-      <div class="sidebar-wrapper" id="sidebar-wrapper">
-        <div class="user">
-          <div class="photo">
-          </div>
-          <div class="info">
-            <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-              <span>
-                <b class="caret"></b>
-              </span>
-            </a>
-            <div class="clearfix"></div>
-            <div class="collapse" id="collapseExample">
-              <ul class="nav">
-              </ul>
+       <%
+                    UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+                %>
+                <div class="sidebar-wrapper" id="sidebar-wrapper">
+                    <div class="user">
+                        <div class="photo">
+                            <img src="<%= loginUser.getImage()%>" />
+                        </div>
+                        <div class="info">
+                            <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                                <span>
+                                    <%= loginUser.getUserID()%>
+                                    <b class="caret"></b>
+                                </span>
+                            </a>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseExample">
+                                <ul class="nav">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="nav">
+                </div>
             </div>
-          </div>
-        </div>
-        <ul class="nav">
-          <li>
-            <a href="../../examples/dashboard.html">
-              <i class="now-ui-icons design_app"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-            </div>
-            </div>
-    <div class="main-panel" id="main-panel">
+            <div class="main-panel" id="main-panel">
       <!-- Navbar -->
       <!-- End Navbar -->
       <form id="TypeValidation" class="form-horizontal" action="<%= request.getContextPath() %>/CreateChanelDataController" method="POST">
@@ -84,14 +84,13 @@
                 <div class="card-header ">
                   <h4 class="card-title">Create Channel</h4>
                 </div>
-                  <h3 fill="red">${requestScope.MASSAGE}</h3>
                 <div class="card-body ">
-       
                      <div class="row">
                     <label class="col-sm-2 col-form-label">Channel ID</label>
                     <div class="col-sm-7">
                       <div class="form-group">
                         <input class="form-control" type="text"  name="channelID" required="true" />
+                        <h5 style="color: red">${requestScope.MASSAGE}</h5>
                       </div>
                     </div>
                     </div>
@@ -121,7 +120,7 @@
                     </div>
                   </div>
                     <div class="card-footer text-center">
-                <button class="btn btn-primary btn-fill" onclick="demo.showSwal('success-message')">Try me!</button>
+                <button class="btn btn-primary btn-fill" onclick="demo.showSwal('success-message')">Create Chanel</button>
                 </div>
                 </div>
               </div>
@@ -153,8 +152,8 @@
           </nav>
           <div class="copyright" id="copyright">
             &copy; <script>
-              document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                    document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+                </script>, Designed by <a href="https://www.facebook.com/siliem3k" target="_blank">LiemTroller</a>. Coded by <a href="https://www.facebook.com/pphuhuy" target="_blank">PhuHuy</a>.
           </div>
         </div>
       </footer>

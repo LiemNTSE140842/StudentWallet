@@ -5,13 +5,14 @@
  */
 package fwallet.data.transaction;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  *
  * @author pphuh
  */
-public class TransactionDTO {
+public class TransactionDTO implements Serializable{
     private String transactionID;
     private String studentRewardID;
     private String walletID;
@@ -30,6 +31,17 @@ public class TransactionDTO {
         this.plusPoint = plusPoint;
         this.orderDate = orderDate;
     }
+
+    public TransactionDTO(String transactionID, String studentRewardID, String walletID, String orderID, int minusPoint, int plusPoint, Timestamp orderDate) {
+        this.transactionID = transactionID;
+        this.studentRewardID = studentRewardID;
+        this.walletID = walletID;
+        this.orderID = orderID;
+        this.minusPoint = minusPoint;
+        this.plusPoint = plusPoint;
+        this.orderDate = orderDate;
+    }
+    
 
     public String getTransactionID() {
         return transactionID;

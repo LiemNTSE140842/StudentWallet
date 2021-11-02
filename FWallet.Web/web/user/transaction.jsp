@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +57,7 @@
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                                 <span>
-                                   
+
                                     <b class="caret"></b>
                                 </span>
                             </a>
@@ -78,206 +80,247 @@
             <div class="main-panel" id="main-panel">
                 <!-- Navbar -->
                 <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="now-ui-icons ui-1_zoom-bold"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons users_single-02"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                  </p>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- End Navbar -->
-      <div class="panel-header panel-header-sm">
-      </div>
-      <div class="content">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title"> Transaction Table</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class="text-primary">
-                      <th class="text-center">
-                        STT
-                      </th>
-                      <th>
-                        Student Name
-                      </th>
-                      <th>
-                        Description
-                      </th>
-                      <th class="text-center">
-                        Date Transaction
-                      </th>
-                      <th class="text-right">
-                        Point
-                      </th>
-                      <th class="text-right">
-                        Actions
-                      </th>
-                    </thead>
-                    <tbody>
-                      <tr class="table-danger">
-                        <td class="text-center">
-                          1
-                        </td>
-                        <td>
-                          liem
-                        </td>
-                        <td>
-                          da lam gi
-                        </td>
-                        <td class="text-center">
-                          20/11/2021
-                        </td>
-                        <td class="text-right">
-                           99 point
-                        </td>
-                        <td class="text-right">
-      
-                          </button>
-                          <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
-                          </button>
-            
-                        </td>
-                      </tr>
-                      <tr class="table-success">
-                        <td class="text-center">
-                          2
-                        </td>
-                        <td>
-                          John Doe
-                        </td>
-                        <td>
-                          Design
-                        </td>
-                        <td class="text-center">
-                          2012
-                        </td>
-                        <td class="text-right">
-                          € 89,241
-                        </td>
-                        <td class="text-right">
-                         
-                          <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
-                          </button>
-     
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>   
-        <!-- footer -->
-        <footer class="footer">
-            <div class=" container-fluid ">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="https://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://presentation.creative-tim.com">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="container-fluid">
+                        <div class="navbar-wrapper">
+                            <div class="navbar-toggle">
+                                <button type="button" class="navbar-toggler">
+                                    <span class="navbar-toggler-bar bar1"></span>
+                                    <span class="navbar-toggler-bar bar2"></span>
+                                    <span class="navbar-toggler-bar bar3"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                            <form>
+                                <div class="input-group no-border">
+                                    <input type="text" value="" class="form-control" placeholder="Search...">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <i class="now-ui-icons ui-1_zoom-bold"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="now-ui-icons users_single-02"></i>
+                                        <p>
+                                            <span class="d-lg-none d-md-block">Account</span>
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </nav>
-                <div class="copyright" id="copyright">
-                    &copy; <script>
-                        document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                    </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                <!-- End Navbar -->
+                <div class="panel-header panel-header-sm">
                 </div>
-            </div>
-        </footer>
-    </div>
-</div>
-<!--   Core JS Files   -->
-<script src="<%= request.getContextPath()%>/assets/js/core/jquery.min.js"></script>
-<script src="<%= request.getContextPath()%>/assets/js/core/popper.min.js"></script>
-<script src="<%= request.getContextPath()%>/assets/js/core/bootstrap.min.js"></script>
-<script src="<%= request.getContextPath()%>/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<script src="<%= request.getContextPath()%>/assets/js/plugins/moment.min.js"></script>
-<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/bootstrap-switch.js"></script>
-<!--  Plugin for Sweet Alert -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/sweetalert2.min.js"></script>
-<!-- Forms Validations Plugin -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/jquery.validate.min.js"></script>
-<!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/bootstrap-selectpicker.js"></script>
-<!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/bootstrap-datetimepicker.js"></script>
-<!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/jquery.dataTables.min.js"></script>
-<!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/bootstrap-tagsinput.js"></script>
-<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/jasny-bootstrap.min.js"></script>
-<!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/fullcalendar.min.js"></script>
-<!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/jquery-jvectormap.js"></script>
-<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/nouislider.min.js"></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Chart JS -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/chartjs.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="<%= request.getContextPath()%>/assets/js/plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="<%= request.getContextPath()%>/assets/js/now-ui-dashboard.min.js?v=1.6.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-<script src="<%= request.getContextPath()%>/assets/demo/demo.js"></script>
-</body>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title"> Transaction Table</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="text-primary">
+                                            <th class="text-center">
+                                                STT
+                                            </th>
+                                            <th>
+                                                Student ID
+                                            </th>
+                                            <th>
+                                                Wallet ID
+                                            </th>
+                                            <th class="text-center">
+                                                Date Transaction
+                                            </th>
+                                             <th class="text-center">
+                                                Mins Point
+                                            </th>
+                                            <th class="text-center">
+                                                Plus Point
+                                            </th>
+                                            <th class="text-right">
+                                                Actions
+                                            </th>
+                                            </thead>
+                                            <tbody>                    
+                                                <c:forEach items="${sessionScope.LIST_TRANSACTION}" varStatus="counter" var="h"> 
+                                                    <c:if test="${h.plusPoint == 0}">
+                                                    <tr class="table-danger">
 
-</html>
+                                                        <td class="text-center">
+                                                            ${counter.count}
+                                                        </td>
+                                                        <td>
+                                                            ${h.studentRewardID}
+                                                        </td>
+                                                        <td>
+                                                            ${h.walletID}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            ${h.orderDate}
+                                                        </td>
+                                                         <td class="text-center">
+                                                            ${h.minusPoint}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            ${h.plusPoint}
+                                                        </td>
+                                                        <td class="text-right">
+
+                                                            </button>
+                                                            <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
+                                                                <i class="now-ui-icons ui-2_settings-90"></i>
+                                                            </button>
+
+                                                        </td>
+                                                    </tr>
+                                                    </c:if>
+                                                     <c:if test="${h.plusPoint != 0}">
+                                                    <tr class="table-success">
+
+                                                        <td class="text-center">
+                                                            ${counter.count}
+                                                        </td>
+                                                        <td>
+                                                            ${h.studentRewardID}
+                                                        </td>
+                                                        <td>
+                                                            ${h.walletID}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            ${h.orderDate}
+                                                        </td>
+                                                          <td class="text-center">
+                                                            ${h.minusPoint}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            ${h.plusPoint}
+                                                        </td>
+                                                        <td class="text-right">
+
+                                                            </button>
+                                                            <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
+                                                                <i class="now-ui-icons ui-2_settings-90"></i>
+                                                            </button>
+
+                                                        </td>
+                                                    </tr>
+                                                    </c:if>
+                                                </c:forEach>   
+                                                <!--                      <tr class="table-success">
+                                                                        <td class="text-center">
+                                                                          2
+                                                                        </td>
+                                                                        <td>
+                                                                          John Doe
+                                                                        </td>
+                                                                        <td>
+                                                                          Design
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                          2012
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                          € 89,241
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                         
+                                                                          <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
+                                                                            <i class="now-ui-icons ui-2_settings-90"></i>
+                                                                          </button>
+                                                                        </td>
+                                                                      </tr>-->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                        <!-- footer -->
+                        <footer class="footer">
+                            <div class=" container-fluid ">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a href="https://www.creative-tim.com">
+                                                Creative Tim
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://presentation.creative-tim.com">
+                                                About Us
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://blog.creative-tim.com">
+                                                Blog
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <div class="copyright" id="copyright">
+                                    &copy; <script>
+                                        document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+                                    </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+                <!--   Core JS Files   -->
+                <script src="<%= request.getContextPath()%>/assets/js/core/jquery.min.js"></script>
+                <script src="<%= request.getContextPath()%>/assets/js/core/popper.min.js"></script>
+                <script src="<%= request.getContextPath()%>/assets/js/core/bootstrap.min.js"></script>
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/moment.min.js"></script>
+                <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/bootstrap-switch.js"></script>
+                <!--  Plugin for Sweet Alert -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/sweetalert2.min.js"></script>
+                <!-- Forms Validations Plugin -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/jquery.validate.min.js"></script>
+                <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+                <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/bootstrap-selectpicker.js"></script>
+                <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/bootstrap-datetimepicker.js"></script>
+                <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/jquery.dataTables.min.js"></script>
+                <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/bootstrap-tagsinput.js"></script>
+                <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/jasny-bootstrap.min.js"></script>
+                <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/fullcalendar.min.js"></script>
+                <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/jquery-jvectormap.js"></script>
+                <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/nouislider.min.js"></script>
+                <!--  Google Maps Plugin    -->
+                <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+                <!-- Chart JS -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/chartjs.min.js"></script>
+                <!--  Notifications Plugin    -->
+                <script src="<%= request.getContextPath()%>/assets/js/plugins/bootstrap-notify.js"></script>
+                <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+                <script src="<%= request.getContextPath()%>/assets/js/now-ui-dashboard.min.js?v=1.6.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+                <script src="<%= request.getContextPath()%>/assets/demo/demo.js"></script>
+                </body>
+
+                </html>
 
 

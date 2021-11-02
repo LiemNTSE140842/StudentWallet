@@ -4,6 +4,7 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.user.UserDTO"%>
 <%@page import="fwallet.data.category.CategoryDTO"%>
 <%@page import="fwallet.data.category.CategoryDAO"%>
 <%@page import="java.util.List"%>
@@ -37,11 +38,11 @@
                   Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
                 -->
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                        FCoin
+                    <a href="https://hcmuni.fpt.edu.vn" class="simple-text logo-mini">
+                        FPT
                     </a>
-                    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        FPT university
+                    <a href="https://github.com/LiemNTSE140842/StudentWallet" class="simple-text logo-normal">
+                        Admin
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -51,48 +52,29 @@
                     </div>
                 </div>
 
+                 <%
+                    UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+                %>
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
+                            <img src="<%= loginUser.getImage()%>" />
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                                 <span>
+                                    <%= loginUser.getUserID()%>
                                     <b class="caret"></b>
                                 </span>
                             </a>
                             <div class="clearfix"></div>
                             <div class="collapse" id="collapseExample">
                                 <ul class="nav">
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">MP</span>
-                                            <span class="sidebar-normal">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">EP</span>
-                                            <span class="sidebar-normal">Edit Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">S</span>
-                                            <span class="sidebar-normal">Settings</span>
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <ul class="nav">
-                        <li>
-                            <a href="../../examples/dashboard.html">
-                                <i class="now-ui-icons design_app"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
                 </div>
             </div>
             <div class="main-panel" id="main-panel">
@@ -179,7 +161,7 @@
                             </div>
                         </div>
                         <div class="card-footer text-center">
-                            <button type="submit"class="btn btn-primary">Create product</button>
+                            <button type="submit" class="btn btn-primary">Create product</button>
                         </div>
                     </div>
             </div>
@@ -211,8 +193,7 @@
             <div class="copyright" id="copyright">
                 &copy; <script>
                     document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
-            </div>
+</script>, Designed by <a href="https://www.facebook.com/siliem3k" target="_blank">LiemTroller</a>. Coded by <a href="https://www.facebook.com/pphuhuy" target="_blank">PhuHuy</a>.            </div>
         </div>
     </footer>
 </div>
