@@ -5,13 +5,14 @@
  */
 package fwallet.data.transaction;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  *
  * @author pphuh
  */
-public class TransactionDTO {
+public class TransactionDTO implements Serializable{
     private String transactionID;
     private String studentRewardID;
     private String walletID;

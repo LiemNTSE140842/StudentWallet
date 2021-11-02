@@ -82,6 +82,12 @@
                                 <p>Log out</p>
                             </a>
                         </li>
+                         <li>
+                            <a href="ShowTransactionController">
+                                <i class="now-ui-icons media-1_button-power"></i>
+                                <p>Transaction</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

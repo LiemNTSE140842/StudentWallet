@@ -6,16 +6,20 @@
 package fwallet.data.transaction;
 
 import fwallet.data.util.DBUtil;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author pphuh
  */
-public class TransactionDAO {
+public class TransactionDAO implements Serializable{
     Connection conn=null;
     PreparedStatement stm =null;
     ResultSet rs =null;
@@ -71,4 +75,41 @@ public class TransactionDAO {
         }
         return check;
     }
-}
+    public List<TransactionDTO> getAllTransaction() throws SQLException{
+     List<TransactionDTO> list = new ArrayList();
+      try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT transactionID, studentRewardID, walletID, orderID, minusPoint, plusPoint, orderDate"
+                        +" FROM tblTransaction";
+                stm = conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String transactionID = rs.getString("transactionID");
+                    String studentrewardID = rs.getString("studentRewardID");
+                    String walletID = rs.getString("walletID");
+                    double orderID = rs.getDouble("orderID");
+                    int minusPoint = rs.getInt("minusPoint");
+                    int plusPoint = rs.getInt("plusPoint");
+                    Timestamp orderDate  = rs.getTimestamp("orderDate");
+                    list.add(new TransactionDTO(transactionID, studentrewardID, walletID, walletID, minusPoint, plusPoint, orderDate));
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+
+        return list;
+    }
+        
+        
+    }

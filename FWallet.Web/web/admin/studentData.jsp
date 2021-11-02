@@ -40,10 +40,10 @@
                 -->
                 <div class="logo">
                     <a href="#" class="simple-text logo-mini">
-                        FWallet
+                        FPT
                     </a>
                     <a href="#" class="simple-text logo-normal">
-                       Student FPT
+                       Admin
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -124,7 +124,7 @@
                                     <span class="navbar-toggler-bar bar3"></span>
                                 </button>
                             </div>
-                            <a class="navbar-brand" href="#pablo">Trangchu</a>
+                            <a class="navbar-brand" href="#pablo">Student Wallet</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -185,7 +185,7 @@
                                         </form>   
                                     </div>
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th>Name</th>
                                                 <th>Email</th>
