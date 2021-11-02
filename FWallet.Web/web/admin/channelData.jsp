@@ -17,7 +17,7 @@
         <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Dashboard
+            Channel Page
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -41,10 +41,10 @@
                 -->
                 <div class="logo">
                     <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                        FPT
+                        FWallet
                     </a>
                     <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        Student
+                        Student FPT
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -66,31 +66,10 @@
                                 </span>
                             </a>
                             <div class="clearfix"></div>
-                            <div class="collapse" id="collapseExample">
-                                <ul class="nav">
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">MP</span>
-                                            <span class="sidebar-normal">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">EP</span>
-                                            <span class="sidebar-normal">Edit Profile</span>
-                                        </a>
-                                    </li>    
-                                </ul>
-                            </div>
+                           
                         </div>
                     </div>
                     <ul class="nav">
-                        <li>
-                            <a href="../../examples/dashboard.html">
-                                <i class="now-ui-icons design_app"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
                         <li>
                             <a data-toggle="collapse" href="#pagesExamples">
                                 <i class="now-ui-icons design_image"></i>
@@ -122,12 +101,6 @@
                                         <a href="<%= request.getContextPath()%>/admin/studentData.jsp">
                                             <span class="sidebar-mini-icon">S</span>
                                             <span class="sidebar-normal"> Student </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<%= request.getContextPath()%>/login.html">
-                                            <span class="sidebar-mini-icon">AP</span>
-                                            <span class="sidebar-normal">Add Point</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -203,7 +176,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
-                                        <form action="<%= request.getContextPath()%>/admin/reward/createReward.jsp">
+                                        <form action="<%= request.getContextPath()%>/admin/channel/createChannel.jsp">
                                             <button class="btn btn-primary">Create Chanel</button>
                                         </form>      
                                     </div>
@@ -214,7 +187,6 @@
                                                 <th>Name</th>
                                                 <th>Office</th>
                                                 <th>Phone</th>
-
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </thead>

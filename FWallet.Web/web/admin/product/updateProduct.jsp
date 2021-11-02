@@ -17,7 +17,7 @@
   <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Now UI Dashboard PRO by Creative Tim
+   Create User Form
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -44,10 +44,10 @@
     -->
       <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-          FCoin
+          FPT
         </a>
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          FPT university
+          Admin
         </a>
         <div class="navbar-minimize">
           <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -151,6 +151,7 @@
                     </div>
                   </div>
                     <div class="card-footer text-center">
+                     <input type="hidden" name="productID" value="<%=productId%>"/>                    
                   <button type="submit"class="btn btn-primary">Update Product</button>
                 </div>
                 </div>

@@ -31,13 +31,13 @@ public class ShowProductController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
+            HttpSession session =request.getSession();
             ProductDAO dao = new ProductDAO();
             List<ProductDTO> list = dao.getAllProduct();
             if(!list.isEmpty()){
                 request.setAttribute("LIST_PRODUCT", list);
                 url=SUCCESS;
             }else{
-                HttpSession session = request.getSession();
                 session.setAttribute("ERROR_MESSAGE", "Product is being maintained");
             }
         } catch (Exception e) {

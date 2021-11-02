@@ -17,7 +17,7 @@
         <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Dashboard
+            Add Point Page
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -41,10 +41,10 @@
                 -->
                 <div class="logo">
                     <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                        Fcoin
+                        FPT
                     </a>
                     <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        StudentFPT
+                        Student
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -85,12 +85,6 @@
                         </div>
                     </div>
                     <ul class="nav">
-                        <li>
-                            <a href="../../examples/dashboard.html">
-                                <i class="now-ui-icons design_app"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
                         <li>
                             <a data-toggle="collapse" href="#pagesExamples">
                                 <i class="now-ui-icons design_image"></i>

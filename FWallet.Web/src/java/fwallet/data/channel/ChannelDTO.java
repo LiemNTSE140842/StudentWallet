@@ -36,6 +36,14 @@ public class ChannelDTO {
         this.channelStartDate = channelStartDate;
     }
 
+    public ChannelDTO(String channelID, String channelName) {
+        this.channelID = channelID;
+        this.channelName=channelName;
+        
+    }
+
+   
+
     public String getChannelID() {
         return channelID;
     }

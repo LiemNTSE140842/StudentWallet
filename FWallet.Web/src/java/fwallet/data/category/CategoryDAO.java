@@ -49,8 +49,8 @@ public class CategoryDAO {
                 conn.close();
             }
         }
-        //System.out.println(list.toString());
         return list;
     }
+    
     
 }
