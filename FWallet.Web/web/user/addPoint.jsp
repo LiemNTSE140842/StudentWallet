@@ -88,7 +88,7 @@
                     <ul class="nav">
                         <li>
                             <a href="<%= request.getContextPath()%>/user/showProduct.jsp">
-                                <i class="now-ui-icons design_app"></i>
+                                <i class="now-ui-icons shopping_bag-16"></i>
                                 <p>Show Product</p>
                             </a>
                         </li>

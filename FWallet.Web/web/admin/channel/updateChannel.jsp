@@ -43,11 +43,11 @@
                   Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
                 -->
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                        FCoin
+                    <a href="#" class="simple-text logo-mini">
+                        FPT
                     </a>
-                    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        FPT university
+                    <a href="#" class="simple-text logo-normal">
+                        Admin 
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-                 <%
+                <%
                     UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                 %>
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -80,6 +80,12 @@
                         </div>
                     </div>
                     <ul class="nav">
+                        <li>
+                            <a href="<%= request.getContextPath()%>/admin/channelData.jsp">
+                                <i class="now-ui-icons design_app"></i>
+                                <p>Back To Channel Page</p>
+                            </a>
+                        </li>
                 </div>
             </div>
             <div class="main-panel" id="main-panel">

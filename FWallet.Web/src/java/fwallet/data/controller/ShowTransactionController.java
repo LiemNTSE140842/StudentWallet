@@ -9,6 +9,7 @@ import fwallet.data.transaction.TransactionDAO;
 import fwallet.data.transaction.TransactionDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +35,12 @@ public class ShowTransactionController extends HttpServlet {
             HttpSession session =request.getSession();
             TransactionDAO dao = new TransactionDAO();
             List<TransactionDTO> list = dao.getAllTransaction();
+            ArrayList<String> listCate = new ArrayList<>();
             if(!list.isEmpty()){
+                listCate.add("All");
+                listCate.add("Transaction Plus");
+                listCate.add("Transaction Minus");
+                session.setAttribute("LISTCATE", listCate);
                 session.setAttribute("LIST_TRANSACTION", list);
                 url=SUCCESS;
             }else{

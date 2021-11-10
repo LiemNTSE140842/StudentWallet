@@ -12,39 +12,17 @@
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="utf-8" />
-        <link rel="apple-touch-icon" sizes="76x76" href="<%= request.getContextPath()%>/assets/img/apple-icon.png">
-        <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>
-            Create User
-        </title>
-        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-        <!--     Fonts and icons     -->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <!-- CSS Files -->
-        <link href="<%= request.getContextPath()%>/assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="<%= request.getContextPath()%>/assets/css/now-ui-dashboard.css?v=1.6.0" rel="stylesheet" />
-        <!-- CSS Just for demo purpose, don't include it in your project -->
-        <link href="<%= request.getContextPath()%>/assets/demo/demo.css" rel="stylesheet" />
-    </head>
-
-    <body class=" sidebar-mini ">
-        <div class="wrapper ">
+  <div class="wrapper ">
             <div class="sidebar" data-color="orange">
                 <!--
                   Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
                 -->
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                        FCoin
+                    <a href="#" class="simple-text logo-mini">
+                        FPT
                     </a>
-                    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        FPT university
+                    <a href="#" class="simple-text logo-normal">
+                        Admin 
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -53,6 +31,7 @@
                         </button>
                     </div>
                 </div>
+
                 <%
                     UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                 %>
@@ -71,33 +50,15 @@
                             <div class="clearfix"></div>
                             <div class="collapse" id="collapseExample">
                                 <ul class="nav">
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">MP</span>
-                                            <span class="sidebar-normal">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">EP</span>
-                                            <span class="sidebar-normal">Edit Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">S</span>
-                                            <span class="sidebar-normal">Settings</span>
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <ul class="nav">
                         <li>
-                            <a href="../../examples/dashboard.html">
+                            <a href="<%= request.getContextPath()%>/admin/addPoint.jsp">
                                 <i class="now-ui-icons design_app"></i>
-                                <p>Dashboard</p>
+                                <p>Back To Student Reward Page</p>
                             </a>
                         </li>
                 </div>

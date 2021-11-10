@@ -4,12 +4,14 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.channel.ChannelDTO"%>
+<%@page import="fwallet.data.channel.ChannelDAO"%>
 <%@page import="fwallet.data.reward.RewardDTO"%>
 <%@page import="fwallet.data.user.UserDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -18,7 +20,7 @@
         <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-           Reward Page
+            Reward Page
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -32,7 +34,7 @@
     </head>
 
     <body class=" sidebar-mini ">
-        <% 
+        <%
             UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
         %>
         <div class="wrapper ">
@@ -45,7 +47,7 @@
                         FPT
                     </a>
                     <a href="#" class="simple-text logo-normal">
-                         Admin
+                        Admin
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -57,7 +59,7 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="<%= user.getImage() %>" />
+                            <img src="<%= user.getImage()%>" />
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -67,7 +69,7 @@
                                 </span>
                             </a>
                             <div class="clearfix"></div>
-                           
+
                         </div>
                     </div>
                     <ul class="nav">
@@ -104,7 +106,13 @@
                                             <span class="sidebar-normal"> Student </span>
                                         </a>
                                     </li>
-                              </ul>
+                                    <li>
+                                        <a href="<%= request.getContextPath()%>/admin/addPoint.jsp">
+                                            <span class="sidebar-mini-icon">AP</span>
+                                            <span class="sidebar-normal">Add Point</span>
+                                        </a>
+                                    </li>
+                                </ul>
                     </ul>
                 </div>                         
             </div>
@@ -130,10 +138,10 @@
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
                             <form action="<%= request.getContextPath()%>/SearchRewardDataController" id="search">
                                 <div class="input-group no-border">
-                                    <input type="text" name="search" value="" class="form-control" placeholder="Search...">
+                                    <input type="text" name="search" value="" class="form-control" placeholder="Load Data...">
                                     <div class="input-group-append" onclick="returnForm()">
                                         <div class="input-group-text">
-                                            <i class="now-ui-icons ui-1_zoom-bold"></i>
+                                            <i class="now-ui-icons files_single-copy-04"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -141,28 +149,15 @@
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#pablo">
-                                       
+
                                         <p>
-                                          
+
                                         </p>
                                     </a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Filter <i class="fas fa-filter"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
-                                        </p>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">All</a>
-                                        <a class="dropdown-item" href="#">Deleted</a>
-                                        <a class="dropdown-item" href="#">Activated</a>
-                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                       <a class="nav-link" href="LogOutController">
-                                         <i class="now-ui-icons media-1_button-power"></i>
+                                    <a class="nav-link" href="LogOutController">
+                                        <i class="now-ui-icons media-1_button-power"></i>
                                         <p>
                                             <span class="d-lg-none d-md-block"></span>
                                             Log Out
@@ -185,24 +180,26 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
-                             <form action="<%= request.getContextPath()%>/admin/reward/createReward.jsp">
-                                    <button class="btn btn-primary">Create Reward</button>
-                    </form>
+                                        <form action="<%= request.getContextPath()%>/admin/reward/createReward.jsp">
+                                            <button class="btn btn-primary">Create Reward</button>
+                                        </form>
                                     </div>
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>Reward ID</th>
+                                                <th>Channel Name</th>
                                                 <th>Name</th>
                                                 <th>Point</th>
                                                 <th>Description</th>
-                                                
+
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </thead> 
                                         <tfoot>
                                             <tr>
                                                 <th>Reward ID</th>
+                                                <th>Channel Name</th>
                                                 <th>Name</th>
                                                 <th>Point</th>
                                                 <th>Description</th>
@@ -210,32 +207,51 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                        <%
-                                            List<RewardDTO> list = (List<RewardDTO>) request.getAttribute("LIST_REWARD");
-                                            if (list != null) {
-                                                if (!list.isEmpty()) {
-                                                    for(RewardDTO listReward : list){
-                                            
-                                        %>
+                                            <%
+                                                ChannelDAO channeldao = new ChannelDAO();
+                                                List<ChannelDTO> channelList = channeldao.getAllChannelID();
+
+                                            %>
+                                            <%                                                List<RewardDTO> list = (List<RewardDTO>) request.getAttribute("LIST_REWARD");
+                                                if (list != null) {
+                                                    if (!list.isEmpty()) {
+                                                        for (RewardDTO listReward : list) {
+
+                                            %>
                                             <tr>
                                                 <td><%= listReward.getRewardID()%></td>
+                                                <%
+                                                    if (channelList != null) {
+                                                        for (ChannelDTO channel : channelList) {
+                                                            if (listReward.getChannelID().equals(channel.getChannelID())) {
+
+
+                                                %>
+                                                <td><%=channel.getChannelName()%></td>
+
+                                                    <%
+                                                                }
+                                                            }
+                                                        }
+                                                    %>
+
                                                 <td><%= listReward.getRewardName()%></td>
                                                 <td><%= listReward.getRewardPoint()%></td>
                                                 <td><%= listReward.getDescription()%></td>
                                                 <td class="text-right">
-                                                    <a href="<%= request.getContextPath()%>/admin/reward/updateReward.jsp?rewardID=<%= listReward.getRewardID() %>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
-                                                    <a href="RemoveRewardDataController?rewardID=<%= listReward.getRewardID() %>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
+                                                    <a href="<%= request.getContextPath()%>/admin/reward/updateReward.jsp?rewardID=<%= listReward.getRewardID()%>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-calendar-alt"></i></a>
+                                                    <a href="RemoveRewardDataController?rewardID=<%= listReward.getRewardID()%>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
-                                        <%
-                                                    }
-                                        %>
-                                        <%
+                                            <%
                                                 }
-                                        %>
-                                        <%
-                                            }
-                                        %>
+                                            %>
+                                            <%
+                                                }
+                                            %>
+                                            <%
+                                                }
+                                            %>
                                         </tbody>
                                     </table>
                                 </div><!-- end content-->
@@ -267,8 +283,7 @@
                         <div class="copyright" id="copyright">
                             &copy; <script>
                                 document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
-                        </div>
+                            </script>, Designed by <a href="https://www.facebook.com/siliem3k" target="_blank">LiemTroller</a>. Coded by <a href="https://www.facebook.com/pphuhuy" target="_blank">PhuHuy</a>.                        </div>
                     </div>
                 </footer>
             </div>
@@ -330,14 +345,14 @@
 
                                     var table = $('#datatable').DataTable();
 
-                                    
-                                    
 
-                                   
+
+
+
                                 });
-                function returnForm() {
-                    document.getElementById('search').submit();             // Function returns the product of a and b
-                }
+                                function returnForm() {
+                                    document.getElementById('search').submit();             // Function returns the product of a and b
+                                }
         </script>
     </body>
 

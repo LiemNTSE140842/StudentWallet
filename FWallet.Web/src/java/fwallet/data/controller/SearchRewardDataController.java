@@ -8,7 +8,6 @@ package fwallet.data.controller;
 import fwallet.data.reward.RewardDAO;
 import fwallet.data.reward.RewardDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +31,7 @@ public class SearchRewardDataController extends HttpServlet {
         try {
             String search = request.getParameter("search");
             RewardDAO dao = new RewardDAO();
-            List<RewardDTO> list = dao.getRewardByName(search);
+            List<RewardDTO> list = dao.getAllRewards();
             if(!list.isEmpty()){
                 request.setAttribute("LIST_REWARD", list);
                 url=SUCCESS;

@@ -17,7 +17,7 @@
   <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Now UI Dashboard PRO by Creative Tim
+     Update Reward Form
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -37,26 +37,27 @@
             RewardDTO reward = dao.getRewardByID(rewardId);
         %>
     
-  <div class="wrapper ">
-    <div class="sidebar" data-color="orange">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
-      <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-          FCoin
-        </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          FPT university
-        </a>
-        <div class="navbar-minimize">
-          <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
-            <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
-            <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
-          </button>
-        </div>
-      </div>
-       <%
+   <div class="wrapper ">
+            <div class="sidebar" data-color="orange">
+                <!--
+                  Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+                -->
+                <div class="logo">
+                    <a href="#" class="simple-text logo-mini">
+                        FPT
+                    </a>
+                    <a href="#" class="simple-text logo-normal">
+                        Admin 
+                    </a>
+                    <div class="navbar-minimize">
+                        <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
+                            <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
+                            <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <%
                     UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                 %>
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -79,6 +80,12 @@
                         </div>
                     </div>
                     <ul class="nav">
+                        <li>
+                            <a href="<%= request.getContextPath()%>/admin/rewardData.jsp">
+                                <i class="now-ui-icons design_app"></i>
+                                <p>Back To Reward Page</p>
+                            </a>
+                        </li>
                 </div>
             </div>
             <div class="main-panel" id="main-panel">

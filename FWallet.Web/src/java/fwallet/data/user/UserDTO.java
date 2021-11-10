@@ -74,6 +74,11 @@ public class UserDTO {
         this.statusID = statusID;
     }
 
+    public UserDTO(String userID) {
+        this.userID = userID;
+    }
+    
+
     public String getAddress() {
         return address;
     }

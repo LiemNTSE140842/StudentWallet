@@ -57,7 +57,8 @@ public class ProductDAO {
             conn = DBUtil.getConnection();
             if(conn!=null){
                 String sql = "SELECT productID, categoryID, productName, description, price, quantity, statusID, image"
-                        +" FROM tblProduct";
+                        +" FROM tblProduct "
+                        + "WHERE statusID ='true'";
                 stm = conn.prepareStatement(sql);
                 rs=stm.executeQuery();
                 while(rs.next()){
@@ -226,5 +227,34 @@ public class ProductDAO {
             }
         }
         return check;
+    }
+     public List<String> getProductlID() throws SQLException{
+        ArrayList <String> productlist = new ArrayList<>();
+        
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT productID"
+                        +" FROM tblProduct";
+                stm = conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String productID = rs.getString("productID");
+                    productlist.add(productID);
+                }
+}
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return productlist;
     }
 }

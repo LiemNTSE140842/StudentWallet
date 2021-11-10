@@ -7440,6 +7440,7 @@ Created using IcoMoon - icomoon.io
 .card .card-footer {
   background-color: transparent;
   border: 5px;
+  margin-left:-25%;
 }
 
 .card .card-footer .stats i {
