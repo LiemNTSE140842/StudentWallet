@@ -155,9 +155,6 @@
                                                     <th class="text-center">
                                                         Plus Point
                                                     </th>
-                                                    <th class="text-right">
-                                                        Actions
-                                                    </th>
                                                     </thead>
                                                     <tbody>                    
                                                         <c:forEach items="${sessionScope.LIST_TRANSACTION}" varStatus="counter" var="h"> 
@@ -186,15 +183,6 @@
                                                                     <td class="text-center">
                                                                         ${h.plusPoint}
                                                                     </td>
-                                                                    <td class="text-right">
-
-                                                                        </button>
-                                                                        <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
-                                                                            <i class="now-ui-icons ui-2_settings-90"></i>
-                                                                        </button>
-
-                                                                    </td>
-                                                                </tr>
                                                             </c:if>
                                                             <c:if test="${h.plusPoint != 0}">
                                                                 <tr class="table-success">
@@ -220,14 +208,7 @@
                                                                     <td class="text-center">
                                                                         ${h.plusPoint}
                                                                     </td>
-                                                                    <td class="text-right">
-
-                                                                        </button>
-                                                                        <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
-                                                                            <i class="now-ui-icons ui-2_settings-90"></i>
-                                                                        </button>
-
-                                                                    </td>
+              
                                                                 </tr>
                                                             </c:if>
                                                         </c:forEach>   
@@ -271,9 +252,7 @@
                                                         </th>
                                                     </c:if>
 
-                                                    <th class="text-right">
-                                                        Actions
-                                                    </th>
+                                                    
                                                     </thead>
                                                     <tbody>                    
                                                         <c:forEach items="${sessionScope.LIST_TRANSACTION}" varStatus="counter" var="h"> 
@@ -295,14 +274,7 @@
                                                                     <td class="text-center">
                                                                         ${h.minusPoint}
                                                                     </td>
-                                                                    <td class="text-right">
-
-                                                                        </button>
-                                                                        <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
-                                                                            <i class="now-ui-icons ui-2_settings-90"></i>
-                                                                        </button>
-
-                                                                    </td>
+                                                                   
                                                                 </tr>
                                                             </c:if>
                                                             <c:if test="${not empty requestScope.PLUS}">
@@ -323,14 +295,7 @@
                                                                     <td class="text-center">
                                                                         ${h.plusPoint}
                                                                     </td>
-                                                                    <td class="text-right">
-
-                                                                        </button>
-                                                                        <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
-                                                                            <i class="now-ui-icons ui-2_settings-90"></i>
-                                                                        </button>
-
-                                                                    </td>
+                                                                 
                                                                 </tr>
                                                             </c:if>
                                                         </c:forEach>   

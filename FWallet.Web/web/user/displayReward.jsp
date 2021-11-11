@@ -160,7 +160,7 @@
                                                     for (RewardDTO r : listReward) {
                                             %>
                                             <tr>
-                                                <td>Image</td>
+                                                <td><img src="https://upload.wikimedia.org/wikipedia/vi/1/1d/Logo_%C4%90%E1%BA%A1i_h%E1%BB%8Dc_FPT.png" alt="hinhanh" height="150px" width="150px"/></td>
                                                 <td><%= r.getRewardName()%></td>
                                                 <td><%= r.getDescription()%></td>
                                             </tr>

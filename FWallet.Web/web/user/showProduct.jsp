@@ -119,7 +119,7 @@
                     </div>
                     <!-- Navbar -->
                     <div class="wrapper wrapper-full-page ">
-                        <div class="full-page pricing-page section-image" data-image="<%= request.getContextPath()%>\...\assets\img\bg15.jpg">
+                        <div class="full-page pricing-page section-image" data-image="<%= request.getContextPath()%>\assets\img\bg15.jpg">
                             <div class="content">
                                 <div class="container">
                                     <div class="row">
@@ -200,7 +200,7 @@
                     <div class="copyright" id="copyright">
                         &copy; <script>
                             document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                        </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                                </script>, Designed by <a href="https://www.facebook.com/siliem3k" target="_blank">LiemTroller</a>. Coded by <a href="https://www.facebook.com/pphuhuy" target="_blank">PhuHuy</a>.                               
                     </div>
                 </div>
             </footer>
