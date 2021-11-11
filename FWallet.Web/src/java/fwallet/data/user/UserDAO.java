@@ -162,6 +162,38 @@ public class UserDAO {
         return list;
     }
     
+    public List<UserDTO> getAllUserInfo() throws SQLException{
+        List<UserDTO> list = new ArrayList<>();
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT userID, studentName, roleID, status"
+                        +" FROM tblStudent WHERE roleID='US'";
+                stm = conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String userID = rs.getString("userID");
+                    String studentName = rs.getString("studentName");
+                    String roleID = rs.getString("roleID");
+                    boolean status = rs.getBoolean("status");
+                    list.add(new UserDTO(userID, studentName, roleID, roleID));
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
+    
     public List<UserDTO> getUserByEmail(String search) throws SQLException{
         List<UserDTO> list = new ArrayList<>();
         try {

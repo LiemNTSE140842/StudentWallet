@@ -17,8 +17,22 @@ public class WalletDTO {
     private int walletPoint;
     private boolean walletStatus;
     private String rewardID;
-
+    private String studentName;
+    
     public WalletDTO() {
+    }
+
+    public WalletDTO(String userID, String studentName) {
+        this.userID = userID;
+        this.studentName = studentName;
+    }
+
+    public WalletDTO(String walletID, String userID, String walletName, int walletPoint, boolean walletStatus) {
+        this.walletID = walletID;
+        this.userID = userID;
+        this.walletName = walletName;
+        this.walletPoint = walletPoint;
+        this.walletStatus = walletStatus;
     }
 
     public WalletDTO(String walletID, String userID, String walletName, float balance, int walletPoint, boolean walletStatus, String rewardID) {
@@ -29,6 +43,14 @@ public class WalletDTO {
         this.walletPoint = walletPoint;
         this.walletStatus = walletStatus;
         this.rewardID = rewardID;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
     public String getWalletID() {

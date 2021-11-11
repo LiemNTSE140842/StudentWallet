@@ -4,9 +4,9 @@
     Author     : ThanhLiemPro
 --%>
 
+<%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +29,10 @@
         <link href="<%= request.getContextPath()%>/assets/demo/demo.css" rel="stylesheet" />
     </head>
 
-    <body class=" sidebar-mini ">
+   <body class=" sidebar-mini ">
+        <%
+            UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+        %>
         <div class="wrapper ">
             <div class="sidebar" data-color="orange">
                 <!--
@@ -52,20 +55,16 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="" />
+                            <img src="<%= user.getImage()%>" />
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                                 <span>
-
+                                    <%= user.getUserID()%>
                                     <b class="caret"></b>
                                 </span>
                             </a>
                             <div class="clearfix"></div>
-                            <div class="collapse" id="collapseExample">
-                                <ul class="nav">
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <ul class="nav">
@@ -96,22 +95,13 @@
                             <span class="navbar-toggler-bar navbar-kebab"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                            <form>
-                                <div class="input-group no-border">
-                                    <input type="text" value="" class="form-control" placeholder="Search...">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <i class="now-ui-icons ui-1_zoom-bold"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                   
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#pablo">
-                                        <i class="now-ui-icons users_single-02"></i>
+                                        Logout<i class="now-ui-icons media-1_button-power"></i>
                                         <p>
-                                            <span class="d-lg-none d-md-block">Account</span>
+                                            <span class="d-lg-none d-md-block">Logout</span>
                                         </p>
                                     </a>
                                 </li>
@@ -137,7 +127,7 @@
                                                 STT
                                             </th>
                                             <th>
-                                                Student ID
+                                                Student Reward
                                             </th>
                                             <th>
                                                 Wallet ID
@@ -220,29 +210,6 @@
                                                     </tr>
                                                     </c:if>
                                                 </c:forEach>   
-                                                <!--                      <tr class="table-success">
-                                                                        <td class="text-center">
-                                                                          2
-                                                                        </td>
-                                                                        <td>
-                                                                          John Doe
-                                                                        </td>
-                                                                        <td>
-                                                                          Design
-                                                                        </td>
-                                                                        <td class="text-center">
-                                                                          2012
-                                                                        </td>
-                                                                        <td class="text-right">
-                                                                          € 89,241
-                                                                        </td>
-                                                                        <td class="text-right">
-                                                                         
-                                                                          <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
-                                                                            <i class="now-ui-icons ui-2_settings-90"></i>
-                                                                          </button>
-                                                                        </td>
-                                                                      </tr>-->
                                             </tbody>
                                         </table>
                                     </div>
@@ -274,7 +241,7 @@
                                 <div class="copyright" id="copyright">
                                     &copy; <script>
                                         document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                                    </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+  </script>, Designed by <a href="https://www.facebook.com/siliem3k" target="_blank">LiemTroller</a>. Coded by <a href="https://www.facebook.com/pphuhuy" target="_blank">PhuHuy</a>.                               
                                 </div>
                             </div>
                         </footer>

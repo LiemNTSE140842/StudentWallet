@@ -103,6 +103,12 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="<%= request.getContextPath()%>/admin/walletData.jsp">
+                                            <span class="sidebar-mini-icon">W</span>
+                                            <span class="sidebar-normal">Wallet</span>
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="<%= request.getContextPath()%>/admin/addPoint.jsp">
                                             <span class="sidebar-mini-icon">AP</span>
                                             <span class="sidebar-normal">Add Point</span>
@@ -147,7 +153,7 @@
 
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="LogOutController">
+                                        <a class="nav-link" href="<%= request.getContextPath()%>/LogOutController">
                                             <i class="now-ui-icons media-1_button-power"></i>
                                             <p>
                                                 <span class="d-lg-none d-md-block"></span>

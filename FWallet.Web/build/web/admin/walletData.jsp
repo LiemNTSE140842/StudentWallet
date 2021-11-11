@@ -4,7 +4,7 @@
     Author     : pphuh
 --%>
 
-<%@page import="fwallet.data.studentreward.StudentRewardDTO"%>
+<%@page import="fwallet.data.wallet.WalletDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,7 +17,7 @@
         <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Add Point Page
+            Student Page
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -40,11 +40,11 @@
                   Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
                 -->
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+                    <a href="#" class="simple-text logo-mini">
                         FPT
                     </a>
-                    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        Student
+                    <a href="#" class="simple-text logo-normal">
+                       Admin
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -66,22 +66,7 @@
                                 </span>
                             </a>
                             <div class="clearfix"></div>
-                            <div class="collapse" id="collapseExample">
-                                <ul class="nav">
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">MP</span>
-                                            <span class="sidebar-normal">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sidebar-mini-icon">EP</span>
-                                            <span class="sidebar-normal">Edit Profile</span>
-                                        </a>
-                                    </li>    
-                                </ul>
-                            </div>
+                            
                         </div>
                     </div>
                     <ul class="nav">
@@ -125,7 +110,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<%= request.getContextPath()%>/admin/addPoint.jsp">
                                             <span class="sidebar-mini-icon">AP</span>
                                             <span class="sidebar-normal">Add Point</span>
                                         </a>
@@ -146,7 +131,7 @@
                                     <span class="navbar-toggler-bar bar3"></span>
                                 </button>
                             </div>
-                            <a class="navbar-brand" href="#pablo">Trangchu</a>
+                            <a class="navbar-brand" href="#pablo">Student Wallet</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -154,7 +139,7 @@
                             <span class="navbar-toggler-bar navbar-kebab"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                            <form action="<%=request.getContextPath()%>/SearchStudentRewardDataController" id="search" method="POST">
+                            <form action="<%=request.getContextPath()%>/SearchWalletDataController" id="search" method="POST">
 
 
                                 <ul class="navbar-nav">
@@ -169,7 +154,7 @@
 
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<%= request.getContextPath() %>/LogOutController">
+                                        <a class="nav-link" href="<%= request.getContextPath()%>/LogOutController">
                                             <i class="now-ui-icons media-1_button-power"></i>
                                             <p>
                                                 <span class="d-lg-none d-md-block"></span>
@@ -179,7 +164,7 @@
                                     </li>
                                 </ul>
                                 <div class="input-group no-border">
-                                    <input type="text" name="search" value="" class="form-control" placeholder="Search By Email">
+                                    <input type="text" name="search" value="" class="form-control" placeholder="Search By Wallet Name">
                                     <div class="input-group-append" onclick="returnForm()">
                                         <div class="input-group-text">
                                             <i class="now-ui-icons ui-1_zoom-bold"></i>
@@ -198,61 +183,63 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Student Reward Data</h4>
+                                    <h4 class="card-title">Wallet Data</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
-                                        <form action="<%= request.getContextPath()%>/admin/studentReward/createStudentReward.jsp">
+                                        <form action="<%= request.getContextPath()%>/admin/wallet/createWallet.jsp">
                                             <button class="btn btn-primary">Create</button>
                                         </form>   
                                     </div>
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
+                                        <thead class="thead-dark">
                                             <tr>
-                                                <th>Student ID</th>
-                                                <th>Email</th>
-                                                <th>Reward Name</th>
-                                                <th>Reward Status</th>
-                                                <th class="disabled-sorting">Actions</th>
+						<th>Wallet ID</th>
+                                                <th>Wallet Name</th>
+                                                <th>User ID</th>
+                                                <th>Wallet Point</th>
+                                                <th>Wallet Status</th>
+                                                <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Student ID</th>
-                                                <th>Email</th>
-                                                <th>Reward Name</th>
-                                                <th>Reward Status</th>
-                                                <th class="disabled-sorting">Actions</th>
+						<th>Wallet ID</th>
+                                                <th>Wallet Name</th>
+                                                <th>User ID</th>
+                                                <th>Wallet Point</th>
+                                                <th>Wallet Status</th>
+                                                <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </tfoot>
-                                        
-                                        <tbody>
-                                            <%
-                                            List<StudentRewardDTO> list = (List<StudentRewardDTO>) request.getAttribute("STUDENT_REWARD_LIST");
+                                        <%
+                                            List<WalletDTO> list = (List<WalletDTO>) request.getAttribute("LIST_WALLET");
                                             if (list != null) {
                                                 if (!list.isEmpty()) {
-                                                    for (StudentRewardDTO studentReward : list) {
+                                                    for (WalletDTO listWallet : list) {
                                         %>
+                                        <tbody>
                                             <tr>
-                                                <td><%= studentReward.getStudentID()%> </td>
-                                                <td><%= studentReward.getEmail()%></td>
-                                                <td><%= studentReward.getRewardName()%></td>
-                                                <td><%= studentReward.isStudentRewardStatus()? "holding" : "used" %></td>
-                                                <td>
-                                                    <a href="RemoveStudentRewardController?studentRewardID=<%= studentReward.getStudentRewardID()%>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
+                                                <td><%= listWallet.getWalletID()%></td>
+                                                <td><%= listWallet.getWalletName()%> </td>
+                                                <td><%= listWallet.getUserID()%></td>
+                                                <td><%= listWallet.getWalletPoint()%></td>
+                                                <td><%= listWallet.isWalletStatus() == true ? "active" : "inactive" %></td>
+                                                <td class="text-right">
+                                                    <a href="<%= request.getContextPath()%>/admin/wallet/updateWallet.jsp?walletID=<%= listWallet.getWalletID()%>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="fas fa-user-edit"></i></a>
+                                                    <a href="RemoveWalletDataController?walletID=<%= listWallet.getWalletID() %>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
-                                            <%
-                                            }
-                                        %>
-                                        <%
-                                            }
-                                        %>
-                                        <%
-                                            }
-                                        %>
                                         </tbody>
-                                        
+                                        <%
+                                            }
+                                        %>
+                                        <%
+                                            }
+                                        %>
+                                        <%
+                                            }
+                                        %>
                                     </table>
                                 </div><!-- end content-->
                             </div><!--  end card  -->

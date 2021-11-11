@@ -92,7 +92,7 @@ public class TransactionDAO implements Serializable{
                     int minusPoint = rs.getInt("minusPoint");
                     int plusPoint = rs.getInt("plusPoint");
                     Timestamp orderDate  = rs.getTimestamp("orderDate");
-                    list.add(new TransactionDTO(transactionID, studentrewardID, walletID, minusPoint, plusPoint, orderDate));
+//                    list.add(new TransactionDTO(transactionID, studentrewardID, walletID, minusPoint, plusPoint, orderDate));
                 }
             }
         } catch (Exception e) {

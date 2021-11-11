@@ -4,6 +4,7 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.studentreward.StudentRewardDAO"%>
 <%@page import="fwallet.data.studentreward.StudentRewardDTO"%>
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page import="fwallet.data.product.ProductDTO"%>
@@ -113,14 +114,10 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <%
-                                    response.setHeader("Cache-Control","no-cache"); //HTTP 1.1 
-                                    response.setHeader("Pragma","no-cache"); //HTTP 1.0 
-                                    response.setDateHeader ("Expires", 0); //prevents caching at the proxy server  
-                                %>
                                 <tbody>
                                         <%
-                                            List<StudentRewardDTO> studentList = (List<StudentRewardDTO>) request.getAttribute("Student_Reward_List");
+                                            StudentRewardDAO studentRewardDao = new StudentRewardDAO();
+                                            List<StudentRewardDTO> studentList = studentRewardDao.getStudentRewardStudentIdAndStatus(user);;
                                             if (studentList != null) {
                                                 for (StudentRewardDTO list : studentList) {
                                         %>
@@ -238,6 +235,15 @@
                         $('.card.card-wizard').addClass('active');
                     }, 600);
                 });
+                window.addEventListener( "pageshow", function ( event ) {
+                var historyTraversal = event.persisted || 
+                                       ( typeof window.performance != "undefined" && 
+                                            window.performance.navigation.type === 2 );
+                if ( historyTraversal ) {
+                  // Handle page restore.
+                  window.location.reload();
+                }
+              });
 </script>
 </body>
 

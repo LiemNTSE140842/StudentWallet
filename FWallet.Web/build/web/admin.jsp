@@ -100,6 +100,12 @@
                                             <span class="sidebar-normal"> Student </span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="<%= request.getContextPath()%>/admin/walletData.jsp">
+                                            <span class="sidebar-mini-icon">W</span>
+                                            <span class="sidebar-normal">Wallet</span>
+                                        </a>
+                                    </li>
                                       <li>
                                         <a href="<%= request.getContextPath()%>/admin/addPoint.jsp">
                                             <span class="sidebar-mini-icon">AP</span>
