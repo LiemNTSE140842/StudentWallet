@@ -57,6 +57,14 @@ public class RewardDTO {
         this.rewardImage = rewardImage;
         this.studentID = studentID;
     }
+
+    public RewardDTO(String rewardID, String channelID, String rewardName, int rewardPoint, String description) {
+        this.rewardID = rewardID;
+        this.channelID = channelID;
+        this.rewardName = rewardName;
+        this.rewardPoint = rewardPoint;
+        this.description = description;
+    }
     
 
     public String getStudentID() {
@@ -129,6 +137,11 @@ public class RewardDTO {
 
     public void setRewardImage(String rewardImage) {
         this.rewardImage = rewardImage;
+    }
+
+    @Override
+    public String toString() {
+        return "RewardDTO{" + "rewardID=" + rewardID + ", channelID=" + channelID + ", rewardTypeID=" + rewardTypeID + ", rewardName=" + rewardName + ", rewardPoint=" + rewardPoint + ", rewardDate=" + rewardDate + ", description=" + description + ", rewardImage=" + rewardImage + ", studentID=" + studentID + '}';
     }
 
     

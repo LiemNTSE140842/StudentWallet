@@ -213,5 +213,37 @@ public class RewardDAO {
         }
         return check;
     }
+    public List<RewardDTO> getAllRewards() throws SQLException{
+        List<RewardDTO> list = new ArrayList<RewardDTO>();
+        try {
+            conn = DBUtil.getConnection();
+            if(conn!=null){
+                String sql = "SELECT rewardID, channelID, rewardName, rewardPoint, description"
+                        +" FROM tblReward";
+                stm = conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while(rs.next()){
+                    String rewardID = rs.getString("rewardID");
+                       String channelID = rs.getString("channelID");
+                       String rewardName = rs.getString("rewardName");
+                       int point = rs.getInt("rewardPoint");
+                       String description = rs.getString("description");
+                    list.add(new RewardDTO(rewardID, channelID, rewardName, point ,description));
+                }
+            }
+        } catch (Exception e) {
+        }finally{
+            if(rs!=null){
+                rs.close();
+            }
+            if(stm!=null){
+                stm.close();
+            }
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
     
 }

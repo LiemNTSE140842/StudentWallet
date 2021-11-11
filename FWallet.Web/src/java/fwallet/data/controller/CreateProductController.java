@@ -9,6 +9,7 @@ import fwallet.data.product.ProductDAO;
 import fwallet.data.product.ProductDTO;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,10 +40,26 @@ public class CreateProductController extends HttpServlet {
             Timestamp createDate = new Timestamp(System.currentTimeMillis());
             ProductDTO product = new ProductDTO(productID, categoryID, productName, description, price, quantity, false, createDate, image);
             ProductDAO dao = new ProductDAO();
-            boolean checkInsert = dao.insertNewProduct(product);
-            if(checkInsert){
-                url=SUCCESS;
+            boolean checkInsert = false;
+            List<String> listproduct = dao.getProductlID();
+            for (String products : listproduct) {
+                if (!checkInsert||!products.matches("^sp(\\d{1}|\\d{2}|\\d{3}|\\d{4}|\\d{5})$")) {
+                    request.setAttribute("MASSAGEID", "Please productID check fomat[sp-{6}xxx]");  
+                }else if(productID.equals(products)){
+                    request.setAttribute("MASSAGEID", "ProductID is adready, please try again!");
+                }else if(productName.length()>50){
+                 request.setAttribute("MASSAGENAME", "ProductName is too long size(50)"); 
+                }else if(description.length()>50){
+                 request.setAttribute("MASSAGEDES", "Description is too long size(50)");  
+                }else if(image.length()>200){
+                 request.setAttribute("MASSAGEIMG", "ProductImage is too long size(200)");
+                }
+                else{
+                    checkInsert = dao.insertNewProduct(product);
+                    url = SUCCESS;
+                }
             }
+           
         } catch (Exception e) {
             log("Error at CreateProductController: " + e.toString());
         }finally{

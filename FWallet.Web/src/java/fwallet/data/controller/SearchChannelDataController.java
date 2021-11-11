@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  *
  * @author pphuh
@@ -33,7 +34,7 @@ public class SearchChannelDataController extends HttpServlet {
             ChannelDAO dao = new ChannelDAO();
             List<ChannelDTO> list = dao.getChannelByName(search);
             if(!list.isEmpty()){
-                request.setAttribute("LIST_CHANNEL", list);
+               request.setAttribute("LIST_CHANNEL", list);
                 url=SUCCESS;
             }else{
                 url=SUCCESS;

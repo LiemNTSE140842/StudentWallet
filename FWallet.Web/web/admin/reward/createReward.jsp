@@ -4,6 +4,7 @@
     Author     : pphuh
 --%>
 
+<%@page import="fwallet.data.user.UserDAO"%>
 <%@page import="fwallet.data.user.UserDTO"%>
 <%@page import="fwallet.data.rewardtype.RewardTypeDTO"%>
 <%@page import="fwallet.data.rewardtype.RewardTypeDAO"%>
@@ -44,11 +45,11 @@
                   Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
                 -->
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+                    <a href="#" class="simple-text logo-mini">
                         FPT
                     </a>
-                    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        Admin
+                    <a href="#" class="simple-text logo-normal">
+                        Admin 
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -81,6 +82,12 @@
                         </div>
                     </div>
                     <ul class="nav">
+                        <li>
+                            <a href="<%= request.getContextPath()%>/admin/rewardData.jsp">
+                                <i class="now-ui-icons design_app"></i>
+                                <p>Back To Reward Page</p>
+                            </a>
+                        </li>
                 </div>
             </div>
             <div class="main-panel" id="main-panel">
@@ -97,12 +104,12 @@
                                 <label class="col-sm-2 col-form-label">Reward ID</label>
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="rewardID" required="true" />
+                                        <input class="form-control" type="text" name="rewardID" required="true" placeholder="rewa-6{XXX}" />
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">Channel ID</label>
+                                <label class="col-sm-2 col-form-label">Channel Name</label>
 
                                 <div class="col-sm-7">
                                     <div class="form-group">
@@ -154,7 +161,24 @@
                                 <label class="col-sm-2 col-form-label">Student ID</label>
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <input class="form-control" type="text"  name="studentID" required="true" />
+                                         <%
+                                            UserDAO dao = new UserDAO();
+                                            List<UserDTO> List = dao.getUserID();
+
+                                        %>
+                                        <select name="studentID" class="form-control" id="exampleFormControlSelect1" required="true">
+                                            <%                                                if (List != null) {
+                                                    for (UserDTO user : List) {
+                                            %>
+                                            <option value="<%= user.getUserID()%>"><%=user.getUserID()%></option>
+
+
+                                            <%
+                                                    }
+                                                }
+                                            %>
+
+                                        </select>
                                     </div>
                                 </div>
                             </div>

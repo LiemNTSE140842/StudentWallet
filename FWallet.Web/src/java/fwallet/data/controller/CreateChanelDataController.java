@@ -38,15 +38,24 @@ public class CreateChanelDataController extends HttpServlet {
             Timestamp channelCreateDate = new Timestamp(System.currentTimeMillis());
             ChannelDTO channel = new ChannelDTO(channelID, channelName, channelOffice, channelPhone, channelCreateDate);
             ChannelDAO dao = new ChannelDAO();
-            boolean checkInsertChannel = dao.insertNewChanel(channel);
+            boolean checkInsertChannel= false;
             List<String> listChannelID = dao.getChannelID();
             for (String channelid : listChannelID) {
-                if (channelID.equals(channelid)) {
-                    request.setAttribute("MASSAGE", "ChannelID is adready, please try again!");
-                   
-                }else if(!channelID.matches("^cn(\\d{1}|\\d{2}|\\d{3}|\\d{4}|\\d{5})$")){
-                    request.setAttribute("MASSAGE", "Please forr");
-                } else if(checkInsertChannel) {
+                if (!channelID.matches("^cn(\\d{1}|\\d{2}|\\d{3}|\\d{4}|\\d{5})$")) {
+                    request.setAttribute("MASSAGEID", "Please check fomat[cn-{6}xxx]");
+                }else if(channelID.equals(channelid)){
+                    request.setAttribute("MASSAGEID", "ChannelID is adready, please try again!");
+                }else if(channelName.length()>50){
+                 request.setAttribute("MASSAGENAME", "ChannelName is too long size(50)");
+                    
+                }else if(channelOffice.length()>20){
+                 request.setAttribute("MASSAGEOFF", "ChannelOffice is too long size(50)");
+                }
+                else if(!channelPhone.matches("[0-9]{3,15}")){
+                 request.setAttribute("MASSAGEPHONE", "ChannelPhone must be number and has from 3 to 15 numbers!");
+                }
+                else{
+                    checkInsertChannel = dao.insertNewChanel(channel);
                     url = SUCCESS;
                 }
             }

@@ -88,8 +88,8 @@
                     </div>
                     <ul class="nav">
                         <li>
-                            <a href="ShowProductController">
-                                <i class="now-ui-icons design_app"></i>
+                            <a href="<%= request.getContextPath()%>/user/showProduct.jsp">
+                                <i class="now-ui-icons shopping_bag-16"></i>
                                 <p>Show Product</p>
                             </a>
                         </li>
@@ -182,7 +182,7 @@
                 <div class="copyright" id="copyright">
                     &copy; <script>
                         document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                    </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                                </script>, Designed by <a href="https://www.facebook.com/siliem3k" target="_blank">LiemTroller</a>. Coded by <a href="https://www.facebook.com/pphuhuy" target="_blank">PhuHuy</a>.                               
                 </div>
             </div>
         </footer>

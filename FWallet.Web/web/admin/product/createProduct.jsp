@@ -38,11 +38,11 @@
                   Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
                 -->
                 <div class="logo">
-                    <a href="https://hcmuni.fpt.edu.vn" class="simple-text logo-mini">
+                    <a href="#" class="simple-text logo-mini">
                         FPT
                     </a>
-                    <a href="https://github.com/LiemNTSE140842/StudentWallet" class="simple-text logo-normal">
-                        Admin
+                    <a href="#" class="simple-text logo-normal">
+                        Admin 
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
 
-                 <%
+                <%
                     UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                 %>
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -75,6 +75,12 @@
                         </div>
                     </div>
                     <ul class="nav">
+                        <li>
+                            <a href="<%= request.getContextPath()%>/admin/productData.jsp">
+                                <i class="now-ui-icons design_app"></i>
+                                <p>Back To Product Page</p>
+                            </a>
+                        </li>
                 </div>
             </div>
             <div class="main-panel" id="main-panel">
@@ -91,6 +97,7 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="productID" required="true" />
+                                         <h5 style="color: red">${requestScope.MASSAGEID}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -120,10 +127,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">ProductName</label>
+                                <label class="col-sm-2 col-form-label">Product Name</label>
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="productName"required="true" />
+                                         <h5 style="color: red">${requestScope.MASSAGENAME}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -132,6 +140,7 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="description" required="true" />
+                                        <h5 style="color: red">${requestScope.MASSAGEDES}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -156,6 +165,7 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="image" required="true" />
+                                         <h5 style="color: red">${requestScope.MASSAGEIMG}</h5>
                                     </div>
                                 </div>
                             </div>

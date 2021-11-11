@@ -19,17 +19,18 @@ import java.util.List;
  *
  * @author pphuh
  */
-public class TransactionDAO implements Serializable{
-    Connection conn=null;
-    PreparedStatement stm =null;
-    ResultSet rs =null;
-    
-    public boolean insertMinusTransaction(TransactionDTO transaction) throws SQLException, ClassNotFoundException{
-        boolean check=false;
+public class TransactionDAO implements Serializable {
+
+    Connection conn = null;
+    PreparedStatement stm = null;
+    ResultSet rs = null;
+
+    public boolean insertMinusTransaction(TransactionDTO transaction) throws SQLException, ClassNotFoundException {
+        boolean check = false;
         try {
-            conn=DBUtil.getConnection();
-            if(conn!=null){
-                String sql ="INSERT INTO tblTransaction(transactionID, walletID, orderID, minusPoint, orderDate)"
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                String sql = "INSERT INTO tblTransaction(transactionID, walletID, orderID, minusPoint, orderDate)"
                         + " VALUES(?,?,?,?,?)";
                 stm = conn.prepareStatement(sql);
                 stm.setString(1, transaction.getTransactionID());
@@ -37,25 +38,25 @@ public class TransactionDAO implements Serializable{
                 stm.setString(3, transaction.getOrderID());
                 stm.setInt(4, transaction.getMinusPoint());
                 stm.setTimestamp(5, transaction.getOrderDate());
-                check = stm.executeUpdate()>0;
+                check = stm.executeUpdate() > 0;
             }
-        }finally{
-            if(stm!=null){
+        } finally {
+            if (stm != null) {
                 stm.close();
             }
-            if(conn!=null){
+            if (conn != null) {
                 conn.close();
             }
         }
         return check;
     }
-    
-    public boolean insertAddPointTransaction(TransactionDTO transaction) throws SQLException, ClassNotFoundException{
-        boolean check=false;
+
+    public boolean insertAddPointTransaction(TransactionDTO transaction) throws SQLException, ClassNotFoundException {
+        boolean check = false;
         try {
-            conn=DBUtil.getConnection();
-            if(conn!=null){
-                String sql ="INSERT INTO tblTransaction(transactionID, studentRewardID, walletID, plusPoint, orderDate)"
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                String sql = "INSERT INTO tblTransaction(transactionID, studentRewardID, walletID, plusPoint, orderDate)"
                         + " VALUES(?,?,?,?,?)";
                 stm = conn.prepareStatement(sql);
                 stm.setString(1, transaction.getTransactionID());
@@ -63,53 +64,121 @@ public class TransactionDAO implements Serializable{
                 stm.setString(3, transaction.getWalletID());
                 stm.setInt(4, transaction.getPlusPoint());
                 stm.setTimestamp(5, transaction.getOrderDate());
-                check = stm.executeUpdate()>0;
+                check = stm.executeUpdate() > 0;
             }
-        }finally{
-            if(stm!=null){
+        } finally {
+            if (stm != null) {
                 stm.close();
             }
-            if(conn!=null){
+            if (conn != null) {
                 conn.close();
             }
         }
         return check;
     }
-    public List<TransactionDTO> getAllTransaction() throws SQLException{
-     List<TransactionDTO> list = new ArrayList();
-      try {
+
+    public List<TransactionDTO> getAllTransaction() throws SQLException {
+        List<TransactionDTO> list = new ArrayList();
+        try {
             conn = DBUtil.getConnection();
-            if(conn!=null){
+            if (conn != null) {
                 String sql = "SELECT transactionID, studentRewardID, walletID, orderID, minusPoint, plusPoint, orderDate"
-                        +" FROM tblTransaction";
+                        + " FROM tblTransaction";
                 stm = conn.prepareStatement(sql);
-                rs=stm.executeQuery();
-                while(rs.next()){
+                rs = stm.executeQuery();
+                while (rs.next()) {
                     String transactionID = rs.getString("transactionID");
                     String studentrewardID = rs.getString("studentRewardID");
                     String walletID = rs.getString("walletID");
-                    double orderID = rs.getDouble("orderID");
+                    String orderID = rs.getString("orderID");
                     int minusPoint = rs.getInt("minusPoint");
                     int plusPoint = rs.getInt("plusPoint");
-                    Timestamp orderDate  = rs.getTimestamp("orderDate");
-//                    list.add(new TransactionDTO(transactionID, studentrewardID, walletID, minusPoint, plusPoint, orderDate));
+                    Timestamp orderDate = rs.getTimestamp("orderDate");
+                    list.add(new TransactionDTO(transactionID, studentrewardID, walletID, orderID, minusPoint, plusPoint, orderDate));
                 }
             }
         } catch (Exception e) {
-        }finally{
-            if(rs!=null){
+        } finally {
+            if (rs != null) {
                 rs.close();
             }
-            if(stm!=null){
+            if (stm != null) {
                 stm.close();
             }
-            if(conn!=null){
+            if (conn != null) {
                 conn.close();
             }
         }
 
         return list;
     }
-        
-        
+
+    public List<TransactionDTO> getAllTransactionMinusPoint() throws SQLException {
+        List<TransactionDTO> list = new ArrayList();
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                String sql = "SELECT  walletID, orderID, minusPoint, orderDate"
+                        + " FROM tblTransaction"
+                        + " WHERE plusPoint IS NULL";
+                stm = conn.prepareStatement(sql);
+                rs = stm.executeQuery();
+                while (rs.next()) {                  
+                    String walletID = rs.getString("walletID");
+                    String orderID = rs.getString("orderID");
+                    int minusPoint = rs.getInt("minusPoint");
+                    Timestamp orderDate = rs.getTimestamp("orderDate");
+                    list.add(new TransactionDTO(walletID, orderID, minusPoint, orderDate));
+                }
+            }
+        } catch (Exception e) {
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
     }
+    
+    public List<TransactionDTO> getAllTransactionPlusPoint() throws SQLException {
+        List<TransactionDTO> list = new ArrayList();
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                String sql = "SELECT transactionID, studentRewardID, walletID, plusPoint, orderDate"
+                        + " FROM tblTransaction"
+                        + " WHERE minusPoint IS NULL";
+                stm = conn.prepareStatement(sql);
+                rs = stm.executeQuery();
+                while (rs.next()) {
+                    String transactionID = rs.getString("transactionID");
+                    String studentrewardID = rs.getString("studentRewardID");
+                    String walletID = rs.getString("walletID");
+                    int plusPoint = rs.getInt("plusPoint");
+                    Timestamp orderDate = rs.getTimestamp("orderDate");
+                    list.add(new TransactionDTO(transactionID, studentrewardID, walletID,  plusPoint, orderDate));
+                }
+            }
+        } catch (Exception e) {
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
+    }
+}

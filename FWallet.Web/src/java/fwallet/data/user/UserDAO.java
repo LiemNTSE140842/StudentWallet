@@ -469,4 +469,36 @@ public class UserDAO {
         }
         return check;
     }
+    public List<UserDTO> getUserID() throws SQLException {
+
+        ArrayList<UserDTO> listUserID = new ArrayList<>();
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                String sql = "SELECT userID "
+                        + " FROM tblStudent ";
+                stm = conn.prepareStatement(sql);
+                rs = stm.executeQuery();
+                while (rs.next()) {
+                    String userID = rs.getString("userID");
+                   
+                   listUserID.add(new UserDTO(userID));
+                }
+            }
+        } catch (Exception e) {
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return listUserID
+                ;
+    }
 }
+
