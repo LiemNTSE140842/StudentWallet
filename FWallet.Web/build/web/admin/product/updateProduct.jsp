@@ -18,7 +18,7 @@
         <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Create User Form
+            Create Product Form
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -38,17 +38,17 @@
             ProductDTO product = dao.getAProductByID(productId);
         %>
 
-        <div class="wrapper ">
+         <div class="wrapper ">
             <div class="sidebar" data-color="orange">
                 <!--
                   Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
                 -->
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+                    <a href="#" class="simple-text logo-mini">
                         FPT
                     </a>
-                    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                        Admin
+                    <a href="#" class="simple-text logo-normal">
+                        Admin 
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
 
-                 <%
+                <%
                     UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                 %>
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -81,6 +81,12 @@
                         </div>
                     </div>
                     <ul class="nav">
+                        <li>
+                            <a href="<%= request.getContextPath()%>/admin/productData.jsp">
+                                <i class="now-ui-icons design_app"></i>
+                                <p>Back To Product Page</p>
+                            </a>
+                        </li>
                 </div>
             </div>
             <div class="main-panel" id="main-panel">

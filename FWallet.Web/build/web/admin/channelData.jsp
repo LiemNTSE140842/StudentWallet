@@ -44,7 +44,7 @@
                         FPT
                     </a>
                     <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                      Admin
+                        Admin
                     </a>
                     <div class="navbar-minimize">
                         <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
@@ -66,7 +66,7 @@
                                 </span>
                             </a>
                             <div class="clearfix"></div>
-                           
+
                         </div>
                     </div>
                     <ul class="nav">
@@ -103,6 +103,12 @@
                                             <span class="sidebar-normal"> Student </span>
                                         </a>
                                     </li>
+                                     <li>
+                                        <a href="<%= request.getContextPath()%>/admin/addPoint.jsp">
+                                            <span class="sidebar-mini-icon">AP</span>
+                                            <span class="sidebar-normal">Add Point</span>
+                                        </a>
+                                    </li>
                                 </ul>
                     </ul>
                 </div>                         
@@ -129,28 +135,16 @@
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
                             <form action="<%= request.getContextPath()%>/SearchChannelDataController" id="search">
                                 <div class="input-group no-border">
-                                    <input type="text" name="search" value="" class="form-control" placeholder="Search...">
+                                    <input type="text" name="search" value="" class="form-control" placeholder="Load Data...">
                                     <div class="input-group-append" onclick="returnForm()">
                                         <div class="input-group-text">
-                                            <i class="now-ui-icons ui-1_zoom-bold"></i>
+                                            <i class="now-ui-icons files_single-copy-04"></i>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Filter <i class="fas fa-filter"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
-                                        </p>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">All</a>
-                                        <a class="dropdown-item" href="#">Deleted</a>
-                                        <a class="dropdown-item" href="#">Activated</a>
-                                    </div>
-                                </li>
+         
                                 <li class="nav-item">
                                     <a class="nav-link" href="LogOutController">
                                         <i class="now-ui-icons media-1_button-power"></i>
@@ -259,8 +253,7 @@
                         <div class="copyright" id="copyright">
                             &copy; <script>
                                 document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
-                        </div>
+                            </script>, Designed by <a href="https://www.facebook.com/siliem3k" target="_blank">LiemTroller</a>. Coded by <a href="https://www.facebook.com/pphuhuy" target="_blank">PhuHuy</a>.                        </div>
                     </div>
                 </footer>
             </div>

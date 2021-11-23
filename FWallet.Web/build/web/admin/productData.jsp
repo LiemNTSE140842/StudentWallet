@@ -10,7 +10,7 @@
 <%@page import="fwallet.data.product.ProductDAO"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -19,7 +19,7 @@
         <link rel="icon" type="image/png" href="<%= request.getContextPath()%>/assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-           Product Page
+            Product Page
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -33,7 +33,7 @@
     </head>
 
     <body class=" sidebar-mini ">
-        <% 
+        <%
             UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
         %>
         <div class="wrapper ">
@@ -58,7 +58,7 @@
                 <div class="sidebar-wrapper" id="sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
-                            <img src="<%= user.getImage() %>" height="150px" width="150px;"/>
+                            <img src="<%= user.getImage()%>" height="150px" width="150px;"/>
                         </div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -98,13 +98,19 @@
                                             <span class="sidebar-normal">Student </span>
                                         </a>
                                     </li>
-                                     <li>
+                                    <li>
                                         <a href="<%= request.getContextPath()%>/admin/productData.jsp">
                                             <span class="sidebar-mini-icon">P</span>
                                             <span class="sidebar-normal"> Product </span>
                                         </a>
                                     </li>
-                              </ul>
+                                     <li>
+                                        <a href="<%= request.getContextPath()%>/admin/addPoint.jsp">
+                                            <span class="sidebar-mini-icon">AP</span>
+                                            <span class="sidebar-normal">Add Point</span>
+                                        </a>
+                                    </li>
+                                </ul>
                     </ul>
                 </div>                         
             </div>
@@ -130,30 +136,17 @@
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
                             <form action="<%= request.getContextPath()%>/SearchProductController" id="search">
                                 <div class="input-group no-border">
-                                    <input type="text" name="search" value="" class="form-control" placeholder="Search...">
+                                    <input type="text" name="search" value="" class="form-control" placeholder="Load Data...">
                                     <div class="input-group-append" onclick="returnForm()">
                                         <div class="input-group-text">
-                                            <i class="now-ui-icons ui-1_zoom-bold"></i>
+                                            <i class="now-ui-icons files_single-copy-04"></i>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Filter <i class="fas fa-filter"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
-                                        </p>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                       <a class="dropdown-item" href="#">All</a>
-                                        <a class="dropdown-item" href="#">Deleted</a>
-                                        <a class="dropdown-item" href="#">Activated</a>
-                                    </div>
-                                </li>
                                 <li class="nav-item">
-                                     <a class="nav-link" href="LogOutController">
+                                    <a class="nav-link" href="LogOutController">
                                         <i class="now-ui-icons media-1_button-power"></i>
                                         <p>
                                             <span class="d-lg-none d-md-block"></span>
@@ -177,9 +170,9 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="toolbar">
-                                         <form action="<%= request.getContextPath()%>/admin/product/createProduct.jsp">
-                                    <button class="btn btn-primary">Create Product</button>
-                    </form>          
+                                        <form action="<%= request.getContextPath()%>/admin/product/createProduct.jsp">
+                                            <button class="btn btn-primary">Create Product</button>
+                                        </form>          
                                     </div>
                                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead class="thead-dark">
@@ -189,7 +182,7 @@
                                                 <th>Price</th>
                                                 <th>Quantity</th>
                                                 <th>Status</th>
-                                                
+
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </thead>
@@ -200,42 +193,42 @@
                                                 <th>Price</th>
                                                 <th>Quantity</th>
                                                 <th>Status</th>
-                                                
+
                                                 <th class="disabled-sorting text-right">Actions</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                             <%
-                                            List<ProductDTO> list = (List<ProductDTO>) request.getAttribute("LIST_PRODUCT");
-                                            if (list != null) {
-                                                if (!list.isEmpty()) {
-                                                    for(ProductDTO listProduct:list){
-                                            
-                                        %>
+                                            <%
+                                                List<ProductDTO> list = (List<ProductDTO>) request.getAttribute("LIST_PRODUCT");
+                                                if (list != null) {
+                                                    if (!list.isEmpty()) {
+                                                        for (ProductDTO listProduct : list) {
+
+                                            %>
                                             <tr>
                                                 <td><img src="<%=listProduct.getImage()%>" alt="hinhanh" height="150px" width="150px"/>
                                                 </td>
                                                 <td><%= listProduct.getProductName()%></td>
                                                 <td><%= listProduct.getPrice()%></td>
-                                                <td><%= listProduct.getQuantity() %></td>
-                                                <td><%= listProduct.isStatusID() %> </td>
-                                                
+                                                <td><%= listProduct.getQuantity()%></td>
+                                                <td><%= listProduct.isStatusID()%> </td>
+
                                                 <td class="text-right">
-                                                    <a href="<%= request.getContextPath()%>/admin/product/updateProduct.jsp?productID=<%= listProduct.getProductID() %>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="fas fa-tools"></i></a>
-                                                    <a href="RemoveProductController?productID=<%= listProduct.getProductID() %>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
+                                                    <a href="<%= request.getContextPath()%>/admin/product/updateProduct.jsp?productID=<%= listProduct.getProductID()%>" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="fas fa-tools"></i></a>
+                                                    <a href="RemoveProductController?productID=<%= listProduct.getProductID()%>" class="btn btn-round btn-danger btn-icon btn-sm remove"><i class="fas fa-times"></i></a>
                                                 </td>
                                             </tr>
-                                              <%
-                                                    }
-                                        %>
-                                        <%
+                                            <%
                                                 }
-                                        %>
-                                        <%
-                                            }
-                                        %>
+                                            %>
+                                            <%
+                                                }
+                                            %>
+                                            <%
+                                                }
+                                            %>
                                         </tbody>
-                                     
+
                                     </table>
                                 </div><!-- end content-->
                             </div><!--  end card  -->
@@ -266,8 +259,7 @@
                         <div class="copyright" id="copyright">
                             &copy; <script>
                                 document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
-                        </div>
+                            </script>, Designed by <a href="https://www.facebook.com/siliem3k" target="_blank">LiemTroller</a>. Coded by <a href="https://www.facebook.com/pphuhuy" target="_blank">PhuHuy</a>.                        </div>
                     </div>
                 </footer>
             </div>
@@ -340,9 +332,9 @@
 //                                        alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
 //                                    });
                                 });
-                function returnForm() {
-                    document.getElementById('search').submit();             // Function returns the product of a and b
-                }
+                                function returnForm() {
+                                    document.getElementById('search').submit();             // Function returns the product of a and b
+                                }
         </script>
     </body>
 
