@@ -24,6 +24,7 @@ public class LoginController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
     private static final String ADMIN_PAGE="admin.jsp";
+    private static final String USER_PAGE = "ShowProductController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -41,7 +42,14 @@ public class LoginController extends HttpServlet {
                 String roleID = user.getRoleID();
                 String statusID = user.getStatusID();
                 session.setAttribute("LOGIN_USER", user);
-                url = ADMIN_PAGE;
+                if("AD".equals(roleID)){
+                    url = ADMIN_PAGE;
+                }else if("US".equals(roleID)){
+                    url = USER_PAGE;
+                }else{
+                    session.setAttribute("ERROR_MESSAGE", "Your account is inactive");
+                }
+                
             }
         } catch (Exception e) {
             log("Error at login: " + e.toString());
